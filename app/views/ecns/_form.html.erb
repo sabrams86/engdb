@@ -1,0 +1,73 @@
+<%= form_for(@ecn) do |f| %>
+  <% if @ecn.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ecn.errors.count, "error") %> prohibited this ecn from being saved:</h2>
+
+      <ul>
+      <% @ecn.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ecn_number %><br />
+    <%= f.number_field :ecn_number %>
+  </div>
+  <div class="field">
+    <%= f.label :ecn_type %><br />
+    <%= f.text_field :ecn_type %>
+  </div>
+  <div class="field">
+    <%= f.label :product_line %><br />
+    <%= f.text_field :product_line %>
+  </div>
+  <div class="field">
+    <%= f.label :created_on %><br />
+    <%= f.date_select :created_on %>
+  </div>
+  <div class="field">
+    <%= f.label :distribute_engineering %><br />
+    <%= f.check_box :distribute_engineering %>
+  </div>
+  <div class="field">
+    <%= f.label :distribute_purchasing %><br />
+    <%= f.check_box :distribute_purchasing %>
+  </div>
+  <div class="field">
+    <%= f.label :distribute_planning %><br />
+    <%= f.check_box :distribute_planning %>
+  </div>
+  <div class="field">
+    <%= f.label :distribute_manufacturing %><br />
+    <%= f.check_box :distribute_manufacturing %>
+  </div>
+  <div class="field">
+    <%= f.label :distribute_qantel %><br />
+    <%= f.check_box :distribute_qantel %>
+  </div>
+  <div class="field">
+    <%= f.label :distribute_sales %><br />
+    <%= f.check_box :distribute_sales %>
+  </div>
+  <div class="field">
+    <%= f.label :distribute_inventory %><br />
+    <%= f.check_box :distribute_inventory %>
+  </div>
+  <div class="field">
+    <%= f.label :distribute_quality %><br />
+    <%= f.check_box :distribute_quality %>
+  </div>
+  <div class="field">
+    <%= f.label :distribute_india %><br />
+    <%= f.check_box :distribute_india %>
+  </div>
+  <div class="field">
+    <%= f.label :distribute_finance %><br />
+    <%= f.check_box :distribute_finance %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

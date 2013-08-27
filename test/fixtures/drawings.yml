@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  drawing_number: MyString
+  item_number: MyString
+  description: MyString
+  pump_model: MyString
+  frame_size: MyString
+  created_on: 2013-08-12
+  make_from: MyString
+  file_format: MyString
+  file_location: MyString
+  part_type: MyString
+  comments: MyText
+
+two:
+  drawing_number: MyString
+  item_number: MyString
+  description: MyString
+  pump_model: MyString
+  frame_size: MyString
+  created_on: 2013-08-12
+  make_from: MyString
+  file_format: MyString
+  file_location: MyString
+  part_type: MyString
+  comments: MyText

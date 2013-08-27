@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Drawing number:</b>
+  <%= @drawing.drawing_number %>
+</p>
+
+<p>
+  <b>Item number:</b>
+  <%= @drawing.item_number %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @drawing.description %>
+</p>
+
+<p>
+  <b>Pump model:</b>
+  <%= @drawing.pump_model %>
+</p>
+
+<p>
+  <b>Frame size:</b>
+  <%= @drawing.frame_size %>
+</p>
+
+<p>
+  <b>Created on:</b>
+  <%= @drawing.created_on %>
+</p>
+
+<p>
+  <b>Make from:</b>
+  <%= @drawing.make_from %>
+</p>
+
+<p>
+  <b>File format:</b>
+  <%= @drawing.file_format %>
+</p>
+
+<p>
+  <b>File location:</b>
+  <%= @drawing.file_location %>
+  <a href='file://///engserver/Engineering/engineering/shop%20prints/A2900/A2908_revE.PDF'>OPEN FILE</a>
+</p>
+
+<p>
+  <b>Part type:</b>
+  <%= @drawing.part_type %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%= @drawing.comments %>
+</p>
+
+
+<%= link_to 'Edit', edit_drawing_path(@drawing) %> |
+<%= link_to 'Back', drawings_path %>

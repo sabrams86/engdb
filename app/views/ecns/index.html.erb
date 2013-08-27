@@ -1,0 +1,49 @@
+<h1>Listing ecns</h1>
+
+<table>
+  <tr>
+    <th>Ecn number</th>
+    <th>Ecn type</th>
+    <th>Product line</th>
+    <th>Created on</th>
+    <th>Distribute engineering</th>
+    <th>Distribute purchasing</th>
+    <th>Distribute planning</th>
+    <th>Distribute manufacturing</th>
+    <th>Distribute qantel</th>
+    <th>Distribute sales</th>
+    <th>Distribute inventory</th>
+    <th>Distribute quality</th>
+    <th>Distribute india</th>
+    <th>Distribute finance</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ecns.each do |ecn| %>
+  <tr>
+    <td><%= ecn.ecn_number %></td>
+    <td><%= ecn.ecn_type %></td>
+    <td><%= ecn.product_line %></td>
+    <td><%= ecn.created_on %></td>
+    <td><%= ecn.distribute_engineering %></td>
+    <td><%= ecn.distribute_purchasing %></td>
+    <td><%= ecn.distribute_planning %></td>
+    <td><%= ecn.distribute_manufacturing %></td>
+    <td><%= ecn.distribute_qantel %></td>
+    <td><%= ecn.distribute_sales %></td>
+    <td><%= ecn.distribute_inventory %></td>
+    <td><%= ecn.distribute_quality %></td>
+    <td><%= ecn.distribute_india %></td>
+    <td><%= ecn.distribute_finance %></td>
+    <td><%= link_to 'Show', ecn %></td>
+    <td><%= link_to 'Edit', edit_ecn_path(ecn) %></td>
+    <td><%= link_to 'Destroy', ecn, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Ecn', new_ecn_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  change: MyText
+  justification: MyText
+  rev_level: MyString
+  disposition_wip: MyString
+  disposition_inventory: MyString
+  quantity_in_qantel: 1
+
+two:
+  change: MyText
+  justification: MyText
+  rev_level: MyString
+  disposition_wip: MyString
+  disposition_inventory: MyString
+  quantity_in_qantel: 1

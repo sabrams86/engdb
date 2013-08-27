@@ -1,0 +1,33 @@
+<h1>Listing revisions</h1>
+
+<table>
+  <tr>
+    <th>Change</th>
+    <th>Justification</th>
+    <th>Rev level</th>
+    <th>Disposition wip</th>
+    <th>Disposition inventory</th>
+    <th>Quantity in qantel</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @revisions.each do |revision| %>
+  <tr>
+    <td><%= revision.change %></td>
+    <td><%= revision.justification %></td>
+    <td><%= revision.rev_level %></td>
+    <td><%= revision.disposition_wip %></td>
+    <td><%= revision.disposition_inventory %></td>
+    <td><%= revision.quantity_in_qantel %></td>
+    <td><%= link_to 'Show', revision %></td>
+    <td><%= link_to 'Edit', edit_revision_path(revision) %></td>
+    <td><%= link_to 'Destroy', revision, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Revision', new_revision_path %>

@@ -1,0 +1,43 @@
+<h1>Listing drawings</h1>
+
+<table>
+  <tr>
+    <th>Drawing number</th>
+    <th>Item number</th>
+    <th>Description</th>
+    <th>Pump model</th>
+    <th>Frame size</th>
+    <th>Created on</th>
+    <th>Make from</th>
+    <th>File format</th>
+    <th>File location</th>
+    <th>Part type</th>
+    <th>Comments</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @drawings.each do |drawing| %>
+  <tr>
+    <td><%= drawing.drawing_number %></td>
+    <td><%= drawing.item_number %></td>
+    <td><%= drawing.description %></td>
+    <td><%= drawing.pump_model %></td>
+    <td><%= drawing.frame_size %></td>
+    <td><%= drawing.created_on %></td>
+    <td><%= drawing.make_from %></td>
+    <td><%= drawing.file_format %></td>
+    <td><%= drawing.file_location %></td>
+    <td><%= drawing.part_type %></td>
+    <td><%= drawing.comments %></td>
+    <td><%= link_to 'Show', drawing %></td>
+    <td><%= link_to 'Edit', edit_drawing_path(drawing) %></td>
+    <td><%= link_to 'Destroy', drawing, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Drawing', new_drawing_path %>

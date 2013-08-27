@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ecn_number: 1
+  ecn_type: MyString
+  product_line: MyString
+  created_on: 2013-08-12
+  distribute_engineering: false
+  distribute_purchasing: false
+  distribute_planning: false
+  distribute_manufacturing: false
+  distribute_qantel: false
+  distribute_sales: false
+  distribute_inventory: false
+  distribute_quality: false
+  distribute_india: false
+  distribute_finance: false
+
+two:
+  ecn_number: 1
+  ecn_type: MyString
+  product_line: MyString
+  created_on: 2013-08-12
+  distribute_engineering: false
+  distribute_purchasing: false
+  distribute_planning: false
+  distribute_manufacturing: false
+  distribute_qantel: false
+  distribute_sales: false
+  distribute_inventory: false
+  distribute_quality: false
+  distribute_india: false
+  distribute_finance: false

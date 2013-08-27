@@ -1,0 +1,41 @@
+<%= form_for(@revision) do |f| %>
+  <% if @revision.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@revision.errors.count, "error") %> prohibited this revision from being saved:</h2>
+
+      <ul>
+      <% @revision.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :change %><br />
+    <%= f.text_area :change %>
+  </div>
+  <div class="field">
+    <%= f.label :justification %><br />
+    <%= f.text_area :justification %>
+  </div>
+  <div class="field">
+    <%= f.label :rev_level %><br />
+    <%= f.text_field :rev_level %>
+  </div>
+  <div class="field">
+    <%= f.label :disposition_wip %><br />
+    <%= f.text_field :disposition_wip %>
+  </div>
+  <div class="field">
+    <%= f.label :disposition_inventory %><br />
+    <%= f.text_field :disposition_inventory %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity_in_qantel %><br />
+    <%= f.number_field :quantity_in_qantel %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

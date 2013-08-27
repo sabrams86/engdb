@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Change:</b>
+  <%= @revision.change %>
+</p>
+
+<p>
+  <b>Justification:</b>
+  <%= @revision.justification %>
+</p>
+
+<p>
+  <b>Rev level:</b>
+  <%= @revision.rev_level %>
+</p>
+
+<p>
+  <b>Disposition wip:</b>
+  <%= @revision.disposition_wip %>
+</p>
+
+<p>
+  <b>Disposition inventory:</b>
+  <%= @revision.disposition_inventory %>
+</p>
+
+<p>
+  <b>Quantity in qantel:</b>
+  <%= @revision.quantity_in_qantel %>
+</p>
+
+
+<%= link_to 'Edit', edit_revision_path(@revision) %> |
+<%= link_to 'Back', revisions_path %>

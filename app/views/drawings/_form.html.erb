@@ -1,0 +1,62 @@
+<%= form_for(@drawing) do |f| %>
+  <% if @drawing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@drawing.errors.count, "error") %> prohibited this drawing from being saved:</h2>
+
+      <ul>
+      <% @drawing.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :drawing_number %><br />
+    <%= f.text_field :drawing_number %>
+  </div>
+  <div class="field">
+    <%= f.label :item_number %><br />
+    <%= f.text_field :item_number %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :pump_model %><br />
+    <%= f.text_field :pump_model %>
+  </div>
+  <div class="field">
+    <%= f.label :frame_size %><br />
+    <%= f.text_field :frame_size %>
+  </div>
+  <div class="field">
+    <%= f.label :created_on %><br />
+    <%= f.date_select :created_on %>
+  </div>
+  <div class="field">
+    <%= f.label :make_from %><br />
+    <%= f.text_field :make_from %>
+  </div>
+  <div class="field">
+    <%= f.label :file_format %><br />
+    <%= f.text_field :file_format %>
+  </div>
+  <div class="field">
+    <%= f.label :file_location %><br />
+    <%= f.text_field :file_location %>
+  </div>
+  <div class="field">
+    <%= f.label :part_type %><br />
+    <%= f.text_field :part_type %>
+  </div>
+  <div class="field">
+    <%= f.label :comments %><br />
+    <%= f.text_area :comments, rows: 6 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
