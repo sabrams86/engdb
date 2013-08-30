@@ -1,0 +1,16 @@
+{"ts":1377704741236,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"<h1>New ecn</h1>\n\n<%= render 'form' %>\n\n<%= link_to 'Back', ecns_path %>\n"]],"start1":0,"start2":0,"length1":0,"length2":73}]],"length":73}
+{"contributors":[],"silentsave":false,"ts":1377704715780,"patch":[[{"diffs":[[0,"k', "],[-1,"ecns_path"],[1,"controller: 'home' action: 'index'"],[0," %>\n"]],"start1":56,"start2":56,"length1":17,"length2":42}]],"length":98,"saved":false}
+{"ts":1377704920668,"patch":[[{"diffs":[[0,"k', "],[-1,"controller: 'home' action: 'index'"],[1,"ecns_path"],[0," %>\n"]],"start1":56,"start2":56,"length1":42,"length2":17}]],"length":73,"saved":false}
+{"ts":1377707534246,"patch":[[{"diffs":[[0,"k', "],[-1,"ecns_path"],[1,"controller: 'home', action: 'index' "],[0," %>\n"]],"start1":56,"start2":56,"length1":17,"length2":44}]],"length":100,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1377811953085,"patch":[[{"diffs":[[0,">\n\n<"],[-1,"%= render 'form' %"],[1,"div class='rev'>\n  <%= render 'form' %>\n</div>\n\n<div class=\"rev\">\n  <%= render 'revisions/new' %>\n</div"],[0,">\n\n<"]],"start1":15,"start2":15,"length1":26,"length2":111}]],"length":185,"saved":false}
+{"ts":1377812003278,"patch":[[{"diffs":[[0,"ons/"],[-1,"new"],[1,"_form"],[0,"' %>"]],"start1":105,"start2":105,"length1":11,"length2":13}]],"length":187,"saved":false}
+{"ts":1377812013647,"patch":[[{"diffs":[[0,"visions/"],[1,"new/"],[0,"_form' %"]],"start1":101,"start2":101,"length1":16,"length2":20}]],"length":191,"saved":false}
+{"ts":1377812070488,"patch":[[{"diffs":[[0,"= render"],[1," template:"],[0," 'revisi"]],"start1":89,"start2":89,"length1":16,"length2":26},{"diffs":[[0,"/new"],[-1,"/_form"],[0,"' %>"]],"start1":118,"start2":118,"length1":14,"length2":8}]],"length":195,"saved":false}
+{"ts":1377812125278,"patch":[[{"diffs":[[0,"ons/"],[-1,"new"],[1,"_form"],[0,"' %>"]],"start1":115,"start2":115,"length1":11,"length2":13}]],"length":197,"saved":false}
+{"ts":1377812137603,"patch":[[{"diffs":[[0,"visions/"],[1,"new/"],[0,"_form' %"]],"start1":111,"start2":111,"length1":16,"length2":20}]],"length":201,"saved":false}
+{"ts":1377812202629,"patch":[[{"diffs":[[0,"/new"],[-1,"/_form"],[0,"' %>"]],"start1":118,"start2":118,"length1":14,"length2":8}]],"length":195,"saved":false}
+{"ts":1377812922319,"patch":[[{"diffs":[[0,"</div>\n\n"],[1,"<div class=\"clear\">\n"],[0,"<%= link"]],"start1":127,"start2":127,"length1":16,"length2":36},{"diffs":[[0,"'index'  %>\n"],[1,"</div>\n"]],"start1":203,"start2":203,"length1":12,"length2":19}]],"length":222,"saved":false}
+{"ts":1377813114747,"patch":[[{"diffs":[[-1,"<h1>New ecn</h1>"],[0,"\n\n<d"]],"start1":0,"start2":0,"length1":20,"length2":4},{"diffs":[[0,"='rev'>\n"],[1,"<h1>New ecn</h1>\n"],[0,"  <%= re"]],"start1":12,"start2":12,"length1":16,"length2":33}]],"length":223,"saved":false}
+{"ts":1377813155844,"patch":[[{"diffs":[[0,"=\"clear\""],[1," class=\"search\""],[0,">\n<%= li"]],"start1":146,"start2":146,"length1":16,"length2":31}]],"length":238,"saved":false}
+{"ts":1377813194098,"patch":[[{"diffs":[[0,"ear\""],[-1," class=\"search\""],[0,">\n<%"]],"start1":150,"start2":150,"length1":23,"length2":8}]],"length":223,"saved":false}
+{"ts":1377813196284,"patch":[[{"diffs":[[-1,"\n\n"],[0,"<div class='rev'"]],"start1":0,"start2":0,"length1":18,"length2":16}]],"length":221,"saved":false}

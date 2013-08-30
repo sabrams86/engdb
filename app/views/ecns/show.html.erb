@@ -70,6 +70,17 @@
   <%= @ecn.distribute_finance %>
 </p>
 
+<ul>
+  <% for revision in @ecn.revisions %>
+  <li><%= h revision.drawing_id %></li>
+  <li><%= h revision.change %></li>
+  <li><%= h revision.justification %></li>
+  <li><%= h revision.rev_level %></li>
+  <li><%= h revision.disposition_wip %></li>
+  <li><%= h revision.disposition_inventory %></li>
+  <li><%= h revision.quantity_in_qantel %></li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_ecn_path(@ecn) %> |
 <%= link_to 'Back', ecns_path %>

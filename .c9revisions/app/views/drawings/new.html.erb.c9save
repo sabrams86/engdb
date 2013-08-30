@@ -1,0 +1,4 @@
+{"ts":1377701891724,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"<h1>New drawing</h1>\n\n<%= render 'form' %>\n\n<%= link_to 'Back', drawings_path %>\n"]],"start1":0,"start2":0,"length1":0,"length2":81}]],"length":81}
+{"ts":1377704698284,"patch":[[{"diffs":[[0,"k', "],[-1,"drawings_path"],[1,"controller: 'home' action: 'index'"],[0," %>\n"]],"start1":60,"start2":60,"length1":21,"length2":42}]],"length":102,"saved":false}
+{"ts":1377704954657,"patch":[[{"diffs":[[0,"k', "],[-1,"controller: 'home' action: 'index'"],[1,"drawings_path"],[0," %>\n"]],"start1":60,"start2":60,"length1":42,"length2":21}]],"length":81,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1377707565512,"patch":[[{"diffs":[[0,"k', "],[-1,"drawings_path"],[1,"controller: 'home', action: 'index' "],[0," %>\n"]],"start1":60,"start2":60,"length1":21,"length2":44}]],"length":104,"saved":false}

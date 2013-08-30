@@ -2,6 +2,7 @@ class DrawingsController < ApplicationController
   # GET /drawings
   # GET /drawings.json
   def index
+
     @drawings = Drawing.all
 
     respond_to do |format|

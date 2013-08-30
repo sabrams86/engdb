@@ -1,0 +1,5 @@
+{"ts":1377702717697,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"class HomeController < ApplicationController\n  def index\n  end\nend\n"]],"start1":0,"start2":0,"length1":0,"length2":67}]],"length":67}
+{"contributors":[],"silentsave":false,"ts":1377715649813,"patch":[[{"diffs":[[0,"f index\n"],[1,"      @search = Drawing.search(params[:search])\n    @drawings = @search.all\n"],[0,"  end\nen"]],"start1":49,"start2":49,"length1":16,"length2":92}]],"length":143,"saved":false}
+{"ts":1377715656726,"patch":[[{"diffs":[[0,"dex\n    "],[-1,"  "],[0,"@search "]],"start1":53,"start2":53,"length1":18,"length2":16}]],"length":141,"saved":false}
+{"ts":1377715744871,"patch":[[{"diffs":[[0,"g.search"],[1,"logic"],[0,"(params["]],"start1":77,"start2":77,"length1":16,"length2":21}]],"length":146,"saved":false}
+{"ts":1377715916687,"patch":[[{"diffs":[[0,"dex\n"],[-1,"    @search = Drawing.searchlogic(params[:search])\n    @drawings = @search.all\n"],[0,"  en"]],"start1":53,"start2":53,"length1":87,"length2":8}]],"length":67,"saved":false}

@@ -1,0 +1,8 @@
+{"ts":1377812235968,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"<h1>New revision</h1>\n\n<%= render 'form' %>\n\n<%= link_to 'Back', revisions_path %>\n"]],"start1":0,"start2":0,"length1":0,"length2":83}]],"length":83}
+{"contributors":[],"silentsave":false,"ts":1377812244933,"patch":[[{"diffs":[[0," render "],[-1,"'"],[1,"template: 'revisions/"],[0,"form' %>"]],"start1":26,"start2":26,"length1":17,"length2":37}]],"length":103,"saved":false}
+{"ts":1377812256401,"patch":[[{"diffs":[[0,"visions/"],[1,"_"],[0,"form' %>"]],"start1":47,"start2":47,"length1":16,"length2":17}]],"length":104,"saved":false}
+{"ts":1377812273451,"patch":[[{"diffs":[[0,"nder"],[-1," template:"],[0," 're"]],"start1":29,"start2":29,"length1":18,"length2":8}]],"length":94,"saved":false}
+{"ts":1377812333187,"patch":[[{"diffs":[[0,"visions/"],[-1,"_"],[0,"form' %>"]],"start1":37,"start2":37,"length1":17,"length2":16}]],"length":93,"saved":false}
+{"ts":1377812346437,"patch":[[{"diffs":[[0,"= render"],[1," template:"],[0," 'revisi"]],"start1":25,"start2":25,"length1":16,"length2":26}]],"length":103,"saved":false}
+{"ts":1377812591970,"patch":[[{"diffs":[[0,"nder"],[-1," template:"],[0," 're"]],"start1":29,"start2":29,"length1":18,"length2":8}]],"length":93,"saved":false}
+{"ts":1377813008155,"patch":[[{"diffs":[[0,"%>\n\n"],[-1,"<%= link_to 'Back', revisions_path %>\n"]],"start1":51,"start2":51,"length1":42,"length2":4}]],"length":55,"saved":false}

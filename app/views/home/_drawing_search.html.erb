@@ -1,0 +1,38 @@
+<h3>Search Drawings</h3>
+<%= form_for :drawings, :url => { :controller => "drawings", :action => "index" }, :html => {:method => :get} do |f| %>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :drawing_number %><br />
+    <%= f.text_field :drawing_number %>
+  </div>
+  <div class="field">
+    <%= f.label :item_number %><br />
+    <%= f.text_field :item_number %>
+  </div>
+  <div class="field">
+    <%= f.label :pump_model %><br />
+    <%= f.text_field :pump_model %>
+  </div>
+  <div class="field">
+    <%= f.label :frame_size %><br />
+    <%= f.text_field :frame_size %>
+  </div>
+    <div class="field">
+    <%= f.label :part_type %><br />
+    <%= f.text_field :part_type %>
+  </div>
+  <div class="field">
+    <%= f.label :created_before %><br />
+    <%= f.date_select :created_before, {:include_blank => true, :default => nil, :start_year => Time.now.year-20, :end_year => Time.now.year} %>
+  </div>
+  <div class="field">
+    <%= f.label :created_after %><br />
+    <%= f.date_select :created_after, {:include_blank => true, :default => nil, :start_year => Time.now.year-20, :end_year => Time.now.year} %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Search" %>
+  </div>
+<% end %>

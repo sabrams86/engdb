@@ -1,23 +1,13 @@
-<%= form_for(@revision) do |f| %>
-  <% if @revision.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@revision.errors.count, "error") %> prohibited this revision from being saved:</h2>
+<%= form_for :revisions, :url => { :controller => "revisions", :action => "create" } do |f| %>
 
-      <ul>
-      <% @revision.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= f.label :change %><br />
-    <%= f.text_area :change %>
+    <%= f.text_area :change, rows: 3 %>
   </div>
   <div class="field">
     <%= f.label :justification %><br />
-    <%= f.text_area :justification %>
+    <%= f.text_area :justification, rows: 3 %>
   </div>
   <div class="field">
     <%= f.label :rev_level %><br />

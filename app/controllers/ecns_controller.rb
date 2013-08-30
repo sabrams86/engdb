@@ -25,7 +25,7 @@ class EcnsController < ApplicationController
   # GET /ecns/new.json
   def new
     @ecn = Ecn.new
-
+    3.times { @ecn.revisions.build }
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @ecn }

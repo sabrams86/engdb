@@ -14,10 +14,10 @@
   <div id="columns">
     <div id="side">
       <ul>
-        <li><a href="http://www....">Home</a></li>
-        <li><a href="http://www..../faq">New Drawing</a></li>
-        <li><a href="http://www..../news">New ECN</a></li>
-        <li><a href="http://www..../contact">Logout</a></li>
+        <li><%= link_to 'Home', controller: 'home', action: 'index' %></li>
+        <li><%= link_to 'New Drawing', new_drawing_path %></li>
+        <li><%= link_to 'New ECN', new_ecn_path %></li>
+        <li><%= link_to 'Logout', drawings_path %></li>
       </ul>
     </div>
     <div id="main">

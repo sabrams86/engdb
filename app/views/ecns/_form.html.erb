@@ -67,6 +67,39 @@
     <%= f.label :distribute_finance %><br />
     <%= f.check_box :distribute_finance %>
   </div>
+  <div class="revfield">
+      <%= f.fields_for :revisions do |builder| %>
+          <h3>Revision</h3>
+          <div class="revfield">
+            <%= builder.label :drawing_id %><br />
+            <%= builder.text_field :drawing_id, rows: 3 %>
+          </div>
+          <div class="revield">
+            <%= builder.label :change %><br />
+            <%= builder.text_area :change, rows: 3 %>
+          </div>
+          <div class="revfield">
+            <%= builder.label :justification %><br />
+            <%= builder.text_area :justification, rows: 3 %>
+          </div>
+          <div class="revfield">
+            <%= builder.label :rev_level %><br />
+            <%= builder.text_field :rev_level %>
+          </div>
+          <div class="revfield">
+            <%= builder.label :disposition_wip %><br />
+            <%= builder.text_field :disposition_wip %>
+          </div>
+          <div class="revfield">
+            <%= builder.label :disposition_inventory %><br />
+            <%= builder.text_field :disposition_inventory %>
+          </div>
+          <div class="revfield">
+            <%= builder.label :quantity_in_qantel %><br />
+            <%= builder.number_field :quantity_in_qantel %>
+          </div>
+      <% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,0 +1,2 @@
+{"ts":1377828084703,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"class Ecn < ActiveRecord::Base\n  has_many :revisions\nend\n"]],"start1":0,"start2":0,"length1":0,"length2":57}]],"length":57}
+{"contributors":[],"silentsave":false,"ts":1377828175994,"patch":[[{"diffs":[[0,"evisions"],[1,", :dependent => :destroy\n  accepts_nested_attributes_for :revisions"],[0,"\nend\n"]],"start1":44,"start2":44,"length1":13,"length2":80}]],"length":124,"saved":false}

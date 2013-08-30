@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130812161448) do
+ActiveRecord::Schema.define(:version => 20130830025022) do
 
   create_table "drawings", :force => true do |t|
     t.string   "drawing_number"
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(:version => 20130812161448) do
     t.integer  "quantity_in_qantel"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.integer  "ecn_id"
+    t.integer  "drawing_id"
   end
 
 end
