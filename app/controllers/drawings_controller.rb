@@ -3,7 +3,10 @@ class DrawingsController < ApplicationController
   # GET /drawings.json
   def index
 
-    @drawings = Drawing.all
+    @drawings = Drawing.by_description(params[:drawings][:description]).by_drawing_number(params[:drawings][:drawing_number]).\
+      by_item_number(params[:drawings][:item_number]).by_pump_model(params[:drawings][:pump_model]).by_frame_size(params[:drawings]\
+      [:frame_size]).by_part_type(params[:drawings][:part_type]).by_created_before(params[:drawings]['created_before(1i)'], params[:drawings]['created_before(2i)'], params[:drawings]['created_before(3i)']).\
+      by_created_after(params[:drawings]['created_after(1i)'], params[:drawings]['created_after(2i)'], params[:drawings]['created_after(3i)']).all  
 
     respond_to do |format|
       format.html # index.html.erb

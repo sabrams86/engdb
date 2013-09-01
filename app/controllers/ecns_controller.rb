@@ -2,7 +2,9 @@ class EcnsController < ApplicationController
   # GET /ecns
   # GET /ecns.json
   def index
-    @ecns = Ecn.all
+    @ecns = Ecn.by_user_name(params[:ecns][:user_name]).by_drawing_number(params[:ecns][:drawing_number]).by_pump_model\
+    (params[:ecns][:pump_model]).by_frame_size(params[:ecns][:frame_size]).by_part_type(params[:ecns][:part_type]).\
+    by_created_before(params[:ecns][:created_on]).by_created_after(params[:ecns][:created_on]).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +27,7 @@ class EcnsController < ApplicationController
   # GET /ecns/new.json
   def new
     @ecn = Ecn.new
-    3.times { @ecn.revisions.build }
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @ecn }
@@ -80,4 +82,32 @@ class EcnsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+#  def submit
+#    @ecn = Ecn.find(params[:ecn])
+#
+#    respond_to do |format|
+#      if @ecn.save
+#        format.html { redirect_to @ecn, notice: 'Ecn has been submitted for approval.' }
+#        format.json { render json: @ecn, status: :created, location: @ecn }
+#      else
+#        format.html { render action: "new" }
+#        format.json { render json: @ecn.errors, status: :unprocessable_entity }
+#      end
+#    end
+#  end
+#  
+#  def close
+#    @ecn = Ecn.find(params[:ecn])
+#
+#    respond_to do |format|
+#      if @ecn.save
+#        format.html { redirect_to @ecn, notice: 'Ecn has been closed, all applicable departments have been notified.' }
+#        format.json { render json: @ecn, status: :created, location: @ecn }
+#      else
+#        format.html { render action: "new" }
+#        format.json { render json: @ecn.errors, status: :unprocessable_entity }
+#      end
+#    end
+#  end
 end

@@ -13,3 +13,31 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+//jQuery ->
+
+//function remove_revfields(link) {
+//        $(link).previous("input[type=hidden]").value = "1";
+//        $(link).up(".revfields").hide();
+//}
+//
+//function add_revfields(link, association, content) {
+//        var new_id = new Date().getTime();
+//        var regexp = new RegExp("new_" + association, "g");
+//        $(link).parent().before(content.replace(regexp, new_id));
+//}
+//
+$ ->
+function remove_revfields(link) {
+        $(link).previous("input[type=hidden]").value = "1";
+        $(link).up(".revfields").hide();
+}
+
+
+function add_revfields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g");
+  $(link).up().insert({
+        before: content.replace(regexp, new_id)
+  });
+}

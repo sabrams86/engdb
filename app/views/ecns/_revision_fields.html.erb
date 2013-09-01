@@ -1,0 +1,35 @@
+<div class="revfields">
+<h3>Revision</h3>
+  <div class="revfield">
+    <%= f.label :drawing_id %><br />
+    <%= f.text_field :drawing_id, rows: 3 %>
+  </div>
+  <div class="revield">
+    <%= f.label :change %><br />
+    <%= f.text_area :change, rows: 3 %>
+  </div>
+  <div class="revfield">
+    <%= f.label :justification %><br />
+    <%= f.text_area :justification, rows: 3 %>
+  </div>
+  <div class="revfield">
+    <%= f.label :rev_level %><br />
+    <%= f.text_field :rev_level %>
+  </div>
+  <div class="revfield">
+    <%= f.label :disposition_wip %><br />
+    <%= f.text_field :disposition_wip %>
+  </div>
+  <div class="revfield">
+    <%= f.label :disposition_inventory %><br />
+    <%= f.text_field :disposition_inventory %>
+  </div>
+  <div class="revfield">
+    <%= f.label :quantity_in_qantel %><br />
+    <%= f.number_field :quantity_in_qantel %>
+  </div>
+  <div class="revfield">
+      
+      <%= link_to_remove_revfields "Remove", f %>
+  </div>
+</div>
