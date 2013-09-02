@@ -67,10 +67,12 @@
     <%= f.label :distribute_finance %><br />
     <%= f.check_box :distribute_finance %>
   </div>
+  <fieldset>
       <%= f.fields_for :revisions do |builder| %>
-          <%= render 'revision_fields', f: builder %>
+          <%= render 'revision_fields', :f => f %>
       <% end %>
-  <p><%= link_to_add_revfields "Add Revision", f, :revisions %></p>
+  <p><%= link_to_add_fields("Add Revision", f, :revisions) %></p>
+  </fieldset>
   <div class="actions">
     <%= f.submit %>
   </div>

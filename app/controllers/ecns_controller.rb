@@ -2,10 +2,16 @@ class EcnsController < ApplicationController
   # GET /ecns
   # GET /ecns.json
   def index
-    @ecns = Ecn.by_user_name(params[:ecns][:user_name]).by_drawing_number(params[:ecns][:drawing_number]).by_pump_model\
-    (params[:ecns][:pump_model]).by_frame_size(params[:ecns][:frame_size]).by_part_type(params[:ecns][:part_type]).\
-    by_created_before(params[:ecns][:created_on]).by_created_after(params[:ecns][:created_on]).all
-
+    if params[:ecns].nil?
+       @ecns = Ecn.all
+    else
+      @ecns = Ecn.by_drawing_number(params[:ecns][:drawing_number])\
+     #   .by_pump_model(params[:ecns][:pump_model])\
+     #   .by_frame(params[:ecns][:frame_size])\
+     #   .by_part_type(params[:ecns][:part_type])\
+     #   .by_created_before(params[:ecns]['created_before(1i)'], params[:ecns]['created_before(2i)'], params[:ecns]['created_before(3i)'])\
+     #   .by_created_after(params[:ecns]['created_after(1i)'], params[:ecns]['created_after(2i)'], params[:ecns]['created_after(3i)']).all  
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @ecns }

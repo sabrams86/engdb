@@ -20,13 +20,13 @@
     <%= f.label :part_type %><br />
     <%= f.text_field :part_type %>
   </div>
-    <div class="field">
+  <div class="field">
     <%= f.label :created_before %><br />
-    <%= f.date_select :created_before, {:include_blank => true, :default => nil} %>
+    <%= f.date_select :created_before, {:start_year => 1950, :end_year => Time.now.year} %>
   </div>
   <div class="field">
     <%= f.label :created_after %><br />
-    <%= f.date_select :created_after, {:include_blank => true, :default => nil} %>
+    <%= f.date_select :created_after, :default => {:year => 1950}, :start_year => 1950, :end_year => Time.now.year%>
   </div>
   <div class="actions">
     <%= f.submit "Search" %>
