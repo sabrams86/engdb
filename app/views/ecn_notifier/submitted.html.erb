@@ -1,0 +1,57 @@
+<p>All,</p>
+
+<p>Please review the following ECN and notify the 
+product engineer with your approval or disapproval</p>
+
+<p>
+  <h1>Ecn number: <%= @ecn.ecn_number %></h1>
+</p>
+
+<p>
+  <b>Ecn type:</b>
+  <%= @ecn.ecn_type %>
+</p>
+
+<p>
+  <b>Product line:</b>
+  <%= @ecn.product_line %>
+</p>
+
+<p>
+  <b>Created on:</b>
+  <%= @ecn.created_on %>
+</p>
+
+<% for revision in @ecn.revisions %>
+  <h3>Revision</h3>
+  <table id="revisiontable">
+      <tr>
+          <th>Drawing Number</th>
+          <td><%= h revision.drawing_id %></td>
+      </tr>
+      <tr>
+          <th>Changes</th>
+          <td><%= h revision.change %></td>
+      </tr>
+      <tr>
+          <th>Justification</th>
+          <td><%= h revision.justification %></td>
+      </tr>
+      <tr>
+          <th>New Revision</th>
+          <td><%= h revision.rev_level %></td>
+      </tr>
+      <tr>
+          <th>Disposition WIP</th>
+          <td><%= h revision.disposition_wip %></td>
+      </tr>
+      <tr>
+          <th>Disposition Inventory</th>
+          <td><%= h revision.disposition_inventory %></td>
+      </tr>
+      <tr>
+          <th>Quantity in Qantel</th>
+          <td><%= h revision.quantity_in_qantel %></td>
+      </tr>
+  </table>
+<% end %>

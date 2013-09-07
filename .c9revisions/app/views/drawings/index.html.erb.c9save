@@ -10,3 +10,5 @@
 {"ts":1377966450885,"patch":[[{"diffs":[[0,"e>\n  <tr"],[-1,">\n    <th"],[0," rowspan"]],"start1":32,"start2":32,"length1":25,"length2":16},{"diffs":[[0,"pan=\"2\">"],[1,"\n    <th>"],[0,"Drawing "]],"start1":45,"start2":45,"length1":16,"length2":25}]],"length":1203,"saved":false}
 {"ts":1377966481664,"patch":[[{"diffs":[[0," <tr"],[-1," rowspan=\"2\""],[0,">\n  "]],"start1":36,"start2":36,"length1":20,"length2":8}]],"length":1191,"saved":false}
 {"contributors":[],"silentsave":false,"ts":1377975057338,"patch":[[{"diffs":[[0,"rawing) %></td>\n"],[-1,"<!--"],[0,"    <td><%= link"]],"start1":994,"start2":994,"length1":36,"length2":32},{"diffs":[[0,"%></td> "],[-1,"-->"],[0,"\n  </tr>"]],"start1":1092,"start2":1092,"length1":19,"length2":16}]],"length":1184,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1378217059815,"patch":[[{"diffs":[[0,"\n\n<table"],[1," class=\"index\""],[0,">\n  <tr>"]],"start1":25,"start2":25,"length1":16,"length2":30}]],"length":1198,"saved":false}
+{"ts":1378217262994,"patch":[[{"diffs":[[0,"ble "],[-1,"class"],[1,"id"],[0,"=\"in"]],"start1":30,"start2":30,"length1":13,"length2":10}]],"length":1195,"saved":false}

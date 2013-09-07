@@ -3,7 +3,7 @@ class DrawingsController < ApplicationController
   # GET /drawings.json
   def index
     if params[:drawings].nil?
-       @drawings = Drawing.all
+       @drawings = Drawing.order("drawing_number DESC").all
     else
       @drawings = Drawing.by_description(params[:drawings][:description])\
       .by_drawing_number(params[:drawings][:drawing_number])\
@@ -11,7 +11,8 @@ class DrawingsController < ApplicationController
       .by_frame_size(params[:drawings][:frame_size])\
       .by_part_type(params[:drawings][:part_type])\
       .by_created_before(params[:drawings]['created_before(1i)'], params[:drawings]['created_before(2i)'], params[:drawings]['created_before(3i)'])\
-      .by_created_after(params[:drawings]['created_after(1i)'], params[:drawings]['created_after(2i)'], params[:drawings]['created_after(3i)']).all  
+      .by_created_after(params[:drawings]['created_after(1i)'], params[:drawings]['created_after(2i)'], params[:drawings]['created_after(3i)'])\
+      .order("drawing_number DESC").all
     end
     respond_to do |format|
       format.html # index.html.erb

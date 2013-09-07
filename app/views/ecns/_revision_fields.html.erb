@@ -1,8 +1,8 @@
 <div class="fields">
-<h3>Revision</h3>
+<div class="ecnform">
   <div class="revfield">
-    <%= f.label :drawing_id %><br />
-    <%= f.text_field :drawing_id, rows: 3 %>
+    <b><%= f.label :drawing_number %></b><br />
+    <%= f.text_field :drawing_id %>
   </div>
   <div class="revfield">
     <%= f.label :change %><br />
@@ -12,6 +12,8 @@
     <%= f.label :justification %><br />
     <%= f.text_area :justification, rows: 3 %>
   </div>
+</div>
+<div class="ecnform">
   <div class="revfield">
     <%= f.label :rev_level %><br />
     <%= f.text_field :rev_level %>
@@ -28,6 +30,7 @@
     <%= f.label :quantity_in_qantel %><br />
     <%= f.number_field :quantity_in_qantel %>
   </div>
+</div>
   <div class="revfield">
       <%= link_to_remove_fields "Remove", f %>
   </div>

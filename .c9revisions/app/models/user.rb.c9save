@@ -1,0 +1,2 @@
+{"ts":1378526357528,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"class User < ActiveRecord::Base\nend\n"]],"start1":0,"start2":0,"length1":0,"length2":36}]],"length":36}
+{"contributors":[],"silentsave":false,"ts":1378526380408,"patch":[[{"diffs":[[0,"d::Base\n"],[1,"    validates :name, presence: true, uniqueness: true\n    has_secure_password\n"],[0,"end\n"]],"start1":24,"start2":24,"length1":12,"length2":90}]],"length":114,"saved":false}

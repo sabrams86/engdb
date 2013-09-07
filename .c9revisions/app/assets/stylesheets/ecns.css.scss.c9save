@@ -1,0 +1,2 @@
+{"ts":1378161712327,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"// Place all the styles related to the ecns controller here.\n// They will automatically be included in application.css.\n// You can use Sass (SCSS) here: http://sass-lang.com/\n"]],"start1":0,"start2":0,"length1":0,"length2":175}]],"length":175}
+{"contributors":[],"silentsave":false,"ts":1378181479248,"patch":[[{"diffs":[[0,"ng.com/\n"],[1,"\n$orange: #492309;\n\n#banner {\n}"]],"start1":167,"start2":167,"length1":8,"length2":39}]],"length":206,"saved":false}

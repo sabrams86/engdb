@@ -8,7 +8,12 @@
         background-color: #f0f0f0;
         font: bold smaller sans-serif;
 }
-
+#main {
+    font-family: georgia;
+}
+#main p{
+    font-family: georgia;
+}
 /* Styles for products/index */
 
 /* START:mainlayout */
@@ -49,7 +54,7 @@
   padding-bottom: 1em;
   width: 16em;
   background: #ff0000;
-  height: 50em;
+  height: 100%;
 }
 
 #side a {
@@ -96,7 +101,7 @@
 }
 
 .revfield {
-    display:inline-block;
+    display:block;
 }
 #drawsearch {
     margin-left: 2em;
@@ -105,4 +110,23 @@
 
 #drawsearch {
     margin-left: 5em;
+}
+.ecnform {
+    float:left;
+    display: inline-block;
+    margin-right: 15px;
+}
+.left {
+    clear: left;
+}
+.fields {
+    clear: both;
+    border-top: 1px solid gray;
+    width: 580px;
+}
+#index tr td {
+    padding: 10px;
+}
+#revisiontable th{
+    float: left;
 }

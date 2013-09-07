@@ -1,8 +1,5 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <b>Ecn number:</b>
-  <%= @ecn.ecn_number %>
+  <h1>Ecn number: <%= @ecn.ecn_number %></h1>
 </p>
 
 <p>
@@ -70,17 +67,40 @@
   <%= @ecn.distribute_finance %>
 </p>
 
-<ul>
-  <% for revision in @ecn.revisions %>
-  <li><%= h revision.drawing_id %></li>
-  <li><%= h revision.change %></li>
-  <li><%= h revision.justification %></li>
-  <li><%= h revision.rev_level %></li>
-  <li><%= h revision.disposition_wip %></li>
-  <li><%= h revision.disposition_inventory %></li>
-  <li><%= h revision.quantity_in_qantel %></li>
-  <% end %>
-</ul>
-
+<% for revision in @ecn.revisions %>
+  <h3>Revision</h3>
+  <table id="revisiontable">
+      <tr>
+          <th>Drawing Number</th>
+          <td><%= h revision.drawing_id %></td>
+      </tr>
+      <tr>
+          <th>Changes</th>
+          <td><%= h revision.change %></td>
+      </tr>
+      <tr>
+          <th>Justification</th>
+          <td><%= h revision.justification %></td>
+      </tr>
+      <tr>
+          <th>New Revision</th>
+          <td><%= h revision.rev_level %></td>
+      </tr>
+      <tr>
+          <th>Disposition WIP</th>
+          <td><%= h revision.disposition_wip %></td>
+      </tr>
+      <tr>
+          <th>Disposition Inventory</th>
+          <td><%= h revision.disposition_inventory %></td>
+      </tr>
+      <tr>
+          <th>Quantity in Qantel</th>
+          <td><%= h revision.quantity_in_qantel %></td>
+      </tr>
+  </table>
+<% end %>
+<%= button_to "Submit for Approval", {action: "submit", :id => @ecn.id}  %>
+<%= button_to "Close ECN", action: "close", :onclick => "return confirm('Once an ECN is closed it can no longer be editted, are you sure you want to close this ECN?')" %>
 <%= link_to 'Edit', edit_ecn_path(@ecn) %> |
 <%= link_to 'Back', ecns_path %>

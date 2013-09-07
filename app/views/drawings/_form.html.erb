@@ -33,7 +33,7 @@
   </div>
   <div class="field">
     <%= f.label :created_on %><br />
-    <%= f.date_select :created_on %>
+    <%= f.date_select :created_on, {:start_year => 1950, :end_year => Time.now.year} %>
   </div>
   <div class="field">
     <%= f.label :make_from %><br />

@@ -3,9 +3,10 @@ class EcnsController < ApplicationController
   # GET /ecns.json
   def index
     if params[:ecns].nil?
-       @ecns = Ecn.all
+       @ecns = Ecn.order("ecn_number DESC").all
     else
-      @ecns = Ecn.by_drawing_number(params[:ecns][:drawing_number])\
+      @ecns = Ecn.by_ecn_number(params[:ecns][:ecn_number])\
+                 .by_drawing_number(params[:ecns][:drawing_id]).all
      #   .by_pump_model(params[:ecns][:pump_model])\
      #   .by_frame(params[:ecns][:frame_size])\
      #   .by_part_type(params[:ecns][:part_type])\
@@ -48,7 +49,9 @@ class EcnsController < ApplicationController
   # POST /ecns
   # POST /ecns.json
   def create
-    @ecn = Ecn.new(params[:ecn])
+
+    @ecn = Ecn.match_drawing(params[:ecn][:revisions_attributes][:drawing_id]).new(params[:ecn])
+    
 
     respond_to do |format|
       if @ecn.save
@@ -89,31 +92,25 @@ class EcnsController < ApplicationController
     end
   end
   
-#  def submit
-#    @ecn = Ecn.find(params[:ecn])
-#
-#    respond_to do |format|
-#      if @ecn.save
-#        format.html { redirect_to @ecn, notice: 'Ecn has been submitted for approval.' }
-#        format.json { render json: @ecn, status: :created, location: @ecn }
-#      else
-#        format.html { render action: "new" }
-#        format.json { render json: @ecn.errors, status: :unprocessable_entity }
-#      end
-#    end
-#  end
-#  
-#  def close
-#    @ecn = Ecn.find(params[:ecn])
-#
-#    respond_to do |format|
-#      if @ecn.save
-#        format.html { redirect_to @ecn, notice: 'Ecn has been closed, all applicable departments have been notified.' }
-#        format.json { render json: @ecn, status: :created, location: @ecn }
-#      else
-#        format.html { render action: "new" }
-#        format.json { render json: @ecn.errors, status: :unprocessable_entity }
-#      end
-#    end
-#  end
+  def submit
+      
+    @ecn = Ecn.find(params[:id])
+    
+    respond_to do |format|
+      EcnNotifier.submitted(@ecn).deliver
+      format.html { redirect_to ecns_url, notice: "Ecn has been submitted for approval." }
+      format.json { render json: @ecns }
+    end
+  end
+  
+  def close
+      
+    @ecns = Ecn.order("ecn_number DESC").all
+    
+    respond_to do |format|
+      EcnNotifier.closed(@ecn).deliver
+      format.html { redirect_to ecns_url, notice: "Ecn has been closed.  A confirmation email has been sent to the appropriate personnel." }
+      format.json { render json: @ecns }
+    end
+  end
 end
