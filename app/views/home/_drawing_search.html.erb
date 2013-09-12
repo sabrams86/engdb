@@ -22,7 +22,7 @@
   </div>
     <div class="field"> 
     <%= f.label :part_type %><br />
-    <%= f.text_field :part_type %>
+    <%= f.select :part_type, Drawing::PART_TYPES, prompt: ' ' %>
   </div>
   <div class="field">
     <%= f.label :created_before %><br />

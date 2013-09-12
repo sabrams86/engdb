@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
+    handles_sortable_columns
   # GET /users
   # GET /users.json
   def index
-    @users = User.order(:name)
+    order = sortable_column_order
+    @users = User.order(order).all
 
     respond_to do |format|
       format.html # index.html.erb

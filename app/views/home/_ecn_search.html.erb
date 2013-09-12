@@ -17,12 +17,12 @@
     <%= f.text_field :pump_model %>
   </div>
   <div class="field">
-    <%= f.label :frame_size %><br />
-    <%= f.text_field :frame_size %>
+    <%= f.label :ecn_type %><br />
+    <%= f.select :ecn_type, Ecn::ECN_TYPES, prompt: ' ' %>
   </div>
   <div class="field">
     <%= f.label :part_type %><br />
-    <%= f.text_field :part_type %>
+    <%= f.select :part_type, Drawing::PART_TYPES, prompt: ' '%>
   </div>
   <div class="field">
     <%= f.label :created_before %><br />

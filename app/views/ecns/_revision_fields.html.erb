@@ -2,7 +2,7 @@
 <div class="ecnform">
   <div class="revfield">
     <b><%= f.label :drawing_number %></b><br />
-    <%= f.text_field :drawing_id %>
+    <%= f.text_field :drawing_number %>
   </div>
   <div class="revfield">
     <%= f.label :change %><br />
@@ -19,12 +19,12 @@
     <%= f.text_field :rev_level %>
   </div>
   <div class="revfield">
-    <%= f.label :disposition_wip %><br />
-    <%= f.text_field :disposition_wip %>
+    <%= f.label :disposition_work_in_progress %><br />
+    <%= f.select :disposition_wip, Revision::DISPOSITION_TYPES, prompt: 'Select Disposition' %>
   </div>
   <div class="revfield">
-    <%= f.label :disposition_inventory %><br />
-    <%= f.text_field :disposition_inventory %>
+    <%= f.label :disposition_inventory %> <br />
+    <%= f.select :disposition_inventory, Revision::DISPOSITION_TYPES, prompt: 'Select Disposition' %>
   </div>
   <div class="revfield">
     <%= f.label :quantity_in_qantel %><br />

@@ -130,3 +130,6 @@
 #revisiontable th{
     float: left;
 }
+.fieldset{
+    width: 280px;
+}

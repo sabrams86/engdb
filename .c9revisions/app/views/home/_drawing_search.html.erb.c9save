@@ -43,3 +43,8 @@
 {"ts":1378008895358,"patch":[[{"diffs":[[0,"ow.year,"],[-1,"} "],[0,"%>\r\n  </"]],"start1":1146,"start2":1146,"length1":18,"length2":16}]],"length":1244,"saved":false}
 {"ts":1378008897728,"patch":[[{"diffs":[[0,"now.year"],[-1,","],[0,"%>\r\n  </"]],"start1":1145,"start2":1145,"length1":17,"length2":16}]],"length":1243,"saved":false}
 {"ts":1378008928241,"patch":[[{"diffs":[[0,"v class=\"field\">"],[1," "],[0,"\r\n    <%= f.labe"]],"start1":706,"start2":706,"length1":32,"length2":33}]],"length":1244,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1378663129895,"patch":[[{"diffs":[[0,"  <%= f."],[-1,"text_field"],[1,"select"],[0," :part_t"]],"start1":764,"start2":764,"length1":26,"length2":22},{"diffs":[[0,"art_type"],[1,", Drawing::PART_TYPES"],[0," %>\r\n  <"]],"start1":781,"start2":781,"length1":16,"length2":37}]],"length":1261,"saved":false}
+{"ts":1378663150041,"patch":[[{"diffs":[[0,"RT_TYPES"],[1,", prompt nil"],[0," %>\r\n  <"]],"start1":802,"start2":802,"length1":16,"length2":28}]],"length":1273,"saved":false}
+{"ts":1378663177557,"patch":[[{"diffs":[[0,"mpt "],[-1,"nil"],[1,"''"],[0," %>\r"]],"start1":815,"start2":815,"length1":11,"length2":10}]],"length":1272,"saved":false}
+{"ts":1378663187913,"patch":[[{"diffs":[[0,"prompt '"],[1," "],[0,"' %>\r\n  "]],"start1":812,"start2":812,"length1":16,"length2":17}]],"length":1273,"saved":false}
+{"ts":1378663202527,"patch":[[{"diffs":[[0,", prompt"],[1,":"],[0," ' ' %>\r"]],"start1":810,"start2":810,"length1":16,"length2":17}]],"length":1274,"saved":false}

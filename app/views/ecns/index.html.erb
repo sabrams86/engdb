@@ -2,11 +2,11 @@
 
 <table>
   <tr>
-    <th>Ecn number</th>
-    <th>Ecn type</th>
-    <th>Product line</th>
-    <th>Created on</th>
-    <th>Status</th>
+    <th><%= sortable_column "Ecn number", :direction => :desc%></th>
+    <th><%= sortable_column "Ecn type" %></th>
+    <th><%= sortable_column "Product line" %></th>
+    <th><%= sortable_column "Created on" %></th>
+    <th><%= sortable_column "Status" %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,7 +18,7 @@
     <td><%= ecn.ecn_type %></td>
     <td><%= ecn.product_line %></td>
     <td><%= ecn.created_on %></td>
-    <th> </th>
+    <td><%= ecn.status === true ? "Closed" : "Open" %></td>
     <td><%= link_to 'Show', ecn %></td>
     <td><%= link_to 'Edit', edit_ecn_path(ecn) %></td>
     <td><%= link_to 'Destroy', ecn, confirm: 'Are you sure?', method: :delete %></td>

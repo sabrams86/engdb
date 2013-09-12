@@ -2,16 +2,16 @@
 
 <table id="index">
   <tr>
-    <th>Drawing number</th>
-    <th>Description</th>
-    <th>Item number</th>
-    <th>Pump model</th>
-    <th>Frame size</th>
-<!--    <th>Created on</th> -->
-    <th>Make from</th>
-<!--    <th>File format</th> -->
-    <th>File location</th>
-    <th>Part type</th>
+    <th><%= sortable_column "Drawing number", :direction => :desc%></th>
+    <th><%= sortable_column "Description" %></th>
+    <th><%= sortable_column "Item number" %></th>
+    <th><%= sortable_column "Pump model" %></th>
+    <th><%= sortable_column "Frame size" %></th>
+<!--    <th><%= sortable_column "Created on" %></th> -->
+    <th><%= sortable_column "Make from" %></th>
+<!--    <th><%= sortable_column "File format" %></th> -->
+    <th><%= sortable_column "File location" %></th>
+    <th><%= sortable_column "Part type" %></th>
 <!--    <th>Comments</th> -->
     <th></th>
     <th></th>

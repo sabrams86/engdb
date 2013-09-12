@@ -38,3 +38,5 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'ransack'
+
+gem 'handles_sortable_columns'

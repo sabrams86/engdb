@@ -17,7 +17,7 @@
       </div>
       <div class="field">
         <%= f.label :ecn_type %><br />
-        <%= f.text_field :ecn_type %>
+        <%= f.select :ecn_type, Ecn::ECN_TYPES, prompt: 'Choose an ECN type' %>
       </div>
       <div class="field">
         <%= f.label :product_line %><br />
