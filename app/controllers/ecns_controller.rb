@@ -3,9 +3,9 @@ class EcnsController < ApplicationController
   # GET /ecns
   # GET /ecns.json
   def index
-      order = sortable_column_order
+      order = sortable_column_order, "ecn_number desc"
     if params[:ecns].nil?
-       @ecns = Ecn.order(order).all
+       @ecns = Ecn.paginate page: params[:page], order: order, per_page: 25
     else
       @ecns = Ecn.by_ecn_number(params[:ecns][:ecn_number])\
                  .by_drawing_number(params[:ecns][:drawing_number]).order(order).all
@@ -14,6 +14,7 @@ class EcnsController < ApplicationController
      #   .by_part_type(params[:ecns][:part_type])\
      #   .by_created_before(params[:ecns]['created_before(1i)'], params[:ecns]['created_before(2i)'], params[:ecns]['created_before(3i)'])\
      #   .by_created_after(params[:ecns]['created_after(1i)'], params[:ecns]['created_after(2i)'], params[:ecns]['created_after(3i)']).all  
+     #   .paginate page: params[:page], order: order, per_page: 25
     end
     respond_to do |format|
       format.html # index.html.erb

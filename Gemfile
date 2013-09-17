@@ -40,3 +40,5 @@ gem 'jquery-rails'
 gem 'ransack'
 
 gem 'handles_sortable_columns'
+
+gem 'will_paginate', '~> 3.0'

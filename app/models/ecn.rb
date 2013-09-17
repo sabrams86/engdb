@@ -2,11 +2,12 @@ class Ecn < ActiveRecord::Base
   has_many :revisions, :dependent => :destroy
   has_many :drawings, through: :revisions
   accepts_nested_attributes_for :revisions, :reject_if => lambda { |attrs| attrs.all? { |key, value| value.blank? }}, :allow_destroy => true
+  belongs_to :user
   ECN_TYPES = [ "Drawing Change", "Document Change", "Product Bulletin", "Product Release", "Obsoletion", "Material Change" ]
   
   scope :by_ecn_number, lambda { |ecn_number| where(ecn_number: ecn_number) unless ecn_number.nil? }
-  scope :by_user_name, lambda { |user_name| where(user_name: user_name) unless user_name.nil? }
-  scope :by_drawing_number, lambda { |drawing_number| joins(:revisions).where('revisions.drawing_number LIKE ?',  "%#{drawing_number}%") unless drawing_number.nil? }
+#  scope :by_user_name, lambda { |user_name| where(user_name: user_name) unless user_name.nil? }
+  scope :by_drawing_number, lambda { |drawing_number| Ecn.joins(:drawings).where("drawings.drawing_number LIKE ?",  "%#{drawing_number}%") unless drawing_number.nil? }
 #  scope :by_pump_model, lambda { |pump_model| where('product_line LIKE ?', "%#{pump_model}%") unless pump_model.nil? }
 #  scope :by_frame, lambda { |frame| joins(:drawings).where(drawings: {'frame_size LIKE ?', "%#{frame}%"}) unless frame.nil? }
 #  scope :by_part_type, lambda { |part_type| joins(:drawings).where(drawings: {'part_type LIKE ?', "%#{part_type}%"}) unless part_type.nil? }

@@ -1,2 +1,4 @@
 {"ts":1378526357528,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"class User < ActiveRecord::Base\nend\n"]],"start1":0,"start2":0,"length1":0,"length2":36}]],"length":36}
 {"contributors":[],"silentsave":false,"ts":1378526380408,"patch":[[{"diffs":[[0,"d::Base\n"],[1,"    validates :name, presence: true, uniqueness: true\n    has_secure_password\n"],[0,"end\n"]],"start1":24,"start2":24,"length1":12,"length2":90}]],"length":114,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1379352507917,"patch":[[{"diffs":[[0,"assword\n"],[1,"    has_many :ecn\n"],[0,"end\n"]],"start1":102,"start2":102,"length1":12,"length2":30}]],"length":132,"saved":false}
+{"ts":1379352527876,"patch":[[{"diffs":[[0,"any :ecn"],[1,"s"],[0,"\nend\n"]],"start1":119,"start2":119,"length1":13,"length2":14}]],"length":133,"saved":false}
