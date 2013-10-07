@@ -7,14 +7,15 @@ class EcnsController < ApplicationController
     if params[:ecns].nil?
        @ecns = Ecn.paginate page: params[:page], order: order, per_page: 25
     else
-      @ecns = Ecn.by_ecn_number(params[:ecns][:ecn_number])\
-                 .by_drawing_number(params[:ecns][:drawing_number]).order(order).all
-     #   .by_pump_model(params[:ecns][:pump_model])\
-     #   .by_frame(params[:ecns][:frame_size])\
-     #   .by_part_type(params[:ecns][:part_type])\
-     #   .by_created_before(params[:ecns]['created_before(1i)'], params[:ecns]['created_before(2i)'], params[:ecns]['created_before(3i)'])\
-     #   .by_created_after(params[:ecns]['created_after(1i)'], params[:ecns]['created_after(2i)'], params[:ecns]['created_after(3i)']).all  
-     #   .paginate page: params[:page], order: order, per_page: 25
+       @ecns = Ecn.by_ecn_number(params[:ecns][:ecn_number])\
+         .by_drawing_number(params[:ecns][:drawing_number])\
+         .by_pump_model(params[:ecns][:pump_model])\
+         .by_frame(params[:ecns][:frame_size])\
+         .by_part_type(params[:ecns][:part_type])\
+         .by_created_before(params[:ecns]['created_before(1i)'], params[:ecns]['created_before(2i)'], params[:ecns]['created_before(3i)'])\
+         .by_created_after(params[:ecns]['created_after(1i)'], params[:ecns]['created_after(2i)'], params[:ecns]['created_after(3i)'])\
+         .paginate page: params[:page], order: order, per_page: 25
+
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -37,7 +38,8 @@ class EcnsController < ApplicationController
   # GET /ecns/new.json
   def new
     @ecn = Ecn.new
-    @ecn.ecn_number = @ecn.id
+    @ecn = @ecn.incrament(@ecn)
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @ecn }
@@ -55,6 +57,7 @@ class EcnsController < ApplicationController
 
     @ecn = Ecn.new(params[:ecn])
     @ecn.status = false
+    Ecn.num_up
 
     respond_to do |format|
       if @ecn.save
@@ -98,9 +101,14 @@ class EcnsController < ApplicationController
   def submit
       
     @ecn = Ecn.find(params[:id])
+    @email_list = EmailList.all
     
     respond_to do |format|
-      EcnNotifier.submitted(@ecn).deliver
+      EcnNotifier.submit_engineering(@ecn).deliver if @ecn.distribute_engineering?
+      EcnNotifier.submit_purchasing(@ecn).deliver if @ecn.distribute_purchasing?
+#     EcnNotifier.submit_manufacturing(@ecn).deliver if @ecn.distribute_manufacturing?
+      EcnNotifier.submit_qantel(@ecn,@email_list).deliver if @ecn.distribute_qantel?
+#      EcnNotifier.submit_planning(@ecn).deliver if @ecn.distribute_planning?
       format.html { redirect_to ecns_url, alert: "Ecn has been submitted for approval." }
       format.json { render json: @ecns }
     end

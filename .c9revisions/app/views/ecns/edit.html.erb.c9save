@@ -1,1 +1,2 @@
 {"ts":1378161541734,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"<h1>Editing ecn</h1>\n\n<%= render 'form' %>\n\n<%= link_to 'Show', @ecn %> |\n<%= link_to 'Back', ecns_path %>\n"]],"start1":0,"start2":0,"length1":0,"length2":107}]],"length":107}
+{"contributors":[],"silentsave":false,"ts":1380721620540,"patch":[[{"diffs":[[0,"_path %>"],[-1,"\n"]],"start1":98,"start2":98,"length1":9,"length2":8}]],"length":106,"saved":false}

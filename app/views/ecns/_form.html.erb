@@ -74,7 +74,7 @@
   </div>
   <fieldset class="left" style="width: 580px;">
     <legend><h3>Revisions</h3></legend>
-      <%= f.fields_for :revisions do |builder| %>
+      <%= f.fields_for(:revisions) do |builder| %>
           <%= render 'revision_fields', :f => f %>
       <% end %>
   <p><%= link_to_add_fields("Add Revision", f, :revisions ) %></p>

@@ -39,7 +39,8 @@ class DrawingsController < ApplicationController
   # GET /drawings/new.json
   def new
     @drawing = Drawing.new
-
+    @drawing = @drawing.incrament(@drawing)
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @drawing }
@@ -55,6 +56,7 @@ class DrawingsController < ApplicationController
   # POST /drawings.json
   def create
     @drawing = Drawing.new(params[:drawing])
+    Drawing.num_up
 
     respond_to do |format|
       if @drawing.save

@@ -1,7 +1,7 @@
 class Drawing < ActiveRecord::Base
   has_many :revisions
   
-  PART_TYPES = [ "Impeller", "Case", "Wet End Component", "Seal Component", "Power End Component" ]
+  PART_TYPES = [ "Impeller", "Case", "Wet End Component", "Seal Component", "Power End Component", "Auxilliary Component" ]
   
   scope :by_description, lambda { |description| where('description LIKE ?', "%#{description}%") unless description.nil? }
   scope :by_drawing_number, lambda { |drawing_number| where('drawing_number LIKE ?', "%#{drawing_number}%") unless drawing_number.nil? }
@@ -19,7 +19,14 @@ class Drawing < ActiveRecord::Base
     d.to_s
     where('created_on >= ?', d) unless d.nil? }
   
-
+  @@incrament_number = 3100
+  def self.num_up
+      @@incrament_number += 1
+  end
+  def incrament(drawing)
+    drawing[:drawing_number] = "A"+@@incrament_number.to_s
+    return drawing
+  end
 
 
 

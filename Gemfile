@@ -37,7 +37,7 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-gem 'ransack'
+gem 'delayed_job_active_record'
 
 gem 'handles_sortable_columns'
 

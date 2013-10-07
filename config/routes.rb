@@ -1,5 +1,7 @@
 Engdb::Application.routes.draw do
 
+  resources :email_lists
+
 get 'home' => 'home#index'
 get 'logout' => 'sessions#destroy'
 get 'login' => 'sessions#new'
