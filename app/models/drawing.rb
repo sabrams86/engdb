@@ -3,6 +3,9 @@ class Drawing < ActiveRecord::Base
   
   PART_TYPES = [ "Impeller", "Case", "Wet End Component", "Seal Component", "Power End Component", "Auxilliary Component" ]
   
+  validates :drawing_number, :item_number, :description, :pump_model, :frame_size, :make_from, :file_format, :file_location, :part_type, presence: true
+  validates :drawing_number, uniqueness: true
+  
   scope :by_description, lambda { |description| where('description LIKE ?', "%#{description}%") unless description.nil? }
   scope :by_drawing_number, lambda { |drawing_number| where('drawing_number LIKE ?', "%#{drawing_number}%") unless drawing_number.nil? }
   scope :by_item_number, lambda { |item_number| where('item_number LIKE ?', "%#{item_number}%") unless item_number.nil? }

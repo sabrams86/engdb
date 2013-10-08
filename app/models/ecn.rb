@@ -7,6 +7,9 @@ class Ecn < ActiveRecord::Base
   
   ECN_TYPES = [ "Drawing Change", "Document Change", "Product Bulletin", "Product Release", "Obsoletion", "Material Change", "Procedure Change" ]
   
+  validates :ecn_number, :ecn_type, :product_line, presence: true
+  validates :ecn_number, uniqueness: true
+  
   scope :by_ecn_number, lambda { |ecn_number| where(ecn_number: ecn_number) unless ecn_number.nil? }
 #  scope :by_user_name, lambda { |user_name| where(user_name: user_name) unless user_name.nil? }
   scope :by_drawing_number, lambda { |drawing_number| Revision.where("drawing_number LIKE ?", "%#{drawing_number}%").map(&:ecn) unless drawing_number.nil? }
