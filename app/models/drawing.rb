@@ -15,12 +15,12 @@ class Drawing < ActiveRecord::Base
   scope :by_created_before, lambda { |x,y,z| 
     d=Date.new(x.to_i, y.to_i, z.to_i)
     d.to_s
-    where('created_on <= ?', d) unless d.nil? } 
+    where('created_on <= ?', d) } 
     
   scope :by_created_after, lambda { |x,y,z| 
     d=Date.new(x.to_i, y.to_i, z.to_i)
     d.to_s
-    where('created_on >= ?', d) unless d.nil? }
+    where('created_on >= ?', d) }
   
   @@incrament_number = 3100
   def self.num_up

@@ -9,7 +9,12 @@ class EcnNotifier < ActionMailer::Base
   def submit_engineering(ecn)
     @ecn = ecn
     @email_list = EmailList.where(department: "engineering")
-    mail to: "fonmus@gmail.com", subject: 'ECN approval', template_name: 'submitted'
+    
+    to = []
+    @email_list.each do |e|
+        to.push e.email
+    end
+    mail to: to, subject: 'ECN approval', template_name: 'submitted'
   end
   
   def submit_purchasing(ecn)

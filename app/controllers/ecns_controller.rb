@@ -9,13 +9,14 @@ class EcnsController < ApplicationController
     else
        @ecns = Ecn.by_ecn_number(params[:ecns][:ecn_number])\
          .by_drawing_number(params[:ecns][:drawing_number])\
-         .by_pump_model(params[:ecns][:pump_model])\
-         .by_frame(params[:ecns][:frame_size])\
-         .by_part_type(params[:ecns][:part_type])\
-         .by_created_before(params[:ecns]['created_before(1i)'], params[:ecns]['created_before(2i)'], params[:ecns]['created_before(3i)'])\
-         .by_created_after(params[:ecns]['created_after(1i)'], params[:ecns]['created_after(2i)'], params[:ecns]['created_after(3i)'])\
          .paginate page: params[:page], order: order, per_page: 25
 
+        #  .by_pump_model(params[:ecns][:pump_model])\
+        #  .by_frame(params[:ecns][:frame_size])\
+        #  .by_part_type(params[:ecns][:part_type])\
+        #  .by_created_before(params[:ecns]['created_before(1i)'], params[:ecns]['created_before(2i)'], params[:ecns]['created_before(3i)'])\
+        #  .by_created_after(params[:ecns]['created_after(1i)'], params[:ecns]['created_after(2i)'], params[:ecns]['created_after(3i)'])\
+         
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -57,7 +58,6 @@ class EcnsController < ApplicationController
 
     @ecn = Ecn.new(params[:ecn])
     @ecn.status = false
-    Ecn.num_up
 
     respond_to do |format|
       if @ecn.save
