@@ -43,4 +43,7 @@ Engdb::Application.configure do
     authentication: "plain",
     user_name: "sabrams@arwilfley.com",
     password: "sawilfley",
+    enable_starttls_auto: true
+  }
+  
 end
