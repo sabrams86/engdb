@@ -106,9 +106,9 @@ class EcnsController < ApplicationController
     respond_to do |format|
       EcnNotifier.submit_engineering(@ecn).deliver if @ecn.distribute_engineering?
       EcnNotifier.submit_purchasing(@ecn).deliver if @ecn.distribute_purchasing?
-#     EcnNotifier.submit_manufacturing(@ecn).deliver if @ecn.distribute_manufacturing?
+      EcnNotifier.submit_manufacturing(@ecn).deliver if @ecn.distribute_manufacturing?
       EcnNotifier.submit_qantel(@ecn,@email_list).deliver if @ecn.distribute_qantel?
-#      EcnNotifier.submit_planning(@ecn).deliver if @ecn.distribute_planning?
+      EcnNotifier.submit_planning(@ecn).deliver if @ecn.distribute_planning?
       format.html { redirect_to ecns_url, alert: "Ecn has been submitted for approval." }
       format.json { render json: @ecns }
     end
