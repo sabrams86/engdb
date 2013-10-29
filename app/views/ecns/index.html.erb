@@ -1,7 +1,7 @@
 <h1>Listing ecns</h1>
 
-<table>
-  <tr>
+<table class="table table-striped">
+  <tr class="info">
     <th><%= sortable_column "Ecn number", :direction => :desc%></th>
     <th><%= sortable_column "Ecn type" %></th>
     <th><%= sortable_column "Product line" %></th>
@@ -19,9 +19,13 @@
     <td><%= ecn.product_line %></td>
     <td><%= ecn.created_on %></td>
     <td><%= ecn.status === true ? "Closed" : "Open" %></td>
-    <td><%= link_to 'Show', ecn %></td>
-    <td><%= link_to 'Edit', edit_ecn_path(ecn) %></td>
-    <td><%= link_to 'Destroy', ecn, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to ecn do %>
+    	<i class="icon-eye-open glyphw"></i>
+    	<% end %>
+		<%= link_to edit_ecn_path(ecn) do %>
+    	<i class="icon-pencil glyphw"></i>
+    	<% end %>
+		<%= link_to '<i class="icon-trash glyphw"></i>'.html_safe, ecn, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

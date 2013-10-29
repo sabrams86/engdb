@@ -133,3 +133,6 @@
 .fieldset{
     width: 280px;
 }
+.glyphw{
+    background-image: url(/assets/glyphicons-halflings.png);
+}

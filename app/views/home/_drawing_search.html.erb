@@ -1,5 +1,5 @@
 <h3>Search Drawings</h3>
-<%= form_for :drawings, :url => { :controller => "drawings", :action => "index" }, :html => {:method => :get} do |f| %>
+<%= form_for :drawings, :url => { :controller => "drawings", :action => "index" }, :html => {method: :get, class: "form-inline"} do |f| %>
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_field :description %>
@@ -24,11 +24,11 @@
     <%= f.label :part_type %><br />
     <%= f.select :part_type, Drawing::PART_TYPES, prompt: ' ' %>
   </div>
-  <div class="field">
+  <div class="input-medium">
     <%= f.label :created_before %><br />
     <%= f.date_select :created_before, {:start_year => 1950, :end_year => Time.now.year} %>
   </div>
-  <div class="field">
+  <div class="input-medium">
     <%= f.label :created_after %><br />
     <%= f.date_select :created_after, :default => {:year => 1950}, :start_year => 1950, :end_year => Time.now.year%>
   </div>

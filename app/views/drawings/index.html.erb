@@ -1,7 +1,7 @@
 <h1>Listing drawings</h1>
 
-<table id="index">
-  <tr>
+<table class="table table-hover">
+  <tr class="info">
     <th><%= sortable_column "Drawing number", :direction => :desc%></th>
     <th><%= sortable_column "Description" %></th>
     <th><%= sortable_column "Item number" %></th>
@@ -31,9 +31,14 @@
     <td><%= drawing.file_location %></td>
     <td><%= drawing.part_type %></td>
 <!--    <td><%= drawing.comments %></td> -->
-    <td><%= link_to 'Show', drawing %></td>
-    <td><%= link_to 'Edit', edit_drawing_path(drawing) %></td>
-    <td><%= link_to 'Destroy', drawing, confirm: 'Are you sure?', method: :delete %></td> 
+    <td><%= link_to drawing do %>
+    	<i class="icon-eye-open glyphw"></i>
+    	<% end %>
+		<%= link_to edit_drawing_path(drawing) do %>
+    	<i class="icon-pencil glyphw"></i>
+    	<% end %>
+		<%= link_to '<i class="icon-trash glyphw"></i>'.html_safe, drawing, confirm: 'Are you sure?', method: :delete %>
+	</td>
   </tr>
 <% end %>
 </table>

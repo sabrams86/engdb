@@ -5,6 +5,7 @@
   <%= javascript_include_tag "application" %>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= csrf_meta_tags %>
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body class="<%= controller.controller_name %>">
   <div id="banner">
@@ -24,5 +25,6 @@
       <%= yield %>
     </div>
   </div>
+  <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
