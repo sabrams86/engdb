@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wilfley Engineering</title>
+  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+<div id="main">
+
+
+
 <p>All,</p>
 
 <p>Please review the following ECN and notify the 
@@ -24,7 +37,7 @@ product engineer with your approval or disapproval</p>
 
 <% for revision in @ecn.revisions %>
   <h3>Revision</h3>
-  <table id="revisiontable">
+  <table class="table">
       <tr>
           <th>Drawing Number</th>
           <td><%= h revision.drawing_id %></td>
@@ -55,3 +68,8 @@ product engineer with your approval or disapproval</p>
       </tr>
   </table>
 <% end %>
+
+</div>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
