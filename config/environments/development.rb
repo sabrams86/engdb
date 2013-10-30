@@ -38,8 +38,8 @@ Engdb::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: "smtp.bizmail.yahoo.com",
-    port: 110,
-    domain: "wilfley.com",
+    port: 587,
+    domain: "www.wilfley.com",
     authentication: "plain",
     user_name: "sabrams@arwilfley.com",
     password: "sawilfley",
