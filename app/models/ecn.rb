@@ -39,5 +39,8 @@ class Ecn < ActiveRecord::Base
     ecn[:ecn_number] = Ecn.maximum(:ecn_number) + 1
     return ecn
   end
-    
+  def close_status(ecn)
+    ecn[:status] = true
+    return ecn
+  end  
 end

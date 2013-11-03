@@ -115,10 +115,8 @@ class EcnsController < ApplicationController
   end
   
   def close
-      
-    @ecn.status = true
     @ecn = Ecn.find(params[:id])
-    
+    @ecn = @ecn.close_status(@ecn)
     
     respond_to do |format|
       EcnNotifier.close_engineering(@ecn).deliver if @ecn.distribute_engineering?
