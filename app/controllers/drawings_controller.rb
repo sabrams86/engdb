@@ -56,7 +56,6 @@ class DrawingsController < ApplicationController
   # POST /drawings.json
   def create
     @drawing = Drawing.new(params[:drawing])
-    Drawing.num_up
 
     respond_to do |format|
       if @drawing.save
