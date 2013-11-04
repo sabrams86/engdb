@@ -1,0 +1,375 @@
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM "drawings"
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "drawings" ("drawing_number", "item_number", "description", "pump_model", "frame_size", "created_on", "make_from", "file_format", "file_location", "part_type", "comments", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', '2013-08-12', 'MyString', 'MyString', 'MyString', 'MyString', 'MyText', '2013-11-03 04:21:11', '2013-11-03 04:21:11', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "drawings" ("drawing_number", "item_number", "description", "pump_model", "frame_size", "created_on", "make_from", "file_format", "file_location", "part_type", "comments", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', 'MyString', '2013-08-12', 'MyString', 'MyString', 'MyString', 'MyString', 'MyText', '2013-11-03 04:21:11', '2013-11-03 04:21:11', 298486374)
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM "ecns"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "ecns" ("ecn_number", "ecn_type", "product_line", "created_on", "distribute_engineering", "distribute_purchasing", "distribute_planning", "distribute_manufacturing", "distribute_qantel", "distribute_sales", "distribute_inventory", "distribute_quality", "distribute_india", "distribute_finance", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', '2013-08-12', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', '2013-11-03 04:21:11', '2013-11-03 04:21:11', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "ecns" ("ecn_number", "ecn_type", "product_line", "created_on", "distribute_engineering", "distribute_purchasing", "distribute_planning", "distribute_manufacturing", "distribute_qantel", "distribute_sales", "distribute_inventory", "distribute_quality", "distribute_india", "distribute_finance", "created_at", "updated_at", "id") VALUES (1, 'MyString', 'MyString', '2013-08-12', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', '2013-11-03 04:21:11', '2013-11-03 04:21:11', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "email_lists"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "email_lists" ("department", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2013-11-03 04:21:11', '2013-11-03 04:21:11', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "email_lists" ("department", "email", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2013-11-03 04:21:11', '2013-11-03 04:21:11', 298486374)
+  [1m[36mFixture Delete (0.0ms)[0m  [1mDELETE FROM "revisions"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "revisions" ("change", "justification", "rev_level", "disposition_wip", "disposition_inventory", "quantity_in_qantel", "created_at", "updated_at", "id") VALUES ('MyText', 'MyText', 'MyString', 'MyString', 'MyString', 1, '2013-11-03 04:21:11', '2013-11-03 04:21:11', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "revisions" ("change", "justification", "rev_level", "disposition_wip", "disposition_inventory", "quantity_in_qantel", "created_at", "updated_at", "id") VALUES ('MyText', 'MyText', 'MyString', 'MyString', 'MyString', 1, '2013-11-03 04:21:11', '2013-11-03 04:21:11', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "password_digest", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2013-11-03 04:21:11', '2013-11-03 04:21:11', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "password_digest", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2013-11-03 04:21:11', '2013-11-03 04:21:11', 298486374)
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mDrawing Load (0.3ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "drawings" 
+Processing by DrawingsController#create as HTML
+  Parameters: {"drawing"=>{"id"=>"980190962", "drawing_number"=>"MyString", "item_number"=>"MyString", "description"=>"MyString", "pump_model"=>"MyString", "frame_size"=>"MyString", "created_on"=>"2013-08-12", "make_from"=>"MyString", "file_format"=>"MyString", "file_location"=>"MyString", "part_type"=>"MyString", "comments"=>"MyText", "created_at"=>"2013-11-03 04:21:11 UTC", "updated_at"=>"2013-11-03 04:21:11 UTC"}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 11ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "drawings" 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "drawings" 
+Processing by DrawingsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "drawings" 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by DrawingsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by DrawingsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by DrawingsController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by DrawingsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mDrawing Load (0.1ms)[0m  [1mSELECT "drawings".* FROM "drawings" WHERE "drawings"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by DrawingsController#update as HTML
+  Parameters: {"drawing"=>{"id"=>"980190962", "drawing_number"=>"MyString", "item_number"=>"MyString", "description"=>"MyString", "pump_model"=>"MyString", "frame_size"=>"MyString", "created_on"=>"2013-08-12", "make_from"=>"MyString", "file_format"=>"MyString", "file_location"=>"MyString", "part_type"=>"MyString", "comments"=>"MyText", "created_at"=>"2013-11-03 04:21:11 UTC", "updated_at"=>"2013-11-03 04:21:11 UTC"}, "id"=>"980190962"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mEcn Load (0.4ms)[0m  [1mSELECT "ecns".* FROM "ecns" WHERE "ecns"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "ecns" 
+Processing by EcnsController#create as HTML
+  Parameters: {"ecn"=>{"id"=>"980190962", "ecn_number"=>"1", "ecn_type"=>"MyString", "product_line"=>"MyString", "created_on"=>"2013-08-12", "distribute_engineering"=>false, "distribute_purchasing"=>false, "distribute_planning"=>false, "distribute_manufacturing"=>false, "distribute_qantel"=>false, "distribute_sales"=>false, "distribute_inventory"=>false, "distribute_quality"=>false, "distribute_india"=>false, "distribute_finance"=>false, "created_at"=>"2013-11-03 04:21:11 UTC", "updated_at"=>"2013-11-03 04:21:11 UTC", "status"=>nil}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "ecns" 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mEcn Load (0.1ms)[0m  [1mSELECT "ecns".* FROM "ecns" WHERE "ecns"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "ecns" 
+Processing by EcnsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "ecns" 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mEcn Load (0.1ms)[0m  [1mSELECT "ecns".* FROM "ecns" WHERE "ecns"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by EcnsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mEcn Load (0.1ms)[0m  [1mSELECT "ecns".* FROM "ecns" WHERE "ecns"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by EcnsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mEcn Load (0.1ms)[0m  [1mSELECT "ecns".* FROM "ecns" WHERE "ecns"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by EcnsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mEcn Load (0.1ms)[0m  [1mSELECT "ecns".* FROM "ecns" WHERE "ecns"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by EcnsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mEcn Load (0.2ms)[0m  [1mSELECT "ecns".* FROM "ecns" WHERE "ecns"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by EcnsController#update as HTML
+  Parameters: {"ecn"=>{"id"=>"980190962", "ecn_number"=>"1", "ecn_type"=>"MyString", "product_line"=>"MyString", "created_on"=>"2013-08-12", "distribute_engineering"=>false, "distribute_purchasing"=>false, "distribute_planning"=>false, "distribute_manufacturing"=>false, "distribute_qantel"=>false, "distribute_sales"=>false, "distribute_inventory"=>false, "distribute_quality"=>false, "distribute_india"=>false, "distribute_finance"=>false, "created_at"=>"2013-11-03 04:21:11 UTC", "updated_at"=>"2013-11-03 04:21:11 UTC", "status"=>nil}, "id"=>"980190962"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mEmailList Load (0.2ms)[0m  [1mSELECT "email_lists".* FROM "email_lists" WHERE "email_lists"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "email_lists" 
+Processing by EmailListsController#create as HTML
+  Parameters: {"email_list"=>{"id"=>"980190962", "department"=>"MyString", "email"=>"MyString", "created_at"=>"2013-11-03 04:21:11 UTC", "updated_at"=>"2013-11-03 04:21:11 UTC"}}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "email_lists" 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mEmailList Load (0.2ms)[0m  [1mSELECT "email_lists".* FROM "email_lists" WHERE "email_lists"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "email_lists" 
+Processing by EmailListsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "email_lists" 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mEmailList Load (0.1ms)[0m  [1mSELECT "email_lists".* FROM "email_lists" WHERE "email_lists"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by EmailListsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mEmailList Load (0.1ms)[0m  [1mSELECT "email_lists".* FROM "email_lists" WHERE "email_lists"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by EmailListsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mEmailList Load (0.1ms)[0m  [1mSELECT "email_lists".* FROM "email_lists" WHERE "email_lists"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by EmailListsController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mEmailList Load (0.1ms)[0m  [1mSELECT "email_lists".* FROM "email_lists" WHERE "email_lists"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by EmailListsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mEmailList Load (0.1ms)[0m  [1mSELECT "email_lists".* FROM "email_lists" WHERE "email_lists"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by EmailListsController#update as HTML
+  Parameters: {"email_list"=>{"id"=>"980190962", "department"=>"MyString", "email"=>"MyString", "created_at"=>"2013-11-03 04:21:11 UTC", "updated_at"=>"2013-11-03 04:21:11 UTC"}, "id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by LoginController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mRevision Load (0.2ms)[0m  [1mSELECT "revisions".* FROM "revisions" WHERE "revisions"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "revisions" 
+Processing by RevisionsController#create as HTML
+  Parameters: {"revision"=>{"id"=>"980190962", "change"=>"MyText", "justification"=>"MyText", "rev_level"=>"MyString", "disposition_wip"=>"MyString", "disposition_inventory"=>"MyString", "quantity_in_qantel"=>"1", "created_at"=>"2013-11-03 04:21:11 UTC", "updated_at"=>"2013-11-03 04:21:11 UTC", "ecn_id"=>nil, "drawing_id"=>nil, "drawing_number"=>nil}}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "revisions" 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mRevision Load (0.1ms)[0m  [1mSELECT "revisions".* FROM "revisions" WHERE "revisions"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "revisions" 
+Processing by RevisionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "revisions" 
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mRevision Load (0.1ms)[0m  [1mSELECT "revisions".* FROM "revisions" WHERE "revisions"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by RevisionsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mRevision Load (0.1ms)[0m  [1mSELECT "revisions".* FROM "revisions" WHERE "revisions"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by RevisionsController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mRevision Load (0.1ms)[0m  [1mSELECT "revisions".* FROM "revisions" WHERE "revisions"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by RevisionsController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mRevision Load (0.1ms)[0m  [1mSELECT "revisions".* FROM "revisions" WHERE "revisions"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by RevisionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mRevision Load (0.1ms)[0m  [1mSELECT "revisions".* FROM "revisions" WHERE "revisions"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by RevisionsController#update as HTML
+  Parameters: {"revision"=>{"id"=>"980190962", "change"=>"MyText", "justification"=>"MyText", "rev_level"=>"MyString", "disposition_wip"=>"MyString", "disposition_inventory"=>"MyString", "quantity_in_qantel"=>"1", "created_at"=>"2013-11-03 04:21:11 UTC", "updated_at"=>"2013-11-03 04:21:11 UTC", "ecn_id"=>nil, "drawing_id"=>nil, "drawing_number"=>nil}, "id"=>"980190962"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Processing by SessionsController#create as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."name" IS NULL LIMIT 1[0m
+Redirected to http://test.host/login
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by SessionsController#destroy as HTML
+Redirected to http://test.host/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Processing by SessionsController#new as HTML
+Completed 200 OK in 20ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"id"=>"980190962", "name"=>"MyString", "password_digest"=>"[FILTERED]", "created_at"=>"2013-11-03 04:21:11 UTC", "updated_at"=>"2013-11-03 04:21:11 UTC", "email"=>nil, "title"=>nil}}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 46ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"id"=>"980190962", "name"=>"MyString", "password_digest"=>"[FILTERED]", "created_at"=>"2013-11-03 04:21:11 UTC", "updated_at"=>"2013-11-03 04:21:11 UTC", "email"=>nil, "title"=>nil}, "id"=>"980190962"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+Redirected to http://test.host/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction

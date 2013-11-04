@@ -16,4 +16,13 @@ Engdb::Application.configure do
         password: "@WS3ed4rf",
         enable_starttls_auto: true
         }
+ #    config.action_mailer.smtp_settings = {
+ #      address: "smtp.bizmail.yahoo.com",
+ #      port: 465,
+ #      domain: "wilfley.com",
+ #      authentication: "plain",
+ #      user_name: "sabrams@arwilfley.com",
+ #      password: "sawilfley",
+ #      enable_starttls_auto: true
+ # }
 end
