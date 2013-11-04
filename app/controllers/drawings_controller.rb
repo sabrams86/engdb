@@ -5,7 +5,7 @@ class DrawingsController < ApplicationController
   def index
       order = sortable_column_order, "drawing_number desc"
     if params[:drawings].nil?
-       @drawings = Drawing.paginate page: params[:page], order: order, per_page: 25
+       @drawings = Drawing.paginate page: params[:page], order: order, per_page: 100
     else
       @drawings = Drawing\
       .by_description(params[:drawings][:description])\
@@ -15,7 +15,7 @@ class DrawingsController < ApplicationController
       .by_part_type(params[:drawings][:part_type])\
       .by_created_before(params[:drawings]['created_before(1i)'], params[:drawings]['created_before(2i)'], params[:drawings]['created_before(3i)'])\
       .by_created_after(params[:drawings]['created_after(1i)'], params[:drawings]['created_after(2i)'], params[:drawings]['created_after(3i)'])\
-      .paginate page: params[:page], order: order, per_page: 25
+      .paginate page: params[:page], order: order, per_page: 100
       
     end
     respond_to do |format|

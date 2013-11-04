@@ -25,10 +25,14 @@ class Drawing < ActiveRecord::Base
 
   
   def incrament(drawing)
-    @max_draw = Drawing.where("drawing_number LIKE ?", "A%")
-    @max_draw = @max_draw.maximum(:drawing_number)
-    @max_num = @max_draw.slice!(0)
-    @max_num = @max_draw.to_i + 1
+    items = Drawing.where( [ 'drawing_number LIKE ?' , 'A%' ] )
+    max_value = 0
+    items.each do |item|
+      next if item.drawing_number =~ /\A[A-Za-z]{2,}/
+      drawing_number = item.drawing_number.gsub(/\AA/, '').to_i
+      max_value = drawing_number if drawing_number > max_value
+    end
+    @max_num = max_value + 1
     drawing[:drawing_number] = "A" + @max_num.to_s
     return drawing
   end

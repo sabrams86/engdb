@@ -5,11 +5,11 @@ class EcnsController < ApplicationController
   def index
       order = sortable_column_order, "ecn_number desc"
     if params[:ecns].nil?
-       @ecns = Ecn.paginate page: params[:page], order: order, per_page: 25
+       @ecns = Ecn.paginate page: params[:page], order: order, per_page: 100
     else
        @ecns = Ecn.by_ecn_number(params[:ecns][:ecn_number])\
          .by_drawing_number(params[:ecns][:drawing_number])\
-         .paginate page: params[:page], order: order, per_page: 25
+         .paginate page: params[:page], order: order, per_page: 100
 
         #  .by_pump_model(params[:ecns][:pump_model])\
         #  .by_frame(params[:ecns][:frame_size])\
