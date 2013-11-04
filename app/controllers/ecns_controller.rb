@@ -107,7 +107,7 @@ class EcnsController < ApplicationController
       EcnNotifier.submit_engineering(@ecn).deliver if @ecn.distribute_engineering?
       EcnNotifier.submit_purchasing(@ecn).deliver if @ecn.distribute_purchasing?
       EcnNotifier.submit_manufacturing(@ecn).deliver if @ecn.distribute_manufacturing?
-      EcnNotifier.submit_qantel(@ecn,@email_list).deliver if @ecn.distribute_qantel?
+      EcnNotifier.submit_qantel(@ecn).deliver if @ecn.distribute_qantel?
       EcnNotifier.submit_planning(@ecn).deliver if @ecn.distribute_planning?
       format.html { redirect_to ecns_url, alert: "Ecn has been submitted for approval." }
       format.json { render json: @ecns }
@@ -115,13 +115,11 @@ class EcnsController < ApplicationController
   end
   
   def close
-      
-    @ecn.status = true
     @ecn = Ecn.find(params[:id])
-    
+    @ecn = @ecn.close_status(@ecn)
     
     respond_to do |format|
-      EcnNotifier.closed(@ecn).deliver
+      EcnNotifier.close_engineering(@ecn).deliver if @ecn.distribute_engineering?
       format.html { redirect_to ecns_url, alert: "Ecn has been closed.  A confirmation email has been sent to the appropriate personnel." }
       format.json { render json: @ecns }
     end

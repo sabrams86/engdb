@@ -101,6 +101,6 @@
   </table>
 <% end %>
 <%= button_to "Submit for Approval", {action: "submit", :id => @ecn.id}  %>
-<%= button_to "Close ECN", {action: "close", :id => @ecn.id}, :onclick => "return confirm('Once an ECN is closed it can no longer be editted, are you sure you want to close this ECN?')" %>
+<%= button_to "Close ECN", {action: "close", :id => @ecn.id}, :onclick => "return confirm('Once an ECN is closed it can no longer be edited, are you sure you want to close this ECN?')" %>
 <%= link_to 'Edit', edit_ecn_path(@ecn) %> |
 <%= link_to 'Back', ecns_path %>

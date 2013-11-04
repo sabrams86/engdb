@@ -22,22 +22,17 @@ class Drawing < ActiveRecord::Base
     d.to_s
     where('created_on >= ?', d) }
   
-  @@incrament_number = 3100
-  def self.num_up
-      @@incrament_number += 1
-  end
+
+  
   def incrament(drawing)
-    drawing[:drawing_number] = "A"+@@incrament_number.to_s
+    @max_draw = Drawing.where("drawing_number LIKE ?", "A%")
+    @max_draw = @max_draw.maximum(:drawing_number)
+    @max_num = @max_draw.slice!(0)
+    @max_num = @max_draw.to_i + 1
+    drawing[:drawing_number] = "A" + @max_num.to_s
     return drawing
   end
 
 
-
-#  def self.drawsearch
-#    self.by_description(params[:drawings][:description]).by_drawing_number(params[:drawings][:drawing_number]).\
-#    by_item_number(params[:drawings][:item_number]).by_pump_model(params[:drawings][:pump_model]).by_frame_size(params[:drawings]\
-#    [:frame_size]).by_part_type(params[:drawings][:part_type]).by_created_before(params[:drawings][:created_on].to_a.to_s).\
-#    by_created_after(params[:drawings][:created_on]).all  
-#  end
 
 end

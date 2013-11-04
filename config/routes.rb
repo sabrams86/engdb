@@ -36,8 +36,8 @@ delete 'logout' => 'sessions#destroy'
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
 
- match 'ecns/index' => 'ecns#submit'
- match 'ecns/index' => 'ecns#close'
+ match 'ecns/submit' => 'ecns#submit'
+ match 'ecns/close' => 'ecns#close'
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
