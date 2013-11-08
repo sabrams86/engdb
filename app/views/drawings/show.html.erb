@@ -43,7 +43,6 @@
 <p>
   <b>File location:</b>
   <%= @drawing.file_location %>
-  <a href='file://///engserver/Engineering/engineering/shop%20prints/A2900/A2908_revE.PDF'>OPEN FILE</a>
 </p>
 
 <p>
@@ -56,6 +55,6 @@
   <%= @drawing.comments %>
 </p>
 
-
+<%= button_to "View Drawing", {action: "view", :id => @drawing.id}  %>
 <%= link_to 'Edit', edit_drawing_path(@drawing) %> |
 <%= link_to 'Back', drawings_path %>

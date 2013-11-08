@@ -95,4 +95,14 @@ class DrawingsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def view
+    @drawing = Drawing.find(params[:id])
+    @path = @drawing.draw_path(@drawing)
+  
+    send_file( @path,
+    :disposition => 'inline',
+    :x_sendfile => true )
+  end 
+
 end

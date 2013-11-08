@@ -7,8 +7,8 @@ class Drawing < ActiveRecord::Base
   validates :drawing_number, uniqueness: true
   
   scope :by_description, lambda { |description| where('description LIKE ?', "%#{description}%") unless description.nil? }
-  scope :by_drawing_number, lambda { |drawing_number| where('drawing_number LIKE ?', "%#{drawing_number}%") unless drawing_number.nil? }
-  scope :by_item_number, lambda { |item_number| where('item_number LIKE ?', "%#{item_number}%") unless item_number.nil? }
+  scope :by_drawing_number, lambda { |drawing_number| where('drawing_number LIKE ?', "#{drawing_number}%") unless drawing_number.nil? }
+  scope :by_item_number, lambda { |item_number| where('item_number LIKE ?', "#{item_number}%") unless item_number.nil? }
   scope :by_pump_model, lambda { |pump_model| where('pump_model LIKE ?', "%#{pump_model}%") unless pump_model.nil? }
   scope :by_frame_size, lambda { |frame_size| where('frame_size LIKE ?', "%#{frame_size}%") unless frame_size.nil? }
   scope :by_part_type, lambda { |part_type| where('part_type LIKE ?', "%#{part_type}%") unless part_type.nil? }
@@ -37,6 +37,11 @@ class Drawing < ActiveRecord::Base
     return drawing
   end
 
-
+  def draw_path(drawing)
+    folder = drawing[:file_location]
+    file_name = drawing[:drawing_number]
+      path = Dir["X://engineering/shop\ prints/#{folder}/#{file_name}*"].first
+    return path
+  end
 
 end

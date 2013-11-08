@@ -10,7 +10,7 @@ class Ecn < ActiveRecord::Base
   validates :ecn_number, :ecn_type, :product_line, presence: true
   validates :ecn_number, uniqueness: true
   
-  scope :by_ecn_number, lambda { |ecn_number| where(ecn_number: ecn_number) unless ecn_number.nil? || ecn_number.blank? }
+  scope :by_ecn_number, lambda { |ecn_number| where("ecn_number LIKE?", "#{ecn_number}%") unless ecn_number.nil? || ecn_number.blank? }
   scope :by_user_name, lambda { |user_name| where("user_name LIKE?", "%#{user_name}%") unless user_name.nil? }
   scope :by_drawing_number, lambda { |drawing_number| 
     joins(:revisions).

@@ -14,7 +14,7 @@
 
 <% @ecns.each do |ecn| %>
   <tr>
-    <td><%= ecn.ecn_number %></td>
+    <td><%= link_to ecn.ecn_number, ecn%></td>
     <td><%= ecn.ecn_type %></td>
     <td><%= ecn.product_line %></td>
     <td><%= ecn.created_on %></td>
