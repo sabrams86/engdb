@@ -1,0 +1,90 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Part number:</b>
+  <%= @request_item.part_number %>
+</p>
+
+<p>
+  <b>Item number:</b>
+  <%= @request_item.item_number %>
+</p>
+
+<p>
+  <b>Part desc:</b>
+  <%= @request_item.part_desc %>
+</p>
+
+<p>
+  <b>Reference part:</b>
+  <%= @request_item.reference_part %>
+</p>
+
+<p>
+  <b>Mfg lead:</b>
+  <%= @request_item.mfg_lead %>
+</p>
+
+<p>
+  <b>Mfg labor:</b>
+  <%= @request_item.mfg_labor %>
+</p>
+
+<p>
+  <b>Mfg matl:</b>
+  <%= @request_item.mfg_matl %>
+</p>
+
+<p>
+  <b>Mfg comments:</b>
+  <%= @request_item.mfg_comments %>
+</p>
+
+<p>
+  <b>Eng lead:</b>
+  <%= @request_item.eng_lead %>
+</p>
+
+<p>
+  <b>Eng hours:</b>
+  <%= @request_item.eng_hours %>
+</p>
+
+<p>
+  <b>Make from:</b>
+  <%= @request_item.make_from %>
+</p>
+
+<p>
+  <b>Eng status:</b>
+  <%= @request_item.eng_status %>
+</p>
+
+<p>
+  <b>Eng comments:</b>
+  <%= @request_item.eng_comments %>
+</p>
+
+<p>
+  <b>Purch cost:</b>
+  <%= @request_item.purch_cost %>
+</p>
+
+<p>
+  <b>Acct price:</b>
+  <%= @request_item.acct_price %>
+</p>
+
+<p>
+  <b>Final price:</b>
+  <%= @request_item.final_price %>
+</p>
+
+<p>
+  <b>Final lead:</b>
+  <%= @request_item.final_lead %>
+</p>
+
+
+<%= link_to 'Edit', edit_request_item_path(@request_item) %> |
+<%= link_to 'Back', request_items_path %>

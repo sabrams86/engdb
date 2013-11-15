@@ -1,0 +1,55 @@
+<h1>Listing request_items</h1>
+
+<table>
+  <tr>
+    <th>Part number</th>
+    <th>Item number</th>
+    <th>Part desc</th>
+    <th>Reference part</th>
+    <th>Mfg lead</th>
+    <th>Mfg labor</th>
+    <th>Mfg matl</th>
+    <th>Mfg comments</th>
+    <th>Eng lead</th>
+    <th>Eng hours</th>
+    <th>Make from</th>
+    <th>Eng status</th>
+    <th>Eng comments</th>
+    <th>Purch cost</th>
+    <th>Acct price</th>
+    <th>Final price</th>
+    <th>Final lead</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @request_items.each do |request_item| %>
+  <tr>
+    <td><%= request_item.part_number %></td>
+    <td><%= request_item.item_number %></td>
+    <td><%= request_item.part_desc %></td>
+    <td><%= request_item.reference_part %></td>
+    <td><%= request_item.mfg_lead %></td>
+    <td><%= request_item.mfg_labor %></td>
+    <td><%= request_item.mfg_matl %></td>
+    <td><%= request_item.mfg_comments %></td>
+    <td><%= request_item.eng_lead %></td>
+    <td><%= request_item.eng_hours %></td>
+    <td><%= request_item.make_from %></td>
+    <td><%= request_item.eng_status %></td>
+    <td><%= request_item.eng_comments %></td>
+    <td><%= request_item.purch_cost %></td>
+    <td><%= request_item.acct_price %></td>
+    <td><%= request_item.final_price %></td>
+    <td><%= request_item.final_lead %></td>
+    <td><%= link_to 'Show', request_item %></td>
+    <td><%= link_to 'Edit', edit_request_item_path(request_item) %></td>
+    <td><%= link_to 'Destroy', request_item, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Request item', new_request_item_path %>

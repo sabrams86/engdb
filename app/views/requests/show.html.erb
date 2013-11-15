@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Request number:</b>
+  <%= @request.request_number %>
+</p>
+
+<p>
+  <b>Requester:</b>
+  <%= @request.requester %>
+</p>
+
+<p>
+  <b>Regional sales mgr:</b>
+  <%= @request.regional_sales_mgr %>
+</p>
+
+<p>
+  <b>Rep:</b>
+  <%= @request.rep %>
+</p>
+
+<p>
+  <b>Quote number:</b>
+  <%= @request.quote_number %>
+</p>
+
+<p>
+  <b>Order number:</b>
+  <%= @request.order_number %>
+</p>
+
+<p>
+  <b>Customer:</b>
+  <%= @request.customer %>
+</p>
+
+<p>
+  <b>Cusomter location:</b>
+  <%= @request.cusomter_location %>
+</p>
+
+<p>
+  <b>Product line:</b>
+  <%= @request.product_line %>
+</p>
+
+<p>
+  <b>Inq submitted date:</b>
+  <%= @request.inq_submitted_date %>
+</p>
+
+<p>
+  <b>Order submitted date:</b>
+  <%= @request.order_submitted_date %>
+</p>
+
+<p>
+  <b>Rev level:</b>
+  <%= @request.rev_level %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @request.description %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @request.status %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%= @request.comments %>
+</p>
+
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>
