@@ -1,5 +1,9 @@
 Engdb::Application.routes.draw do
 
+  resources :request_items
+
+  resources :requests
+
   resources :email_lists
 
 get 'home' => 'home#index'
@@ -20,11 +24,15 @@ delete 'logout' => 'sessions#destroy'
 
   get "home/index"
 
-  resources :ecns
+  resources :ecns do
+    resources :revisions
+  end
 
   resources :revisions
 
-  resources :drawings
+  resources :drawings do
+    resources :revisions
+  end
   
   resources :home
   

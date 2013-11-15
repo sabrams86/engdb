@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  request_number: 1
+  requester: MyString
+  regional_sales_mgr: MyString
+  rep: MyString
+  quote_number: MyString
+  order_number: MyString
+  customer: MyString
+  cusomter_location: MyString
+  product_line: MyString
+  inq_submitted_date: 2013-11-14
+  order_submitted_date: 2013-11-14
+  rev_level: MyString
+  description: MyText
+  status: MyString
+  comments: MyText
+
+two:
+  request_number: 1
+  requester: MyString
+  regional_sales_mgr: MyString
+  rep: MyString
+  quote_number: MyString
+  order_number: MyString
+  customer: MyString
+  cusomter_location: MyString
+  product_line: MyString
+  inq_submitted_date: 2013-11-14
+  order_submitted_date: 2013-11-14
+  rev_level: MyString
+  description: MyText
+  status: MyString
+  comments: MyText

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131104164955) do
+ActiveRecord::Schema.define(:version => 20131115045401) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0, :null => false
@@ -74,6 +74,48 @@ ActiveRecord::Schema.define(:version => 20131104164955) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "request_items", :force => true do |t|
+    t.string   "part_number"
+    t.string   "item_number"
+    t.string   "part_desc"
+    t.string   "reference_part"
+    t.string   "mfg_lead"
+    t.integer  "mfg_labor"
+    t.integer  "mfg_matl"
+    t.text     "mfg_comments"
+    t.string   "eng_lead"
+    t.integer  "eng_hours"
+    t.string   "make_from"
+    t.string   "eng_status"
+    t.text     "eng_comments"
+    t.integer  "purch_cost"
+    t.integer  "acct_price"
+    t.integer  "final_price"
+    t.string   "final_lead"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "requests", :force => true do |t|
+    t.integer  "request_number"
+    t.string   "requester"
+    t.string   "regional_sales_mgr"
+    t.string   "rep"
+    t.string   "quote_number"
+    t.string   "order_number"
+    t.string   "customer"
+    t.string   "cusomter_location"
+    t.string   "product_line"
+    t.date     "inq_submitted_date"
+    t.date     "order_submitted_date"
+    t.string   "rev_level"
+    t.text     "description"
+    t.string   "status"
+    t.text     "comments"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
   create_table "revisions", :force => true do |t|
     t.text     "change"
     t.text     "justification"
@@ -95,6 +137,7 @@ ActiveRecord::Schema.define(:version => 20131104164955) do
     t.datetime "updated_at",      :null => false
     t.string   "email"
     t.string   "title"
+    t.string   "department"
   end
 
 end

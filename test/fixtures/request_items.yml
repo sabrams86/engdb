@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  part_number: MyString
+  item_number: MyString
+  part_desc: MyString
+  reference_part: MyString
+  mfg_lead: MyString
+  mfg_labor: 1
+  mfg_matl: 1
+  mfg_comments: MyText
+  eng_lead: MyString
+  eng_hours: 1
+  make_from: MyString
+  eng_status: MyString
+  eng_comments: MyText
+  purch_cost: 1
+  acct_price: 1
+  final_price: 1
+  final_lead: MyString
+
+two:
+  part_number: MyString
+  item_number: MyString
+  part_desc: MyString
+  reference_part: MyString
+  mfg_lead: MyString
+  mfg_labor: 1
+  mfg_matl: 1
+  mfg_comments: MyText
+  eng_lead: MyString
+  eng_hours: 1
+  make_from: MyString
+  eng_status: MyString
+  eng_comments: MyText
+  purch_cost: 1
+  acct_price: 1
+  final_price: 1
+  final_lead: MyString
