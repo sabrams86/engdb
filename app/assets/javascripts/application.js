@@ -26,3 +26,4 @@ function add_fields(link, association, content) {
     $(link).parent().after(content.replace(regex, new_id));
     $('#new-revision-fields').modal('show');
 }
+

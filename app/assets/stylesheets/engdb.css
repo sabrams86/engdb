@@ -36,25 +36,30 @@
 }
 
 #columns {
-  background: #ff0000;
-  
+  height: 100%;
+  width: 100%;
+  overflow:hidden;
 }
 
 #main {
-  margin-left: 17em;
   padding-top: 2em;
   padding-left: 2em;
   background: #ffffff;
+  float: left;
+  padding-bottom: 500em;
+  margin-bottom: -500em;
 }
 
 #side {
   float: left;
+  overflow: hidden;
   padding-top: 1em;
   padding-left: 1em;
-  padding-bottom: 1em;
-  width: 16em;
-  background: #ff0000;
+  padding-bottom: 500em;
+  margin-bottom: -500em;
+  width: 18em;
   height: 100%;
+  background: #ff0000;
 }
 
 #side a {
@@ -104,14 +109,11 @@
     display:block;
 }
 #drawsearch {
-    margin-left: 2em;
+    margin-left: 5em;
     margin-right: 5em;
 }
 
-#drawsearch {
-    margin-left: 5em;
-}
-.ecnform {
+.search {
     float:left;
     display: inline-block;
     margin-right: 15px;

@@ -1,22 +1,22 @@
-<h1>Listing requests</h1>
+<h1>Special Requests</h1>
 
-<table>
+<% if user_in_sales? %>
+  <%= link_to 'New Request', new_request_path %>
+<% end %>
+
+<table class="table">
   <tr>
-    <th>Request number</th>
+    <th>SIR #</th>
     <th>Requester</th>
-    <th>Regional sales mgr</th>
-    <th>Rep</th>
+    <th>Regional</th>
     <th>Quote number</th>
     <th>Order number</th>
     <th>Customer</th>
-    <th>Cusomter location</th>
     <th>Product line</th>
     <th>Inq submitted date</th>
     <th>Order submitted date</th>
     <th>Rev level</th>
-    <th>Description</th>
     <th>Status</th>
-    <th>Comments</th>
     <th></th>
     <th></th>
     <th></th>
@@ -48,4 +48,6 @@
 
 <br />
 
-<%= link_to 'New Request', new_request_path %>
+<% if user_in_sales? %>
+  <%= link_to 'New Request', new_request_path %>
+<% end %>
