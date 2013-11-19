@@ -105,9 +105,33 @@
       </tr>
   </table>
 <% end %>
-<%= if user_in_engineering?%>
+<% if user_in_engineering? %>
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitModal">
+  Email
+  </button>
   <%= button_to "Submit for Approval", {action: "submit", :id => @ecn.id}  %>
   <%= button_to "Close ECN", {action: "close", :id => @ecn.id}, :onclick => "return confirm('Once an ECN is closed it can no longer be edited, are you sure you want to close this ECN?')" %>
   <%= link_to 'Edit', edit_ecn_path(@ecn) %>
 <% end %> |
 <%= link_to 'Back', ecns_path %>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h4 class="modal-title" id="myModalLabel">Edit Email</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'submit_email_fields' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
