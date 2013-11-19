@@ -1,5 +1,11 @@
 <div>
 <h1>Welcome to the Wilfley Engineering Database</h1>
+<% if notice %>
+  <p id="notice"><%= notice%></p>
+<% end %>
+<% if alert %>
+  <p id="notice"><%= alert%></p>
+<% end %>
 <p>Please use the options below to search for an ECN or Drawing, or use the links on the left to create new drawings or ecns.</p>
 <div id="drawsearch" class="search">
   <%= render 'drawing_search' %>

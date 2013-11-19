@@ -45,7 +45,7 @@
   padding-top: 2em;
   padding-left: 2em;
   background: #ffffff;
-  float: left;
+  display: inline-block;
   padding-bottom: 500em;
   margin-bottom: -500em;
 }

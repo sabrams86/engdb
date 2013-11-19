@@ -17,8 +17,10 @@
     <div id="side">
       <ul>
         <li><%= link_to 'Home', controller: 'home', action: 'index' %></li>
-        <li><%= link_to 'New Drawing', new_drawing_path %></li>
-        <li><%= link_to 'New ECN', new_ecn_path %></li>
+        <% if user_in_engineering? %>
+        	<li><%= link_to 'New Drawing', new_drawing_path %></li>
+        	<li><%= link_to 'New ECN', new_ecn_path %></li>
+        <% end %>
         <li><%= link_to 'SIR Database', controller: 'requests', action: 'index' %></li>
         <% if user_in_admin? %>
   			<li><%= link_to 'Edit ECN email list', controller: 'email_lists', action: 'index' %></li>

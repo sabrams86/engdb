@@ -1,4 +1,5 @@
 class EmailListsController < ApplicationController
+  before_filter :admin_check
   # GET /email_lists
   # GET /email_lists.json
   def index

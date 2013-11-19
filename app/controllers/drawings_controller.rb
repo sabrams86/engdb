@@ -1,5 +1,7 @@
 class DrawingsController < ApplicationController
   handles_sortable_columns
+  before_filter :eng_check, only: [:new, :create, :update]
+  before_filter :admin_check, only: [:destroy]
   # GET /drawings
   # GET /drawings.json
   def index

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    handles_sortable_columns
+  before_filter :admin_check
+  handles_sortable_columns
   # GET /users
   # GET /users.json
   def index

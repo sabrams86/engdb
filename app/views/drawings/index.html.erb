@@ -1,5 +1,5 @@
 <h1>Listing Drawings</h1>
-
+<%= link_to 'New Drawing', new_drawing_path if user_in_engineering? %>
 <table class="table table-hover">
   <tr class="info">
     <th><%= sortable_column "Drawing number", :direction => :desc%></th>
@@ -34,10 +34,14 @@
     <td><%= link_to drawing do %>
     	<i class="icon-eye-open glyphw"></i>
     	<% end %>
-		<%= link_to edit_drawing_path(drawing) do %>
-    	<i class="icon-pencil glyphw"></i>
-    	<% end %>
-		<%= link_to '<i class="icon-trash glyphw"></i>'.html_safe, drawing, confirm: 'Are you sure?', method: :delete %>
+    	<% if user_in_engineering? %>
+			<%= link_to edit_drawing_path(drawing) do %>
+	    		<i class="icon-pencil glyphw"></i>
+	    	<% end %>
+	    <% end %>
+	    <% if user_in_admin? %>
+			<%= link_to '<i class="icon-trash glyphw"></i>'.html_safe, drawing, confirm: 'Are you sure?', method: :delete %>
+		<% end %>
 	</td>
   </tr>
 <% end %>
@@ -45,5 +49,5 @@
 
 <br />
 
-<%= link_to 'New Drawing', new_drawing_path %>
+<%= link_to 'New Drawing', new_drawing_path if user_in_engineering? %>
 <p><%= will_paginate @drawings %></p>

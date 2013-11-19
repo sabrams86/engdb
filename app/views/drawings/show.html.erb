@@ -56,5 +56,5 @@
 </p>
 
 <%= button_to "View Drawing", {action: "view", :id => @drawing.id}  %>
-<%= link_to 'Edit', edit_drawing_path(@drawing) %> |
+<%= link_to 'Edit', edit_drawing_path(@drawing) if user_in_engineering? %> |
 <%= link_to 'Back', drawings_path %>

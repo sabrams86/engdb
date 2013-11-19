@@ -1,5 +1,7 @@
 class EcnsController < ApplicationController
   handles_sortable_columns
+  before_filter :eng_check, only: [:new, :create, :update]
+  before_filter :admin_check, only: [:destroy]
   # GET /ecns
   # GET /ecns.json
   def index

@@ -1,4 +1,6 @@
 class RequestsController < ApplicationController
+  before_filter :sales_check, only: [:create, :new]
+  before_filter :admin_check, only: [:destroy]
   # GET /requests
   # GET /requests.json
   def index

@@ -1,4 +1,5 @@
 class RevisionsController < ApplicationController
+  before_filter :eng_check, only: [:new, :create, :update, :destroy]
   # GET /revisions
   # GET /revisions.json
   def index
