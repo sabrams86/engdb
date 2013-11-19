@@ -24,9 +24,13 @@
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 2px solid;
-    font: small-caps 40px/40px "Times New Roman", serif;
+  font: small-caps 40px/40px "Times New Roman", serif;
   color: white;
   text-align: center;
+  height: 1em;
+  width: 100%;
+  display: block;
+  min-width: 1075px;
 }
 
 #banner img {
@@ -37,7 +41,7 @@
 
 #columns {
   height: 100%;
-  width: 100%;
+  min-width: 1730px;
   overflow:hidden;
 }
 
@@ -45,9 +49,11 @@
   padding-top: 2em;
   padding-left: 2em;
   background: #ffffff;
+  height: 100%;
   display: inline-block;
   padding-bottom: 500em;
   margin-bottom: -500em;
+  min-width: 1470px;
 }
 
 #side {
@@ -57,7 +63,8 @@
   padding-left: 1em;
   padding-bottom: 500em;
   margin-bottom: -500em;
-  width: 18em;
+
+  min-width: 220px;
   height: 100%;
   background: #ff0000;
 }
@@ -124,7 +131,7 @@
 .fields {
     clear: both;
     border-top: 1px solid gray;
-    width: 580px;
+    width: 1200px;
 }
 #index tr td {
     padding: 2px;

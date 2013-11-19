@@ -11,66 +11,83 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :request_number %><br />
-    <%= f.number_field :request_number %>
+  <div class="span4">
+	  <div class="field">
+	    <%= f.label :request_number %><br />
+	    <%= f.number_field :request_number %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :requester %><br />
+	    <%= f.text_field :requester %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :regional_sales_mgr %><br />
+	    <%= f.text_field :regional_sales_mgr %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :rep %><br />
+	    <%= f.text_field :rep %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :quote_number %><br />
+	    <%= f.text_field :quote_number %>
+	  </div>
   </div>
-  <div class="field">
-    <%= f.label :requester %><br />
-    <%= f.text_field :requester %>
+  <div class="span4">
+	  <div class="field">
+	    <%= f.label :customer %><br />
+	    <%= f.text_field :customer %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :cusomter_location %><br />
+	    <%= f.text_field :cusomter_location %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :product_line %><br />
+	    <%= f.text_field :product_line %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :rev_level %><br />
+	    <%= f.text_field :rev_level %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :order_number %><br />
+	    <%= f.text_field :order_number %>
+	  </div>
   </div>
-  <div class="field">
-    <%= f.label :regional_sales_mgr %><br />
-    <%= f.text_field :regional_sales_mgr %>
+  <div class="span4">
+  	  <div class="field">
+	    <%= f.label :status %><br />
+	    <%= f.text_field :status %>
+	  </div>
+      <div class="field">
+	    <%= f.label :inq_submitted_date %><br />
+	    <%= f.date_select :inq_submitted_date %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :order_submitted_date %><br />
+	    <%= f.date_select :order_submitted_date %>
+	  </div>
   </div>
-  <div class="field">
-    <%= f.label :rep %><br />
-    <%= f.text_field :rep %>
+  <div class="clear">
+	  <div class="span10">
+	    <%= f.label :description %><br />
+	    <%= f.text_area :description, rows: 6 %>
+	  </div>
   </div>
-  <div class="field">
-    <%= f.label :quote_number %><br />
-    <%= f.text_field :quote_number %>
+  <div class="clear">
+	  <div class="span10">
+	    <%= f.label :comments %><br />
+	    <%= f.text_area :comments, rows: 4, :text_area_html => { :class => 'span10'}%>
+	  </div>
   </div>
-  <div class="field">
-    <%= f.label :order_number %><br />
-    <%= f.text_field :order_number %>
-  </div>
-  <div class="field">
-    <%= f.label :customer %><br />
-    <%= f.text_field :customer %>
-  </div>
-  <div class="field">
-    <%= f.label :cusomter_location %><br />
-    <%= f.text_field :cusomter_location %>
-  </div>
-  <div class="field">
-    <%= f.label :product_line %><br />
-    <%= f.text_field :product_line %>
-  </div>
-  <div class="field">
-    <%= f.label :inq_submitted_date %><br />
-    <%= f.date_select :inq_submitted_date %>
-  </div>
-  <div class="field">
-    <%= f.label :order_submitted_date %><br />
-    <%= f.date_select :order_submitted_date %>
-  </div>
-  <div class="field">
-    <%= f.label :rev_level %><br />
-    <%= f.text_field :rev_level %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :comments %><br />
-    <%= f.text_area :comments %>
-  </div>
+  <fieldset class="left" style="width: 580px;">
+    <legend><h3>Parts and Items</h3></legend>
+      <%= f.fields_for(:request_items, :html => {class: "form-inline"}) do |builder| %>
+          <%= render 'request_item_fields', :f => builder%>
+      <% end %>
+  <p><%= link_to_add_fields("Add Item", f, :request_items ) %></p>
+  </fieldset>
   <div class="actions">
     <%= f.submit %>
   </div>
