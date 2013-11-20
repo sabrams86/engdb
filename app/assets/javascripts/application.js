@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require bootstrap.min.js
 
 function remove_fields(link) {
     $(link).prev("input[type=hidden]").val("1");
