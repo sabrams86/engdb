@@ -6,17 +6,17 @@
 
 <table class="table">
   <tr>
-    <th>SIR #</th>
-    <th>Requester</th>
-    <th>Regional</th>
-    <th>Quote number</th>
-    <th>Order number</th>
-    <th>Customer</th>
-    <th>Product line</th>
-    <th>Inq submitted date</th>
-    <th>Order submitted date</th>
-    <th>Rev level</th>
-    <th>Status</th>
+    <th><%= sortable_column "SIR", :direction => :desc %> #</th>
+    <th><%= sortable_column "Requester" %></th>
+    <th><%= sortable_column "Regional" %></th>
+    <th><%= sortable_column "Quote number" %></th>
+    <th><%= sortable_column "Order number" %></th>
+    <th><%= sortable_column "Customer" %></th>
+    <th><%= sortable_column "Product line" %></th>
+    <th><%= sortable_column "Inq submitted date" %></th>
+    <th><%= sortable_column "Order submitted date" %></th>
+    <th><%= sortable_column "Rev level" %></th>
+    <th><%= sortable_column "Status" %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -24,7 +24,7 @@
 
 <% @requests.each do |request| %>
   <tr>
-    <td><%= request.request_number %></td>
+    <td><%= link_to request.request_number, request %></td>
     <td><%= request.requester %></td>
     <td><%= request.regional_sales_mgr %></td>
     <td><%= request.rep %></td>
@@ -51,3 +51,4 @@
 <% if user_in_sales? %>
   <%= link_to 'New Request', new_request_path %>
 <% end %>
+<p><%= will_paginate @requests %></p>

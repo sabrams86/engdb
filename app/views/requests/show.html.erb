@@ -75,6 +75,21 @@
   <%= @request.comments %>
 </p>
 
+<% if user_in_sales? %>
+    <%= button_to "Create Request and Submit to Engineering", {action: "index", :id => @request.id}, class: "btn btn-primary"  %>
+<% end %>
+<% if user_in_engineering? %>
+    <%= button_to "Submit to Manufacturing", {action: "index", :id => @request.id}, class: "btn btn-primary"  %>
+<% end %>
+<% if user_in_manufacturing? %>
+    <%= button_to "Submit to Accounting", {action: "index", :id => @request.id}, class: "btn btn-primary"  %>
+<% end %>
+<% if user_in_accounting? %>
+    <%= button_to "Submit final report to Sales", {action: "index", :id => @request.id}, class: "btn btn-primary"  %>
+<% end %>
+<% if user_in_sales? and @request.status == "Finished" %>
+    <%= button_to "Turn SIR into SOR", {action: "index", :id => @request.id}, class: "btn btn-primary"  %>
+<% end %>
 
 <%= link_to 'Edit', edit_request_path(@request) %> |
 <%= link_to 'Back', requests_path %>
