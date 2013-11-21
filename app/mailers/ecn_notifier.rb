@@ -8,8 +8,9 @@ class EcnNotifier < ActionMailer::Base
   #
   #------------------------------------------------#
   #The following methods are for submit ecn emails #
-  def submit_engineering(ecn)
+  def submit_engineering(ecn, message)
     @ecn = ecn
+    @message = message
     @email = EmailList.where(department: "Engineering").all
     to = []
     @email.each do |e|

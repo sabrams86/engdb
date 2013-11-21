@@ -1,0 +1,23 @@
+All,
+
+Please review the following ECN and notify <%= user_name %> with your approval or disapproval.
+
+All drawings listed are available in shop prints/submitted ecns for checking.
+
+ECN Number: <%= @ecn.ecn_number %>
+ECN Type: <%= @ecn.ecn_type %>
+Product Line: <%= @ecn.product_line %>
+Created on:  <%= @ecn.created_on %>
+
+<% for revision in @ecn.revisions %>
+REVISION:
+      Drawing Number: <%= h revision.drawing_id %>
+      Changes: <%= h revision.change %>
+      Justification: <%= h revision.justification %>
+      New Revision: <%= h revision.rev_level %>
+      Disposition WIP: <%= h revision.disposition_wip %>
+      Disposition Inventory: <%= h revision.disposition_inventory %>
+      Quantity in Qantel:<%= h revision.quantity_in_qantel %>
+<% end %>
+
+Please contact <%= user_name %> with any questions or comments.

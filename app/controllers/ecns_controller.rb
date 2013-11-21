@@ -105,15 +105,17 @@ class EcnsController < ApplicationController
   def submit
       
     @ecn = Ecn.find(params[:id])
+    @email = params[:email]
+    @message = @email[:message]
     @email_list = EmailList.all
     
     respond_to do |format|
-      EcnNotifier.submit_engineering(@ecn).deliver if @ecn.distribute_engineering?
+      EcnNotifier.submit_engineering(@ecn, @message).deliver if @ecn.distribute_engineering?
       EcnNotifier.submit_purchasing(@ecn).deliver if @ecn.distribute_purchasing?
       EcnNotifier.submit_manufacturing(@ecn).deliver if @ecn.distribute_manufacturing?
       EcnNotifier.submit_qantel(@ecn).deliver if @ecn.distribute_qantel?
       EcnNotifier.submit_planning(@ecn).deliver if @ecn.distribute_planning?
-      format.html { redirect_to ecns_url, alert: "Ecn has been submitted for approval." }
+      format.html { redirect_to home_url, alert: "Ecn has been submitted for approval." }
       format.json { render json: @ecns }
     end
   end

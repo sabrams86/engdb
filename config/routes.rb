@@ -47,6 +47,8 @@ delete 'logout' => 'sessions#destroy'
  match 'ecns/submit' => 'ecns#submit'
  match 'ecns/close' => 'ecns#close'
  match 'drawings/view' => 'drawings#view'
+ 
+ match '*path' => redirect('/home'), via: :get
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase

@@ -17,15 +17,15 @@
 		    <%= f.number_field :request_number %>
 		  </div>
 		  <div class="field">
-		    <%= f.label :requester %><br />
-		    <%= f.text_field :requester %>
+		    <%= f.label :requested_by %><br />
+		    <%= f.text_field :requester, value: user_name %>
 		  </div>
 		  <div class="field">
-		    <%= f.label :regional_sales_mgr %><br />
+		    <%= f.label :regional_sales_manager %><br />
 		    <%= f.text_field :regional_sales_mgr %>
 		  </div>
 		  <div class="field">
-		    <%= f.label :rep %><br />
+		    <%= f.label :area_rep %><br />
 		    <%= f.text_field :rep %>
 		  </div>
 		  <div class="field">
@@ -47,7 +47,7 @@
 		    <%= f.text_field :product_line %>
 		  </div>
 		  <div class="field">
-		    <%= f.label :rev_level %><br />
+		    <%= f.label :revision_level %><br />
 		    <%= f.text_field :rev_level %>
 		  </div>
 		  <div class="field">
@@ -61,23 +61,23 @@
 		    <%= f.text_field :status %>
 		  </div>
 	      <div class="field">
-		    <%= f.label :inq_submitted_date %><br />
+		    <%= f.label :inquiry_submitted_date %><br />
 		    <%= f.date_select :inq_submitted_date %>
 		  </div>
 		  <div class="field">
 		    <%= f.label :order_submitted_date %><br />
-		    <%= f.date_select :order_submitted_date %>
+		    <%= f.date_select :order_submitted_date, {:include_blank => true, :default => nil} %>
 		  </div>
 	  </div>
 	  <div class="clear">
 		  <div class="span10">
-		    <%= f.label :description %><br />
+		    <%= f.label :special_inquiry_description %><br />
 		    <%= f.text_area :description, rows: 6 %>
 		  </div>
 	  </div>
 	  <div class="clear">
 		  <div class="span10">
-		    <%= f.label :comments %><br />
+		    <%= f.label :additional_comments %><br />
 		    <%= f.text_area :comments, rows: 4, :text_area_html => { :class => 'span10'}%>
 		  </div>
 	  </div>
@@ -140,7 +140,7 @@
 	</p>
 	
 	<p>
-	  <b>Rev level:</b>
+	  <b>Revision level:</b>
 	  <%= @request.rev_level %>
 	</p>
 	

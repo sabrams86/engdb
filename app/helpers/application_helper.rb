@@ -11,7 +11,10 @@ module ApplicationHelper
  
     link_to_function(name, "add_fields(this, '#{ association }', '#{ escape_javascript(fields) }')", options)
   end
-  
+  def user_name
+    user = User.find_by_id(session[:user_id])
+    return user.name
+  end
   def user_in_sales?
     user = User.find_by_id(session[:user_id])
     user.present? && (user[:department] == "Sales" or user[:department] == "Admin")
@@ -46,4 +49,5 @@ module ApplicationHelper
     user = User.find_by_id(session[:user_id])
     user.present? && user[:department] == "Admin"
   end
+  
 end

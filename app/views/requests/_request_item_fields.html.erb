@@ -9,7 +9,7 @@
 	    <%= f.text_field :item_number %>
 	  </div>
 	  <div class="field">
-	    <%= f.label :part_desc %><br />
+	    <%= f.label :part_description %><br />
 	    <%= f.text_field :part_desc %>
 	  </div>
 	  <div class="field">
@@ -20,19 +20,19 @@
   <% if user_in_manufacturing? or user_in_accounting? %>
 	  <div class="span4">
 		  <div class="field">
-		    <%= f.label :mfg_lead %><br />
+		    <%= f.label :manufactuing_lead_time %><br />
 		    <%= f.text_field :mfg_lead %>
 		  </div>
 		  <div class="field">
-		    <%= f.label :mfg_labor %><br />
+		    <%= f.label :manufacturing_labor_time %><br />
 		    <%= f.number_field :mfg_labor %>
 		  </div>
 		  <div class="field">
-		    <%= f.label :mfg_matl %><br />
+		    <%= f.label :manufacturing_material_cost %><br />
 		    <%= f.number_field :mfg_matl %>
 		  </div>
 		  <div class="field">
-		    <%= f.label :mfg_comments %><br />
+		    <%= f.label :manufacturing_comments %><br />
 		    <%= f.text_area :mfg_comments, rows: 4 %>
 		  </div>
 	  </div>
@@ -40,11 +40,11 @@
   <% if user_in_engineering? or user_in_accounting? or user_in_manufacturing? %>
 	  <div class="span4">
 		  <div class="field">
-		    <%= f.label :eng_lead %><br />
+		    <%= f.label :engineering_lead_time %><br />
 		    <%= f.text_field :eng_lead %>
 		  </div>
 		  <div class="field">
-		    <%= f.label :eng_hours %><br />
+		    <%= f.label :engineering_billable_hours %><br />
 		    <%= f.number_field :eng_hours %>
 		  </div>
 		  <div class="field">
@@ -52,15 +52,15 @@
 		    <%= f.text_field :make_from %>
 		  </div>
 		  <div class="field">
-		    <%= f.label :eng_status %><br />
+		    <%= f.label :engineering_status %><br />
 		    <%= f.text_field :eng_status %>
 		  </div>
 		  <div class="field">
-		    <%= f.label :eng_comments %><br />
+		    <%= f.label :engineering_comments %><br />
 		    <%= f.text_area :eng_comments, rows: 4 %>
 		  </div>
 		  <div class="field">
-		   	 <%= f.label :purch_cost %><br />
+		   	 <%= f.label :purchasing_cost %><br />
 		  	 <%= f.number_field :purch_cost %>
 		  </div>
 	  </div>
@@ -68,7 +68,7 @@
   <% if user_in_accounting? %>
 	  <div class="span4">
 		  <div class="field">
-		    <%= f.label :acct_price %><br />
+		    <%= f.label :accounting_price %><br />
 		    <%= f.number_field :acct_price %>
 		  </div>
 		  <div class="field">
@@ -76,7 +76,7 @@
 		    <%= f.number_field :final_price %>
 		  </div>
 		  <div class="field">
-		    <%= f.label :final_lead %><br />
+		    <%= f.label :final_lead_time %><br />
 		    <%= f.text_field :final_lead %>
 		  </div>
 	  </div>

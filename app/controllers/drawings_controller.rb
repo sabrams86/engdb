@@ -2,6 +2,7 @@ class DrawingsController < ApplicationController
   handles_sortable_columns
   before_filter :eng_check, only: [:new, :create, :update]
   before_filter :admin_check, only: [:destroy]
+#  before_filter :catch_drawing_not_found, only: [:view]
   # GET /drawings
   # GET /drawings.json
   def index
@@ -101,10 +102,13 @@ class DrawingsController < ApplicationController
   def view
     @drawing = Drawing.find(params[:id])
     @path = @drawing.draw_path(@drawing)
-  
+    
     send_file( @path,
     :disposition => 'inline',
     :x_sendfile => true )
+   
+  rescue TypeError
+      redirect_to @drawing, :flash => { :alert => "Drawing not found.  Please check shop prints manually." }
   end 
 
 end
