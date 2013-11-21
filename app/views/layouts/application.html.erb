@@ -22,6 +22,9 @@
         	<li><%= link_to 'New ECN', new_ecn_path %></li>
         <% end %>
         <li><%= link_to 'SIR Database', controller: 'requests', action: 'index' %></li>
+        <% if user_in_sales? %>
+            <li><%= link_to 'New SIR', new_request_path %></li>
+        <% end %>
         <% if user_in_admin? %>
   			<li><%= link_to 'Edit ECN email list', controller: 'email_lists', action: 'index' %></li>
   			<li><%= link_to 'Edit Users', controller: 'users', action: 'index' %></li>
@@ -30,7 +33,7 @@
         <li><%= link_to 'Logout', logout_path %></li>
       </ul>
     </div>
-    <div id="main">
+    <div id="main" class="span12">
       <%= yield %>
     </div>
   </div>

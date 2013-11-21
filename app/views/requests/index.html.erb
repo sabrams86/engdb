@@ -6,7 +6,7 @@
 
 <table class="table">
   <tr>
-    <th><%= sortable_column "SIR", :direction => :desc %> #</th>
+    <th><%= sortable_column "SIR #", :direction => :desc %></th>
     <th><%= sortable_column "Requester" %></th>
     <th><%= sortable_column "Regional" %></th>
     <th><%= sortable_column "Quote number" %></th>
@@ -27,21 +27,24 @@
     <td><%= link_to request.request_number, request %></td>
     <td><%= request.requester %></td>
     <td><%= request.regional_sales_mgr %></td>
-    <td><%= request.rep %></td>
     <td><%= request.quote_number %></td>
     <td><%= request.order_number %></td>
     <td><%= request.customer %></td>
-    <td><%= request.cusomter_location %></td>
     <td><%= request.product_line %></td>
     <td><%= request.inq_submitted_date %></td>
     <td><%= request.order_submitted_date %></td>
     <td><%= request.rev_level %></td>
-    <td><%= request.description %></td>
     <td><%= request.status %></td>
-    <td><%= request.comments %></td>
-    <td><%= link_to 'Show', request %></td>
-    <td><%= link_to 'Edit', edit_request_path(request) %></td>
-    <td><%= link_to 'Destroy', request, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to request do %>
+    		<i class="icon-eye-open glyphw"></i>
+    	<% end %>
+		<%= link_to edit_request_path(request) do %>
+	    	<i class="icon-pencil glyphw"></i>
+	    <% end %>
+	    <% if user_in_admin? %>
+			<%= link_to '<i class="icon-trash glyphw"></i>'.html_safe, request, confirm: 'Are you sure?', method: :delete %>
+		<% end %>
+	</td>
   </tr>
 <% end %>
 </table>

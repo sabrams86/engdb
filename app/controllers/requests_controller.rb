@@ -30,7 +30,7 @@ class RequestsController < ApplicationController
   # GET /requests/new.json
   def new
     @request = Request.new
-#    @request = @request.incrament(@request)
+    @request = @request.incrament(@request)
 
     respond_to do |format|
       format.html # new.html.erb

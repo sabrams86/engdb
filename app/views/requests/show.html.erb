@@ -76,20 +76,59 @@
 </p>
 
 <% if user_in_sales? %>
-    <%= button_to "Create Request and Submit to Engineering", {action: "index", :id => @request.id}, class: "btn btn-primary"  %>
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitengModal">
+  Create Request and Submit to Engineering
+  </button>
 <% end %>
+</br></br>
 <% if user_in_engineering? %>
-    <%= button_to "Submit to Manufacturing", {action: "index", :id => @request.id}, class: "btn btn-primary"  %>
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitengModal">
+  Submit to Manufacturing
+  </button>
 <% end %>
+</br></br>
 <% if user_in_manufacturing? %>
-    <%= button_to "Submit to Accounting", {action: "index", :id => @request.id}, class: "btn btn-primary"  %>
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitengModal">
+  Submit to Accounting
+  </button>
 <% end %>
+</br></br>
 <% if user_in_accounting? %>
-    <%= button_to "Submit final report to Sales", {action: "index", :id => @request.id}, class: "btn btn-primary"  %>
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitengModal">
+  Submit final report to Sales
+  </button>
 <% end %>
+</br></br>
 <% if user_in_sales? and @request.status == "Finished" %>
-    <%= button_to "Turn SIR into SOR", {action: "index", :id => @request.id}, class: "btn btn-primary"  %>
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitengModal">
+  Turn SIR into SOR
+  </button>
 <% end %>
-
+</br>
+<b>
 <%= link_to 'Edit', edit_request_path(@request) %> |
 <%= link_to 'Back', requests_path %>
+</b>
+
+
+
+
+
+<!-- Submit to Engineering Modal -->
+<div class="modal fade" id="submitengModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h4 class="modal-title" id="myModalLabel">Edit Email</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'submit_email_fields' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= button_to "Submit to Engineering", {action: "index", :id => @request.id}, {class: "btn btn-primary"}  %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

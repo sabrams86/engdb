@@ -8,9 +8,7 @@
         background-color: #f0f0f0;
         font: bold smaller sans-serif;
 }
-#main {
-    font-family: georgia;
-}
+
 #main p{
     font-family: georgia;
 }
@@ -52,7 +50,7 @@
   float: left;
   padding-bottom: 500em;
   margin-bottom: -500em;
-  width: 15em;
+  font-family: georgia;
 }
 
 #side {

@@ -31,7 +31,7 @@ class EcnsController < ApplicationController
   # GET /ecns/1.json
   def show
     @ecn = Ecn.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @ecn }
@@ -41,6 +41,7 @@ class EcnsController < ApplicationController
   # GET /ecns/new
   # GET /ecns/new.json
   def new
+    
     @ecn = Ecn.new
     @ecn = @ecn.incrament(@ecn)
     
