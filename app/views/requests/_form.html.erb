@@ -44,7 +44,7 @@
 		  </div>
 		  <div class="field">
 		    <%= f.label :product_line %><br />
-		    <%= f.text_field :product_line %>
+		    <%= f.select :product_line, Request::PRODUCT_LINES, prompt: 'Choose an Product' %>
 		  </div>
 		  <div class="field">
 		    <%= f.label :revision_level %><br />

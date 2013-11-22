@@ -82,19 +82,19 @@
 <% end %>
 </br></br>
 <% if user_in_engineering? %>
-  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitengModal">
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitmfgModal">
   Submit to Manufacturing
   </button>
 <% end %>
 </br></br>
 <% if user_in_manufacturing? %>
-  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitengModal">
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitacctModal">
   Submit to Accounting
   </button>
 <% end %>
 </br></br>
 <% if user_in_accounting? %>
-  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitengModal">
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitacctModal">
   Submit final report to Sales
   </button>
 <% end %>
@@ -126,8 +126,46 @@
         <%= render 'submit_email_fields' %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></br>
         <%= button_to "Submit to Engineering", {action: "submit_eng", :id => @request.id}, {class: "btn btn-primary"}  %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Submit to Manufacturing Modal -->
+<div class="modal fade" id="submitmfgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h4 class="modal-title" id="myModalLabel">Edit Email</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'mfg_email_fields' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></br>
+        <%= button_to "Submit to Manufacturing", {action: "submit_mfg", :id => @request.id}, {class: "btn btn-primary"}  %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Submit to Accounting Modal -->
+<div class="modal fade" id="submitacctModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h4 class="modal-title" id="myModalLabel">Edit Email</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'acct_email_fields' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></br>
+        <%= button_to "Submit to Accounting", {action: "submit_acct", :id => @request.id}, {class: "btn btn-primary"}  %>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

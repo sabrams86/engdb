@@ -48,6 +48,8 @@ delete 'logout' => 'sessions#destroy'
  match 'ecns/close' => 'ecns#close'
  
  match 'requests/submit_eng' => 'requests#submit_eng'
+ match 'requests/submit_mfg' => 'requests#submit_mfg'
+ match 'requests/submit_acct' => 'requests#submit_acct'
  
  match 'drawings/view' => 'drawings#view'
  
