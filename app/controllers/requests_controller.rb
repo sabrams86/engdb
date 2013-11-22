@@ -90,12 +90,13 @@ class RequestsController < ApplicationController
   def submit_eng
       
     @request = Request.find(params[:id])
-    
+    @email = params[:email]
+    @message = @email[:message]
     
     respond_to do |format|
-      RequestNotifier.submit_engineering(@request).deliver if @ecn.distribute_engineering?
+      RequestMailer.notify_a7(@request, @message).deliver if @request.product_line == "A7"
 
-      format.html { redirect_to ecns_url, alert: "Ecn has been submitted for approval." }
+      format.html { redirect_to home_url, alert: "SIR has been submitted to engineering.  Please up the revision level resubmit if you make any changes." }
       format.json { render json: @ecns }
     end
   end
@@ -106,16 +107,8 @@ class RequestsController < ApplicationController
     
     respond_to do |format|
       EcnNotifier.close_engineering(@ecn).deliver if @ecn.distribute_engineering?
-      EcnNotifier.close_purchasing(@ecn).deliver if @ecn.distribute_purchasing?
-      EcnNotifier.close_manufacturing(@ecn).deliver if @ecn.distribute_manufacturing?
-      EcnNotifier.close_qantel(@ecn).deliver if @ecn.distribute_qantel?
-      EcnNotifier.close_planning(@ecn).deliver if @ecn.distribute_planning?
-      EcnNotifier.close_sales(@ecn).deliver if @ecn.distribute_sales?
-      EcnNotifier.close_inventory(@ecn).deliver if @ecn.distribute_inventory?
-      EcnNotifier.close_quality(@ecn).deliver if @ecn.distribute_quality?
-      EcnNotifier.close_india(@ecn).deliver if @ecn.distribute_india?
-      EcnNotifier.close_finance(@ecn).deliver if @ecn.distribute_finance?
-      format.html { redirect_to ecns_url, alert: "Ecn has been closed.  A confirmation email has been sent to the appropriate personnel." }
+
+      format.html { redirect_to ecns_url, alert: "SIR has been turned into an SOR.  An email has been sent to the appropriate personnel." }
       format.json { render json: @ecns }
     end
   end

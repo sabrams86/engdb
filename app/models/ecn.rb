@@ -17,7 +17,7 @@ class Ecn < ActiveRecord::Base
     where("revisions.drawing_number LIKE ?", "%#{drawing_number}%") unless drawing_number.nil? 
     }
   scope :by_pump_model, lambda { |pump_model| where("product_line LIKE ?", "%#{pump_model}%") unless pump_model.nil? }
-  scope :by_ecn_type, lambda { |ecn_type| where("ecn_type LIKE ?", ecn_type) unless ecn_type.nil? }
+  scope :by_ecn_type, lambda { |ecn_type| where("ecn_type LIKE ?", ecn_type) unless ecn_type.nil? or ecn_type == "" }
   scope :by_part_type, lambda { |part_type| 
     joins(:revisions).joins(:drawings).
     where("drawings.part_type LIKE ?", "%#{part_type}%") unless part_type.nil? }

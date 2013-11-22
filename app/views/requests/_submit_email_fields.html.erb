@@ -1,8 +1,9 @@
-<%= form_tag :action => 'index' %>
-<p><label for="email_subject">Subject</label>
+<%= form_tag :action => 'submit_eng', :id => @request.id %>
+
+<p><label for="email_subject">Additional Subject Notes</label>
 <%= text_field 'email', 'subject' %></p>
-<p><label for="email_recipient">Recipient</label>
+<p><label for="email_recipient">Additional Recipients</label>
 <%= text_field 'email', 'recipient' %></p>
-<p><label for="email_message">Message</label><br/>
-<%= text_area 'email', 'message' %></p>
+<p><label for="email_message"></label><br/>
+<%= text_area 'email', 'message', value: render('submit_eng.text.erb'), class: "span6" %></p>
 <%= form_tag %>

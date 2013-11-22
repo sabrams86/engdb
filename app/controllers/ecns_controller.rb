@@ -10,6 +10,7 @@ class EcnsController < ApplicationController
        @ecns = Ecn.paginate page: params[:page], order: order, per_page: 100
     else
        @ecns = Ecn.by_ecn_number(params[:ecns][:ecn_number])\
+         .by_ecn_type(params[:ecns][:ecn_type])\
          .by_drawing_number(params[:ecns][:drawing_number])\
          .by_user_name(params[:ecns][:user_name])\
          .by_pump_model(params[:ecns][:pump_model])\
