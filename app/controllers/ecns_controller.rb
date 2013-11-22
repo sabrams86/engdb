@@ -109,6 +109,7 @@ class EcnsController < ApplicationController
     @message = @email[:message]
     @email_list = EmailList.all
     
+    
     respond_to do |format|
       EcnNotifier.submit_engineering(@ecn, @message).deliver if @ecn.distribute_engineering?
       EcnNotifier.submit_purchasing(@ecn).deliver if @ecn.distribute_purchasing?
@@ -135,6 +136,7 @@ class EcnsController < ApplicationController
       EcnNotifier.close_quality(@ecn).deliver if @ecn.distribute_quality?
       EcnNotifier.close_india(@ecn).deliver if @ecn.distribute_india?
       EcnNotifier.close_finance(@ecn).deliver if @ecn.distribute_finance?
+      raise params.inspect
       format.html { redirect_to ecns_url, alert: "Ecn has been closed.  A confirmation email has been sent to the appropriate personnel." }
       format.json { render json: @ecns }
     end
