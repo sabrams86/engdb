@@ -112,10 +112,10 @@ class EcnsController < ApplicationController
     
     respond_to do |format|
       EcnNotifier.submit_engineering(@ecn, @message).deliver if @ecn.distribute_engineering?
-      EcnNotifier.submit_purchasing(@ecn).deliver if @ecn.distribute_purchasing?
-      EcnNotifier.submit_manufacturing(@ecn).deliver if @ecn.distribute_manufacturing?
-      EcnNotifier.submit_qantel(@ecn).deliver if @ecn.distribute_qantel?
-      EcnNotifier.submit_planning(@ecn).deliver if @ecn.distribute_planning?
+      EcnNotifier.submit_purchasing(@ecn, @message).deliver if @ecn.distribute_purchasing?
+      EcnNotifier.submit_manufacturing(@ecn, @message).deliver if @ecn.distribute_manufacturing?
+      EcnNotifier.submit_qantel(@ecn, @message).deliver if @ecn.distribute_qantel?
+      EcnNotifier.submit_planning(@ecn, @message).deliver if @ecn.distribute_planning?
       format.html { redirect_to home_url, alert: "Ecn has been submitted for approval." }
       format.json { render json: @ecns }
     end
@@ -123,20 +123,22 @@ class EcnsController < ApplicationController
   
   def close
     @ecn = Ecn.find(params[:id])
+    @email = params[:email]
+    @message = @email[:message]
     @ecn = @ecn.close_status(@ecn)
     
     respond_to do |format|
-      EcnNotifier.close_engineering(@ecn).deliver if @ecn.distribute_engineering?
-      EcnNotifier.close_purchasing(@ecn).deliver if @ecn.distribute_purchasing?
-      EcnNotifier.close_manufacturing(@ecn).deliver if @ecn.distribute_manufacturing?
-      EcnNotifier.close_qantel(@ecn).deliver if @ecn.distribute_qantel?
-      EcnNotifier.close_planning(@ecn).deliver if @ecn.distribute_planning?
-      EcnNotifier.close_sales(@ecn).deliver if @ecn.distribute_sales?
-      EcnNotifier.close_inventory(@ecn).deliver if @ecn.distribute_inventory?
-      EcnNotifier.close_quality(@ecn).deliver if @ecn.distribute_quality?
-      EcnNotifier.close_india(@ecn).deliver if @ecn.distribute_india?
-      EcnNotifier.close_finance(@ecn).deliver if @ecn.distribute_finance?
-      raise params.inspect
+      EcnNotifier.close_engineering(@ecn, @message).deliver if @ecn.distribute_engineering?
+      EcnNotifier.close_purchasing(@ecn, @message).deliver if @ecn.distribute_purchasing?
+      EcnNotifier.close_manufacturing(@ecn, @message).deliver if @ecn.distribute_manufacturing?
+      EcnNotifier.close_qantel(@ecn, @message).deliver if @ecn.distribute_qantel?
+      EcnNotifier.close_planning(@ecn, @message).deliver if @ecn.distribute_planning?
+      EcnNotifier.close_sales(@ecn, @message).deliver if @ecn.distribute_sales?
+      EcnNotifier.close_inventory(@ecn, @message).deliver if @ecn.distribute_inventory?
+      EcnNotifier.close_quality(@ecn, @message).deliver if @ecn.distribute_quality?
+      EcnNotifier.close_india(@ecn, @message).deliver if @ecn.distribute_india?
+      EcnNotifier.close_finance(@ecn, @message).deliver if @ecn.distribute_finance?
+      @ecn.update_attributes(params[:ecn])
       format.html { redirect_to ecns_url, alert: "Ecn has been closed.  A confirmation email has been sent to the appropriate personnel." }
       format.json { render json: @ecns }
     end

@@ -105,7 +105,7 @@
       </tr>
   </table>
 <% end %>
-<% if user_in_engineering? %>
+<% if (user_in_engineering? and @ecn.status != true) %>
   <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitModal">
   Submit for Approval
   </button>
@@ -113,8 +113,8 @@
   Close ECN
   </button>
   </br>
-  <b><%= link_to 'Edit', edit_ecn_path(@ecn) %></b>
-<% end %> |
+  <b><%= link_to 'Edit', edit_ecn_path(@ecn) %></b> |
+<% end %>
   <b><%= link_to 'Back', ecns_path %></b>
 
 
@@ -127,13 +127,13 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
         <h4 class="modal-title" id="myModalLabel">Edit Email</h4>
       </div>
-      <div class="modal-body">
-        <%= render 'submit_email_fields' %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <%= button_to "Submit ECN", {action: "submit", :id => @ecn.id}, {class: "btn btn-primary"} %>
-      </div>
+	      <div class="modal-body">
+	        <%= render 'submit_email_fields' %>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	        <%= button_to "Submit ECN", {action: "submit", :id => @ecn.id}, {class: "btn btn-primary"} %>
+	      </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
@@ -147,11 +147,11 @@
         <h4 class="modal-title" id="myModalLabel">Edit Email</h4>
       </div>
       <div class="modal-body">
-        <%= render 'submit_email_fields' %>
+        <%= render 'close_email_fields' %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <%= button_to "Close ECN", {action: "close", :id => @ecn.id}, {class: "btn btn-primary"}  %>
+        <%= button_to "Close ECN", {action: "close", :id => @ecn.id}, {class: "btn btn-primary", onclick: "return confirm('Once an ECN is closed it can no longer be edited, are you sure you want to close this ECN?')"}  %>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

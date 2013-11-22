@@ -36,7 +36,8 @@ class Ecn < ActiveRecord::Base
     return ecn
   end
   def close_status(ecn)
-    ecn[:status] = true
+    @ecn = ecn
+    @ecn[:status] = true
     return ecn
   end  
 end
