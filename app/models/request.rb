@@ -12,6 +12,36 @@ class Request < ActiveRecord::Base
     request[:request_number] = Request.maximum(:request_number) + 1
     return request
   end
+  def complete_status(request)
+    @request = request
+    @request[:status] = "Complete"
+    return request
+  end  
+  def eng_status(request)
+    @request = request
+    @request[:status] = "In Engineering"
+    return request
+  end  
+  def mfg_status(request)
+    @request = request
+    @request[:status] = "In Manufacturing"
+    return request
+  end  
+  def acct_status(request)
+    @request = request
+    @request[:status] = "In Accounting"
+    return request
+  end  
+  def sor_status(request)
+    @request = request
+    @request[:status] = "SOR Released"
+    return request
+  end  
+  def created_status(request)
+    @request = request
+    @request[:status] = "Created"
+    return request
+  end  
   
 end
 

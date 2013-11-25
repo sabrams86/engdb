@@ -50,6 +50,8 @@ delete 'logout' => 'sessions#destroy'
  match 'requests/submit_eng' => 'requests#submit_eng'
  match 'requests/submit_mfg' => 'requests#submit_mfg'
  match 'requests/submit_acct' => 'requests#submit_acct'
+ match 'requests/submit_sales' => 'requests#submit_sales'
+ match 'requests/submit_sor' => 'requests#submit_sor'
  
  match 'drawings/view' => 'drawings#view'
  

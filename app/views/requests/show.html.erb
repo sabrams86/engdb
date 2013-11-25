@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <b>Status:</b>
+  <%= @request.status %>
+</p>
+
+<p>
   <b>Requester:</b>
   <%= @request.requester %>
 </p>
@@ -66,11 +71,6 @@
 </p>
 
 <p>
-  <b>Status:</b>
-  <%= @request.status %>
-</p>
-
-<p>
   <b>Comments:</b>
   <%= @request.comments %>
 </p>
@@ -94,13 +94,13 @@
 <% end %>
 </br></br>
 <% if user_in_accounting? %>
-  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitacctModal">
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitsalesModal">
   Submit final report to Sales
   </button>
 <% end %>
 </br></br>
-<% if user_in_sales? and @request.status == "Finished" %>
-  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitengModal">
+<% if user_in_sales? and @request.status == "Complete" %>
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitsorModal">
   Turn SIR into SOR
   </button>
 <% end %>
@@ -166,6 +166,44 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></br>
         <%= button_to "Submit to Accounting", {action: "submit_acct", :id => @request.id}, {class: "btn btn-primary"}  %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Submit to Sales Modal -->
+<div class="modal fade" id="submitsalesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h4 class="modal-title" id="myModalLabel">Edit Email</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'sales_email_fields' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></br>
+        <%= button_to "Submit to Sales", {action: "submit_sales", :id => @request.id}, {class: "btn btn-primary"}  %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Submit to SOR Modal -->
+<div class="modal fade" id="submitsorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h4 class="modal-title" id="myModalLabel">Edit Email</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'sor_email_fields' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></br>
+        <%= button_to "Create SOR", {action: "submit_sor", :id => @request.id}, {class: "btn btn-primary"}  %>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

@@ -1,0 +1,37 @@
+All,
+
+Your SIR has been processed.  The final lead times and prices are listed for each individual item listed below.
+
+Special Request Details: 
+
+  SIR #: <%= @request.request_number %>
+  Requester: <%= @request.requester %>
+  Regional Sales Manager: <%= @request.regional_sales_mgr %>
+  Quote Number: <%= @request.quote_number %>
+  Order Number: <%= @request.order_number %>
+  Customer: <%= @request.customer %>
+  Customer Location: <%= @request.cusomter_location %>
+  Product Line: <%= @request.product_line %>
+  Inquiry Creation Date: <%= @request.inq_submitted_date %>
+  Status: <%= @request.status %>
+
+  General Description: <%= @request.description %>
+  Additional Comments: <%= @request.comments %>
+
+<% for request_item in @request.request_items %>
+  Item:
+     Part Number: <%= h request_item.part_number %>
+     Item Number: <%= h request_item.item_number %>
+     Description: <%= h request_item.part_desc %>
+     Reference Part: <%= h request_item.reference_part %>
+     Engineering Comments:  <%= h request_item.eng_comments %>
+     Manufacturing Comments: <%= h request_item.mfg_comments %>
+     
+ ***  Final Price:  <%= h request_item.final_price %>  ***
+ ***  Final Lead Time:  <%= h request_item.final_lead %>  ***
+     
+<% end %>
+
+Please contact <%= user_name %> with any questions or comments on pricing.
+
+If you would like to move forward with this request, please log onto the engineering database, navigate to this SIR, and select "Turn SIR into SOR".

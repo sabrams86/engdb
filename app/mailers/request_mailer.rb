@@ -144,4 +144,15 @@ class RequestMailer < ActionMailer::Base
     mail to: to, subject: 'SIR '+@request.request_number.to_s+' notification', template_name: 'eng_notify'
   end
   
+  def notify_sales(request, message)
+    @request = request
+    @message = message
+    @email = User.where(name: @request.requester)
+    to = []
+    @email.each do |e|
+      to.push e.email
+    end
+    mail to: to, subject: 'SIR '+@request.request_number.to_s+' Final Report', template_name: 'eng_notify'  
+  end
+  
 end
