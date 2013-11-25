@@ -147,7 +147,7 @@ class RequestMailer < ActionMailer::Base
   def notify_sales(request, message)
     @request = request
     @message = message
-    @email = User.where(name: @request.requester)
+    @email = User.where(name: @request.requester).where(name: @request.regional_sales_mgr).all
     to = []
     @email.each do |e|
       to.push e.email
