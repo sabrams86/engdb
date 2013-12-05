@@ -1,3 +1,20 @@
+==Wilfley Engineering Database
+
+This is an online database used on a local server for an engineering manufacturing
+company.  It is used to track and search for information about various documents.
+The database also serves as a project tracking mechanism in which a user can create 
+a request, submit it to various departments within the company, and in return
+accept or deny information returned to them regarding their request.
+
+Features of this application include nested tables, automated emails using modals
+to edit emails before sending them, pdf viewing capabilities from an alternate
+directory location, multiple field searches, form validation, user logins,
+administrative access functions.
+
+
+
+
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
