@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  procedure_number: MyString
+  title: MyString
+  description: MyText
+  created_on: 2013-12-05
+  created_by: MyString
+  comments: MyText
+
+two:
+  procedure_number: MyString
+  title: MyString
+  description: MyText
+  created_on: 2013-12-05
+  created_by: MyString
+  comments: MyText

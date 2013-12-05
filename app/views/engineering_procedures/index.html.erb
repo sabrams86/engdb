@@ -1,0 +1,47 @@
+<h1>Listing Engineering Procedures</h1>
+<% if notice %>
+  <p id="notice"><%= notice%></p>
+<% end %>
+<% if alert %>
+  <p id="notice"><%= alert%></p>
+<% end %>
+<%= link_to 'New Engineering procedure', new_engineering_procedure_path %>
+<table class="table table-striped">
+  <tr>
+    <th><%= sortable_column "Procedure number", :direction => :desc %></th>
+    <th><%= sortable_column "Title" %></th>
+    <th><%= sortable_column "Description" %></th>
+    <th><%= sortable_column "Created on" %></th>
+    <th><%= sortable_column "Created by" %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @engineering_procedures.each do |engineering_procedure| %>
+  <tr>
+    <td><%= link_to engineering_procedure.procedure_number, engineering_procedure %></td>
+    <td><%= engineering_procedure.title %></td>
+    <td width="400px"><%= engineering_procedure.description %></td>
+    <td><%= engineering_procedure.created_on %></td>
+    <td><%= engineering_procedure.created_by %></td>
+    <td><%= link_to engineering_procedure do %>
+    	<i class="icon-eye-open glyphw"></i>
+    	<% end %>
+    	<% if user_in_engineering? %>
+			<%= link_to edit_engineering_procedure_path(engineering_procedure) do %>
+	    	<i class="icon-pencil glyphw"></i>
+	    	<% end %>
+	    <% end %>
+	    <% if user_in_admin? %>
+			<%= link_to '<i class="icon-trash glyphw"></i>'.html_safe, engineering_procedure, confirm: 'Are you sure?', method: :delete %>
+		<% end %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Engineering procedure', new_engineering_procedure_path %>
+<p><%= will_paginate @engineering_procedures %></p>

@@ -1,5 +1,9 @@
 Engdb::Application.routes.draw do
 
+  resources :engineering_procedures
+
+  resources :engineering_projects
+
   resources :request_items
 
   resources :requests

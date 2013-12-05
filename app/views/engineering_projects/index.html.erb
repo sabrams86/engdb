@@ -1,0 +1,51 @@
+<h1>Listing Engineering Projects</h1>
+<% if notice %>
+  <p id="notice"><%= notice%></p>
+<% end %>
+<% if alert %>
+  <p id="notice"><%= alert%></p>
+<% end %>
+<%= link_to 'New Engineering project', new_engineering_project_path %>
+<table class="table table-striped">
+  <tr>
+    <th><%= sortable_column "Project number", :direction => :desc %></th>
+    <th><%= sortable_column "Created on" %></th>
+    <th><%= sortable_column "Project engineer" %></th>
+    <th><%= sortable_column "Title" %></th>
+    <th><%= sortable_column "Description" %></th>
+    <th><%= sortable_column "Status" %></th>
+    <th><%= sortable_column "File location" %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @engineering_projects.each do |engineering_project| %>
+  <tr>
+    <td><%= link_to engineering_project.project_number, engineering_project %></td>
+    <td><%= engineering_project.created_on %></td>
+    <td><%= engineering_project.project_engineer %></td>
+    <td><%= engineering_project.title %></td>
+    <td width="400px"><%= engineering_project.description %></td>
+    <td><%= engineering_project.status %></td>
+    <td><%= engineering_project.file_location %></td>
+    <td><%= link_to engineering_project do %>
+    	<i class="icon-eye-open glyphw"></i>
+    	<% end %>
+    	<% if user_in_engineering? %>
+			<%= link_to edit_engineering_project_path(engineering_project) do %>
+	    	<i class="icon-pencil glyphw"></i>
+	    	<% end %>
+	    <% end %>
+	    <% if user_in_admin? %>
+			<%= link_to '<i class="icon-trash glyphw"></i>'.html_safe, engineering_project, confirm: 'Are you sure?', method: :delete %>
+		<% end %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Engineering project', new_engineering_project_path %>
+<p><%= will_paginate @engineering_projects %></p>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Procedure number:</b>
+  <%= @engineering_procedure.procedure_number %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @engineering_procedure.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @engineering_procedure.description %>
+</p>
+
+<p>
+  <b>Created on:</b>
+  <%= @engineering_procedure.created_on %>
+</p>
+
+<p>
+  <b>Created by:</b>
+  <%= @engineering_procedure.created_by %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%= @engineering_procedure.comments %>
+</p>
+
+
+<%= link_to 'Edit', edit_engineering_procedure_path(@engineering_procedure) %> |
+<%= link_to 'Back', engineering_procedures_path %>
