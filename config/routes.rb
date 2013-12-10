@@ -1,5 +1,5 @@
 Engdb::Application.routes.draw do
-
+match 'drawings/new_e_drawing' => 'drawings#new_e_drawing'
   resources :engineering_procedures
 
   resources :engineering_projects
@@ -33,7 +33,7 @@ delete 'logout' => 'sessions#destroy'
   end
 
   resources :revisions
-
+  
   resources :drawings do
     resources :revisions
   end
@@ -60,6 +60,7 @@ delete 'logout' => 'sessions#destroy'
  match 'drawings/view' => 'drawings#view'
  
  match '*path' => redirect('/home'), via: :get
+ 
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase

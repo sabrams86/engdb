@@ -49,6 +49,16 @@ class DrawingsController < ApplicationController
       format.json { render json: @drawing }
     end
   end
+  
+  def new_e_drawing
+    @drawing = Drawing.new
+    @drawing = @drawing.incrament_e(@drawing)
+    
+    respond_to do |format|
+      format.html { render :template => "drawings/new" }
+      format.json { render json: @drawing }
+    end
+  end
 
   # GET /drawings/1/edit
   def edit

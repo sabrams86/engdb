@@ -18,7 +18,8 @@
       <ul>
         <li><%= link_to 'Home', controller: 'home', action: 'index' %></li>
         <% if user_in_engineering? %>
-        	<li><%= link_to 'New Drawing', new_drawing_path %></li>
+        	<li><%= link_to 'New A Drawing', new_drawing_path %></li>
+        	<li><%= link_to 'New E Drawing', controller: 'drawings', action: 'new_e_drawing' %></li>
         	<li><%= link_to 'New ECN', new_ecn_path %></li>
         	<li><%= link_to 'Engineering Projects', controller: 'engineering_projects', action: 'index' %></li>
         	<li><%= link_to 'Engineering Procedures', controller: 'engineering_procedures', action: 'index' %></li>

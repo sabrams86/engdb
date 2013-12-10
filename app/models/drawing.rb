@@ -36,6 +36,23 @@ class Drawing < ActiveRecord::Base
     drawing[:drawing_number] = "A" + @max_num.to_s
     return drawing
   end
+  
+  def incrament_e(drawing)
+    items = Drawing.where( [ 'drawing_number LIKE ?' , 'E%' ] )
+    max_value = 0
+    items.each do |item|
+      next if item.drawing_number =~ /\A[A-Za-z]{2,}/
+      drawing_number = item.drawing_number.gsub(/\AE/, '').to_i
+      max_value = drawing_number if drawing_number > max_value
+    end
+    @max_num = max_value + 1
+    if @max_num < 1000
+      drawing[:drawing_number] = "E0" + @max_num.to_s
+    else
+      drawing[:drawing_number] = "E" + @max_num.to_s
+    end
+    return drawing
+  end
 
   def draw_path(drawing)
     folder = drawing[:file_location]
