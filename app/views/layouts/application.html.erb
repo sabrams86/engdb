@@ -9,36 +9,47 @@
 
 </head>
 <body class="<%= controller.controller_name %>">
-  <div id="banner">
-    <%= image_tag("logo.png") %>
-    <%= @page_title || "Wilfley Engineering Database" %>
-  </div>
-  <div id="columns">
-    <div id="side">
-      <ul>
-        <li><%= link_to 'Home', controller: 'home', action: 'index' %></li>
-        <% if user_in_engineering? %>
-        	<li><%= link_to 'New A Drawing', new_drawing_path %></li>
-        	<li><%= link_to 'New E Drawing', controller: 'drawings', action: 'new_e_drawing' %></li>
-        	<li><%= link_to 'New ECN', new_ecn_path %></li>
-        	<li><%= link_to 'Engineering Projects', controller: 'engineering_projects', action: 'index' %></li>
-        	<li><%= link_to 'Engineering Procedures', controller: 'engineering_procedures', action: 'index' %></li>
-        <% end %>
-        <li><%= link_to 'SIR Database', controller: 'requests', action: 'index' %></li>
+<div id="wrapper" >	
+<div class="color">	
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="navbar-header">
+	  <div id="banner">
+	    <%= image_tag("logo.png") %>
+	    <%= @page_title || "Wilfley Engineering Database" %>
+	  </div>
+    </div>
+  <div class="color">
+      <ul id="navbar" class="nav nav-justified">
+        <li><%= link_to 'Home', controller: 'home', action: 'index', class: 'active' %></li>
         <% if user_in_sales? %>
             <li><%= link_to 'New SIR', new_request_path %></li>
         <% end %>
-        <% if user_in_admin? %>
+        <% if user_in_engineering? %>
+		    <li class="dropdown">
+		      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Engineering <b class="caret"></b></a>
+		      <ul class="dropdown-menu">
+		        <li><%= link_to 'New A Drawing', new_drawing_path %></li>
+		        <li><%= link_to 'New E Drawing', controller: 'drawings', action: 'new_e_drawing' %></li>
+		        <li><%= link_to 'New ECN', new_ecn_path %></li>
+		        <li><%= link_to 'Engineering Projects', controller: 'engineering_projects', action: 'index' %></li>
+		    	<li><%= link_to 'Engineering Procedures', controller: 'engineering_procedures', action: 'index' %></li>
+		      </ul>
+		    </li>
+		<% end %>
+		<li><%= link_to 'SIR Database', controller: 'requests', action: 'index' %></li>
+		<% if user_in_admin? %>
   			<li><%= link_to 'Edit email list', controller: 'email_lists', action: 'index' %></li>
   			<li><%= link_to 'Edit Users', controller: 'users', action: 'index' %></li>
 		<% end %>
-		
-        <li><%= link_to 'Logout', logout_path %></li>
+		<li><%= link_to 'Logout', logout_path %></li>
       </ul>
-    </div>
-    <div id="main" class="span14">
+  </div>
+</div>
+</div>
+
+    <div id="main" class="container">
       <%= yield %>
     </div>
-  </div>
+</div> 
 </body>
 </html>
