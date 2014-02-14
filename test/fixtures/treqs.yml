@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  test_number: 1
+  date_recieved: 2014-02-14
+  submitted_by: MyString
+  pump_model: MyString
+  technician: MyString
+  date_complete: 2014-02-14
+  description: MyText
+
+two:
+  test_number: 1
+  date_recieved: 2014-02-14
+  submitted_by: MyString
+  pump_model: MyString
+  technician: MyString
+  date_complete: 2014-02-14
+  description: MyText

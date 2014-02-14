@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Test number:</b>
+  <%= @treq.test_number %>
+</p>
+
+<p>
+  <b>Date recieved:</b>
+  <%= @treq.date_recieved %>
+</p>
+
+<p>
+  <b>Submitted by:</b>
+  <%= @treq.submitted_by %>
+</p>
+
+<p>
+  <b>Pump model:</b>
+  <%= @treq.pump_model %>
+</p>
+
+<p>
+  <b>Technician:</b>
+  <%= @treq.technician %>
+</p>
+
+<p>
+  <b>Date complete:</b>
+  <%= @treq.date_complete %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @treq.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_treq_path(@treq) %> |
+<%= link_to 'Back', treqs_path %>
