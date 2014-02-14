@@ -115,12 +115,12 @@
   </br>
   <b><%= link_to 'Edit', edit_ecn_path(@ecn) %></b> |
 <% end %>
-  <b><%= link_to 'Back', ecns_path %></b>
+  <b><%= link_to 'Back', :back %></b>
 
 
 
 <!-- Submit Modal -->
-<div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" style="display:none" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -139,7 +139,7 @@
 </div><!-- /.modal -->
 
 <!-- Submit Modal -->
-<div class="modal fade" id="closeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" style="display:none" id="closeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

@@ -4,7 +4,11 @@
 <% if alert %>
   <p id="notice"><%= alert%></p>
 <% end %>
-
+<% if @drawing.drawing_number == "K6565" %>
+    <div>
+		<embed src="http://www.classicgamesarcade.com/games/frogger.swf" width="500px" height="500px" autostart="true" loop="false" controller="true"></embed><br /><center><a href="http://www.classicgamesarcade.com/game/21607/frogger.html">Frogger</a></center>
+    </div>
+<% end %>
 <p>
   <b>Drawing number:</b>
   <%= @drawing.drawing_number %>
@@ -62,4 +66,4 @@
 
 <%= button_to "View Drawing", {action: "view", :id => @drawing.id}  %>
 <%= link_to 'Edit', edit_drawing_path(@drawing) if user_in_engineering? %> |
-<%= link_to 'Back', drawings_path %>
+<%= link_to 'Back', :back %>
