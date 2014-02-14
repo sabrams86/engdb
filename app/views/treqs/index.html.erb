@@ -1,0 +1,44 @@
+<h1>Listing treqs</h1>
+
+<table class="table table-striped">
+  <tr class="info">
+    <th><%= sortable_column "Test number" %></th>
+    <th><%= sortable_column "Date recieved" %></th>
+    <th><%= sortable_column "Submitted by" %></th>
+    <th><%= sortable_column "Pump model" %></th>
+    <th><%= sortable_column "Technician" %></th>
+    <th><%= sortable_column "Date complete" %></th>
+    <th><%= sortable_column "Description" %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @treqs.each do |treq| %>
+  <tr>
+    <td><%= link_to treq.test_number, treq %></td>
+    <td><%= treq.date_recieved %></td>
+    <td><%= treq.submitted_by %></td>
+    <td><%= treq.pump_model %></td>
+    <td><%= treq.technician %></td>
+    <td><%= treq.date_complete %></td>
+    <td><%= treq.description %></td>
+    <td><%= link_to treq do %>
+    	<i class="icon-eye-open glyphw"></i>
+    	<% end %>
+    	<% if user_in_engineering? %>
+			<%= link_to edit_treq_path(treq) do %>
+	    	<i class="icon-pencil glyphw"></i>
+	    	<% end %>
+	    <% end %>
+	    <% if user_in_admin? %>
+			<%= link_to '<i class="icon-trash glyphw"></i>'.html_safe, treq, confirm: 'Are you sure?', method: :delete %>
+		<% end %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Treq', new_treq_path %>

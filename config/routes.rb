@@ -1,4 +1,6 @@
 Engdb::Application.routes.draw do
+  resources :treqs
+
 match 'drawings/new_e_drawing' => 'drawings#new_e_drawing'
   resources :engineering_procedures
 

@@ -1,0 +1,45 @@
+<%= form_for(@treq) do |f| %>
+  <% if @treq.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@treq.errors.count, "error") %> prohibited this treq from being saved:</h2>
+
+      <ul>
+      <% @treq.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :test_number %><br />
+    <%= f.number_field :test_number %>
+  </div>
+  <div class="field">
+    <%= f.label :date_recieved %><br />
+    <%= f.date_select :date_recieved %>
+  </div>
+  <div class="field">
+    <%= f.label :submitted_by %><br />
+    <%= f.text_field :submitted_by %>
+  </div>
+  <div class="field">
+    <%= f.label :pump_model %><br />
+    <%= f.text_field :pump_model %>
+  </div>
+  <div class="field">
+    <%= f.label :technician %><br />
+    <%= f.text_field :technician %>
+  </div>
+  <div class="field">
+    <%= f.label :date_complete %><br />
+    <%= f.date_select :date_complete %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
