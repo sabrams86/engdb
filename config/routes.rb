@@ -1,4 +1,6 @@
 Engdb::Application.routes.draw do
+  resources :product_bulletins
+
   resources :treqs
 
 match 'drawings/new_e_drawing' => 'drawings#new_e_drawing'

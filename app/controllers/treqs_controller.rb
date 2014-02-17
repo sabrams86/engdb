@@ -1,9 +1,12 @@
 class TreqsController < ApplicationController
   handles_sortable_columns
+  before_filter :eng_check, only: [:new, :create, :update, :show, :edit]
+  before_filter :admin_check, only: [:destroy]
   # GET /treqs
   # GET /treqs.json
   def index
-    @treqs = Treq.all
+    order = sortable_column_order, "test_number desc"
+    @treqs = Treq.paginate page: params[:page], order: order, per_page: 50
 
     respond_to do |format|
       format.html # index.html.erb
