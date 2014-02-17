@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Number:</b>
+  <%= @product_bulletin.number %>
+</p>
+
+<p>
+  <b>Date created:</b>
+  <%= @product_bulletin.date_created %>
+</p>
+
+<p>
+  <b>Model:</b>
+  <%= @product_bulletin.model %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= @product_bulletin.subject %>
+</p>
+
+<p>
+  <b>Written by:</b>
+  <%= @product_bulletin.written_by %>
+</p>
+<p>
+  <b>Revision:</b>
+  <%= @product_bulletin.revision %>
+</p>
+
+<%= link_to 'Edit', edit_product_bulletin_path(@product_bulletin) %> |
+<%= link_to 'Back', product_bulletins_path %>

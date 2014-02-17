@@ -1,5 +1,6 @@
 <h1>Listing treqs</h1>
 
+<%= link_to 'New Treq', new_treq_path if user_in_engineering? %>
 <table class="table table-striped">
   <tr class="info">
     <th><%= sortable_column "Test number" %></th>
@@ -41,4 +42,6 @@
 
 <br />
 
-<%= link_to 'New Treq', new_treq_path %>
+<%= link_to 'New Treq', new_treq_path if user_in_engineering? %>
+<p><%= will_paginate @treqs %></p>
+<%= link_to 'Back', :back %>

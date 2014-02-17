@@ -1,0 +1,45 @@
+<h1>Listing Product Bulletins</h1>
+
+<%= link_to 'New Product bulletin', new_product_bulletin_path if user_in_engineering? %>
+<table class="table table-striped">
+  <tr>
+    <th><%= sortable_column "Number" %></th>
+    <th><%= sortable_column "Date created" %></th>
+    <th><%= sortable_column "Model" %></th>
+    <th><%= sortable_column "Subject" %></th>
+    <th><%= sortable_column "Written by" %></th>
+    <th><%= sortable_column "Revision" %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @product_bulletins.each do |product_bulletin| %>
+  <tr>
+    <td><%= product_bulletin.number %></td>
+    <td><%= product_bulletin.date_created %></td>
+    <td><%= product_bulletin.model %></td>
+    <td><%= product_bulletin.subject %></td>
+    <td><%= product_bulletin.written_by %></td>
+    <td><%= product_bulletin.revision %></td>
+    <td><%= link_to product_bulletin do %>
+    	<i class="icon-eye-open glyphw"></i>
+    	<% end %>
+    	<% if user_in_engineering? %>
+			<%= link_to edit_product_bulletin_path(product_bulletin) do %>
+	    	<i class="icon-pencil glyphw"></i>
+	    	<% end %>
+	    <% end %>
+	    <% if user_in_admin? %>
+			<%= link_to '<i class="icon-trash glyphw"></i>'.html_safe, product_bulletin, confirm: 'Are you sure?', method: :delete %>
+		<% end %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Product bulletin', new_product_bulletin_path if user_in_engineering? %>
+<p><%= will_paginate @product_bulletins %></p>
+<%= link_to 'Back', :back %>
