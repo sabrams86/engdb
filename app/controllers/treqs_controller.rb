@@ -29,6 +29,7 @@ class TreqsController < ApplicationController
   # GET /treqs/new.json
   def new
     @treq = Treq.new
+    @treq = @treq.incrament(@treq)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,10 +46,10 @@ class TreqsController < ApplicationController
   # POST /treqs.json
   def create
     @treq = Treq.new(params[:treq])
-    TreqNotifier.submit_treq(@treq).deliver
+    
     respond_to do |format|
       if @treq.save
-        
+        TreqNotifier.submit_treq(@treq).deliver
         format.html { redirect_to @treq, notice: 'Treq was successfully created.' }
         format.json { render json: @treq, status: :created, location: @treq }
       else
