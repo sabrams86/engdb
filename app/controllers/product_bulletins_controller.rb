@@ -29,6 +29,7 @@ class ProductBulletinsController < ApplicationController
   # GET /product_bulletins/new.json
   def new
     @product_bulletin = ProductBulletin.new
+    @product_bulletin = @product_bulletin.incrament(@product_bulletin)
 
     respond_to do |format|
       format.html # new.html.erb

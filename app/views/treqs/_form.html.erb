@@ -33,7 +33,7 @@
   </div>
   <div class="field">
     <%= f.label :date_complete %><br />
-    <%= f.date_select :date_complete %>
+    <%= f.date_select :date_complete, {:include_blank => true, :default => nil} %>
   </div>
   <div class="field">
     <%= f.label :description %><br />
