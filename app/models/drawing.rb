@@ -1,4 +1,6 @@
 class Drawing < ActiveRecord::Base
+  #comment
+  
   has_many :revisions
   
   PART_TYPES = [ "Impeller", "Case", "Wet End Component", "Seal Component", "Power End Component", "Auxilliary Component" ]
