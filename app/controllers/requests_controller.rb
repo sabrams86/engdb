@@ -98,7 +98,7 @@ class RequestsController < ApplicationController
     @additional_emails = @email[:recipient]
     
     respond_to do |format|
-      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject).deliver
+      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject).deliver if @additional_emails != ""
       RequestMailer.notify_a9(@request, @message, @subject).deliver if @request.product_line == "A9"
       RequestMailer.notify_a7(@request, @message, @subject).deliver if @request.product_line == "A7"
       RequestMailer.notify_ag(@request, @message, @subject).deliver if @request.product_line == "AG"
@@ -127,7 +127,7 @@ class RequestsController < ApplicationController
     @additional_emails = @email[:recipient]
     
     respond_to do |format|
-      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject).deliver
+      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject).deliver if @additional_emails != ""
       RequestMailer.notify_mfg(@request, @message, @subject).deliver 
       
       @request.update_attributes(params[:request])
@@ -146,7 +146,7 @@ class RequestsController < ApplicationController
     @additional_emails = @email[:recipient]
     
     respond_to do |format|
-      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject).deliver
+      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject).deliver if @additional_emails != ""
       RequestMailer.notify_acct(@request, @message, @subject).deliver 
       
       @request.update_attributes(params[:request])
@@ -165,7 +165,7 @@ class RequestsController < ApplicationController
     @additional_emails = @email[:recipient]
     
     respond_to do |format|
-      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject).deliver
+      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject).deliver if @additional_emails != ""
       RequestMailer.notify_sales(@request, @message, @subject).deliver 
       
       @request.update_attributes(params[:request])
@@ -183,7 +183,7 @@ class RequestsController < ApplicationController
     @additional_emails = @email[:recipient]
     
     respond_to do |format|
-      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject).deliver
+      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject).deliver if @additional_emails != ""
       RequestMailer.notify_a9(@request, @message, @subject).deliver if @request.product_line == "A9"
       RequestMailer.notify_a7(@request, @message, @subject).deliver if @request.product_line == "A7"
       RequestMailer.notify_ag(@request, @message, @subject).deliver if @request.product_line == "AG"

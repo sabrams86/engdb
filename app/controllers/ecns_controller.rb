@@ -113,7 +113,7 @@ class EcnsController < ApplicationController
     @subject = @email[:subject]
     
     respond_to do |format|
-      EcnNotifier.submit_additional(@ecn, @message, @additional_emails, @subject).deliver if @additional_emails.recipient?
+      EcnNotifier.submit_additional(@ecn, @message, @additional_emails, @subject).deliver if @additional_emails != ""
       EcnNotifier.submit_engineering(@ecn, @message, @subject).deliver if @ecn.distribute_engineering?
       EcnNotifier.submit_purchasing(@ecn, @message, @subject).deliver if @ecn.distribute_purchasing?
       EcnNotifier.submit_manufacturing(@ecn, @message, @subject).deliver if @ecn.distribute_manufacturing?
@@ -133,7 +133,7 @@ class EcnsController < ApplicationController
     @subject = @email[:subject]
     
     respond_to do |format|
-      EcnNotifier.close_additional(@ecn, @message, @additional_emails, @subject).deliver
+      EcnNotifier.close_additional(@ecn, @message, @additional_emails, @subject).deliver if @additional_emails != ""
       EcnNotifier.close_engineering(@ecn, @message, @subject).deliver if @ecn.distribute_engineering?
       EcnNotifier.close_purchasing(@ecn, @message, @subject).deliver if @ecn.distribute_purchasing?
       EcnNotifier.close_manufacturing(@ecn, @message, @subject).deliver if @ecn.distribute_manufacturing?
