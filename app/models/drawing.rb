@@ -59,7 +59,7 @@ class Drawing < ActiveRecord::Base
   def draw_path(drawing)
     folder = drawing[:file_location]
     file_name = drawing[:drawing_number]
-      path = Dir["X://engineering/shop\ prints/#{folder}/#{file_name}*"].first
+      path = Dir["smb://engserver/engineering/shop\ prints/#{folder}/#{file_name}*"].first
     return path
   end
 
