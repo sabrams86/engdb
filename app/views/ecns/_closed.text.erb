@@ -8,7 +8,7 @@ Created on:  <%= @ecn.created_on %>
 <% for revision in @ecn.revisions %>
 
 REVISION
-       Drawing Number: <%= h revision.drawing_id %>
+       Drawing Number: <%= h revision.drawing_number %>
        Changes: <%= h revision.change %>
        Justification: <%= h revision.justification %>
        New Revision: <%= h revision.rev_level %>
