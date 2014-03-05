@@ -22,55 +22,57 @@
   <%= @ecn.user_name %>
 </p>
 
-<p>
-  <b>Distribute engineering:</b>
-  <%= @ecn.distribute_engineering %>
-</p>
 
-<p>
-  <b>Distribute purchasing:</b>
-  <%= @ecn.distribute_purchasing %>
-</p>
-
-<p>
-  <b>Distribute planning:</b>
-  <%= @ecn.distribute_planning %>
-</p>
-
-<p>
-  <b>Distribute manufacturing:</b>
-  <%= @ecn.distribute_manufacturing %>
-</p>
-
-<p>
-  <b>Distribute qantel:</b>
-  <%= @ecn.distribute_qantel %>
-</p>
-
-<p>
-  <b>Distribute sales:</b>
-  <%= @ecn.distribute_sales %>
-</p>
-
-<p>
-  <b>Distribute inventory:</b>
-  <%= @ecn.distribute_inventory %>
-</p>
-
-<p>
-  <b>Distribute quality:</b>
-  <%= @ecn.distribute_quality %>
-</p>
-
-<p>
-  <b>Distribute india:</b>
-  <%= @ecn.distribute_india %>
-</p>
-
-<p>
-  <b>Distribute finance:</b>
-  <%= @ecn.distribute_finance %>
-</p>
+<% if (@ecn.distribute_engineering == true) %>
+  <p>
+	<b>Engineering Approval:_______________ Date:_______________</b>
+  </p>
+<% end %>
+<% if (@ecn.distribute_purchasing == true) %>
+  <p>
+	<b>Purchasing Approval:_______________ Date:_______________</b>
+  </p>
+<% end %>
+<% if (@ecn.distribute_planning == true) %>
+  <p>
+	<b>Planning Approval:_______________ Date:_______________</b>
+  </p>
+<% end %>
+<% if (@ecn.distribute_manufacturing == true) %>
+  <p>
+	<b>Manufacturing Approval:_______________ Date:_______________</b>
+  </p>
+<% end %>
+<% if (@ecn.distribute_qantel == true) %>
+  <p>
+	<b>Qantel Approval:_______________ Date:_______________</b>
+  </p>
+<% end %>
+<% if (@ecn.distribute_sales == true) %>
+  <p>
+	<b>Sales Approval:_______________ Date:_______________</b>
+  </p>
+<% end %>
+<% if (@ecn.distribute_inventory == true) %>
+  <p>
+	<b>Inventory Approval:_______________ Date:_______________</b>
+  </p>
+<% end %>
+<% if (@ecn.distribute_quality == true) %>
+  <p>
+	<b>Quality Approval:_______________ Date:_______________</b>
+  </p>
+<% end %>
+<% if (@ecn.distribute_india == true) %>
+  <p>
+	<b>India Approval:_______________ Date:_______________</b>
+  </p>
+<% end %>
+<% if (@ecn.distribute_finance == true) %>
+  <p>
+	<b>Finance Approval:_______________ Date:_______________</b>
+  </p>
+<% end %>
 
 <% for revision in @ecn.revisions %>
   <h3>Revision</h3>
