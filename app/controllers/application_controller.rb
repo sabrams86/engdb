@@ -1,4 +1,15 @@
 class ApplicationController < ActionController::Base
+
+  def current_user
+      @current_user ||= User.find_by_id(session[:user_id])
+      return @current_user
+  end
+
+  def forem_user
+    current_user
+  end
+  helper_method :forem_user
+
   before_filter :authorize
   protect_from_forgery
   

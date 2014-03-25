@@ -1,9 +1,16 @@
 Engdb::Application.routes.draw do
+
+  # This line mounts Forem's routes at /forums by default.
+  # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.
+  # If you would like to change where this extension is mounted, simply change the :at option to something different.
+  #
+  # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
+  mount Forem::Engine, :at => '/forums'
+
   resources :product_bulletins
 
   resources :treqs
 
-match 'drawings/new_e_drawing' => 'drawings#new_e_drawing'
   resources :engineering_procedures
 
   resources :engineering_projects
@@ -31,15 +38,21 @@ delete 'logout' => 'sessions#destroy'
   resources :users
 
   get "home/index"
+  
+  get '/home', to: 'home#index', as: 'home'
 
+  
   resources :ecns do
     resources :revisions
   end
 
   resources :revisions
-  
+  match '/drawings/new', to: 'drawings#new', as: 'new_drawing'
+  match '/drawings/newe', to: 'drawings#new_e_drawing', as: 'new_e_drawing'
+
   resources :drawings do
     resources :revisions
+    
   end
   
   resources :home
@@ -65,7 +78,9 @@ delete 'logout' => 'sessions#destroy'
  
  match '*path' => redirect('/home'), via: :get
  
+ get '/users/sign_in', :to => "users#sign_in"
 
+ 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)

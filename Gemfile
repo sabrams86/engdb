@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -41,4 +41,8 @@ gem 'delayed_job_active_record'
 
 gem 'handles_sortable_columns'
 
-gem 'will_paginate', '~> 3.0'
+gem 'will_paginate', '~> 3.0.5'
+
+gem 'forem', :github => "radar/forem", :branch => "rails3"
+
+gem 'forem-bootstrap', :github => "radar/forem-bootstrap"
