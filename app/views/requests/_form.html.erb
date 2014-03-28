@@ -154,9 +154,21 @@
 	  <b>Comments:</b>
 	  <%= @request.comments %>
 	</p>
-  
   <% end %>
-  
+  <% if user_in_accounting? %>
+	  <div class="clear">
+	     <div class="span10">
+		    <%= f.label :total_price %><br />
+		    <%= f.number_field :total_price %>
+		 </div>
+	  </div>
+	  <div class="clear">
+		  <div class="span10">
+		    <%= f.label :total_lead_time %><br />
+		    <%= f.text_field :total_lead %>
+		  </div>
+	  </div>
+	<% end %>
 	  
 	  
   <fieldset class="left" style="width: 580px;">

@@ -2,6 +2,9 @@ All,
 
 Your SIR has been processed.  The final lead times and prices are listed for each individual item listed below.
 
+*** Total Price: $<%= @request.total_price %> ***
+*** Total Lead Time: <%= @request.total_lead %> ***
+
 Special Request Details: 
 
   SIR #: <%= @request.request_number %>
@@ -27,8 +30,8 @@ Special Request Details:
      Engineering Comments:  <%= h request_item.eng_comments %>
      Manufacturing Comments: <%= h request_item.mfg_comments %>
      
- ***  Final Price:  <%= h request_item.final_price %>  ***
- ***  Final Lead Time:  <%= h request_item.final_lead %>  ***
+ ***  Final Price:  $<%= h request_item.final_price %>  ***
+ *** Final Lead Time:  <%= h request_item.final_lead %>  ***
      
 <% end %>
 
