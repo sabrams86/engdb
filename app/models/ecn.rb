@@ -6,6 +6,7 @@ class Ecn < ActiveRecord::Base
   belongs_to :user
   
   ECN_TYPES = [ "Drawing Change", "Document Change", "Product Bulletin", "Product Release", "Obsoletion", "Material Change", "Procedure Change" ]
+  PRODUCT_LINES = [ "A9", "A7", "AG", "AF", "S3", "Legacy", "K/Kpro", "EMW", "HD", "Non-Metallic" ]
   
   validates :ecn_number, :ecn_type, :product_line, presence: true
   validates :ecn_number, uniqueness: true

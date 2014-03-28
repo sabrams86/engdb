@@ -6,7 +6,19 @@ class RequestsController < ApplicationController
   # GET /requests.json
   def index
     order = sortable_column_order, "request_number desc"
-    @requests = Request.paginate page: params[:page], order: order, per_page: 100
+   if params[:requests].nil?
+       @requests = Request.paginate page: params[:page], order: order, per_page: 100
+    else
+      @requests = Request\
+      .by_request_number(params[:requests][:request_number])\
+      .by_regional_sales_mgr(params[:requests][:regional_sales_mgr])\
+      .by_product_line(params[:requests][:product_line])\
+      .by_quote_number(params[:requests][:quote_number])\
+      .by_created_before(params[:requests]['created_before(1i)'], params[:requests]['created_before(2i)'], params[:requests]['created_before(3i)'])\
+      .by_created_after(params[:requests]['created_after(1i)'], params[:requests]['created_after(2i)'], params[:requests]['created_after(3i)'])\
+      .paginate page: params[:page], order: order, per_page: 100
+      
+    end
     
 
     respond_to do |format|
