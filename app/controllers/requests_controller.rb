@@ -121,7 +121,6 @@ class RequestsController < ApplicationController
       RequestMailer.notify_emw(@request, @message, @subject).deliver if @request.product_line == "EMW"
       RequestMailer.notify_hd(@request, @message, @subject).deliver if @request.product_line == "HD"
       RequestMailer.notify_nm(@request, @message, @subject).deliver if @request.product_line == "Non-Metallic"
-      RequestMailer.notify_eng(@request, @message, @subject).deliver
       
       @request.update_attributes(params[:request])
       format.html { redirect_to home_url, alert: "SIR has been submitted to engineering.  Please push up the revision level and resubmit if you make any changes." }
@@ -144,6 +143,24 @@ class RequestsController < ApplicationController
       
       @request.update_attributes(params[:request])
       format.html { redirect_to home_url, alert: "SIR has been submitted to manufacturing.  Please resubmit if you make any changes." }
+      format.json { render json: @requests }
+    end
+  end
+  
+  def reject
+      
+    @request = Request.find(params[:id])
+    @email = params[:email]
+    @message = @email[:message]
+    @subject = @email[:subject]
+    @additional_emails = @email[:recipient]
+    
+    respond_to do |format|
+      RequestMailer.reject_additional(@request, @message, @additional_emails, @subject).deliver if @additional_emails != ""
+      RequestMailer.reject(@request, @message, @subject).deliver 
+      
+      @request.update_attributes(params[:request])
+      format.html { redirect_to home_url, alert: "SIR has been returned to sales marked as incomplete." }
       format.json { render json: @requests }
     end
   end
@@ -206,7 +223,6 @@ class RequestsController < ApplicationController
       RequestMailer.notify_emw(@request, @message, @subject).deliver if @request.product_line == "EMW"
       RequestMailer.notify_hd(@request, @message, @subject).deliver if @request.product_line == "HD"
       RequestMailer.notify_nm(@request, @message, @subject).deliver if @request.product_line == "Non-Metallic"
-      RequestMailer.notify_eng(@request, @message, @subject).deliver
       RequestMailer.notify_mfg(@request, @message, @subject).deliver 
       RequestMailer.notify_acct(@request, @message, @subject).deliver 
     
