@@ -75,6 +75,18 @@
   <%= @request.comments %>
 </p>
 
+<% if user_in_sales? || user_in_accounting? %>
+<p>
+  <b>Total Price:</b>
+  <%= @request.total_price %>
+</p>
+<p>
+  <b>Total Lead Time:</b>
+  <%= @request.total_lead %>
+</p>
+<% end %>
+
+
 <% if user_in_sales? %>
   <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitengModal">
   Create Request and Submit to Engineering

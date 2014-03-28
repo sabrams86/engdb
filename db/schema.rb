@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140325190933) do
+ActiveRecord::Schema.define(:version => 20140328183510) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0, :null => false
@@ -217,12 +217,12 @@ ActiveRecord::Schema.define(:version => 20140325190933) do
     t.string   "make_from"
     t.string   "eng_status"
     t.text     "eng_comments"
-    t.integer  "purch_cost"
-    t.integer  "acct_price"
-    t.integer  "final_price"
+    t.decimal  "purch_cost",     :precision => 9, :scale => 2
+    t.decimal  "acct_price",     :precision => 9, :scale => 2
+    t.decimal  "final_price",    :precision => 9, :scale => 2
     t.string   "final_lead"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.integer  "request_id"
   end
 
@@ -242,8 +242,10 @@ ActiveRecord::Schema.define(:version => 20140325190933) do
     t.text     "description"
     t.string   "status"
     t.text     "comments"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
+    t.decimal  "total_price",          :precision => 9, :scale => 2
+    t.string   "total_lead"
   end
 
   create_table "revisions", :force => true do |t|
