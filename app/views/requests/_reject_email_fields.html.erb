@@ -1,0 +1,9 @@
+<%= form_tag :action => 'reject', :id => @request.id %>
+
+<p><label for="email_subject">Additional Subject Notes</label>
+<%= text_field 'email', 'subject' %></p>
+<p><label for="email_recipient">Additional Recipients</label>
+<%= text_field 'email', 'recipient' %></p>
+<p><label for="email_message"></label><br/>
+<%= text_area 'email', 'message', value: render('reject.text.erb'), class: "span6" %></p>
+<%= form_tag %>
