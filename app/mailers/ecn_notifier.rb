@@ -22,7 +22,7 @@ class EcnNotifier < ActionMailer::Base
     @ecn = ecn
     @message = message
     @subject = subject
-    @email = EmailList.where(department: "Engineering").all
+    @email = EmailList.where(department: @ecn.product_line).all
     to = []
     @email.each do |e|
       to.push e.email
@@ -94,11 +94,12 @@ class EcnNotifier < ActionMailer::Base
     to << @emails
     mail to: to, subject: 'ECN '+@ecn.ecn_number.to_s+' released'+'  '+@subject, template_name: 'closed'
   end
+  
   def close_engineering(ecn, message, subject)
     @ecn = ecn
     @message = message
     @subject = subject
-    @email = EmailList.where(department: "Engineering").all
+    @email = EmailList.where(department: @ecn.product_line).all
     to = []
     @email.each do |e|
       to.push e.email

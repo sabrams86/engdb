@@ -1,6 +1,6 @@
 All,
 
-A new SIR has been created by <%= user_name %> with the following details:
+A new SIR has been created by <%= @request.requester %> with the following details:
 
 SIR #: <%= @request.request_number %>
 Requester: <%= @request.requester %>
@@ -27,4 +27,4 @@ Item:
 
 Please log onto the Engineering Database and review the information given by engineering, manufacturing, and purchasing and add values for Final Price and Final Lead Time.
 
-Please contact <%= user_name %> with any questions or comments.
+Please contact <%= @request.requester %> with any questions or comments.

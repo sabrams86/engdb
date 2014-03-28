@@ -8,6 +8,21 @@ class Request < ActiveRecord::Base
   validates :request_number, :description, :product_line, presence: true
   validates :request_number, uniqueness: true
   
+  scope :by_request_number, lambda { |request_number| where('request_number LIKE ?', "%#{request_number}%") unless request_number.nil? }
+  scope :by_product_line, lambda { |product_line| where('product_line LIKE ?', "#{product_line}%") unless product_line.nil? }
+  scope :by_regional_sales_mgr, lambda { |regional_sales_mgr| where('regional_sales_mgr LIKE ?', "#{regional_sales_mgr}%") unless regional_sales_mgr.nil? }
+  scope :by_quote_number, lambda { |quote_number| where('quote_number LIKE ?', "%#{quote_number}%") unless quote_number.nil? }
+  scope :by_created_before, lambda { |x,y,z| 
+    d=Date.new(x.to_i, y.to_i, z.to_i)
+    d.to_s
+    where('inq_submitted_date <= ?', d) } 
+    
+  scope :by_created_after, lambda { |x,y,z| 
+    d=Date.new(x.to_i, y.to_i, z.to_i)
+    d.to_s
+    where('inq_submitted_date >= ?', d) }
+
+  
   def incrament(request)
     request[:request_number] = Request.maximum(:request_number) + 1
     return request

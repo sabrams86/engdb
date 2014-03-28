@@ -1,0 +1,30 @@
+<h3>Search SIRs</h3>
+<%= form_for :requests, :url => { :controller => "requests", :action => "index" }, :html => {method: :get, class: "form-inline"} do |f| %>
+  <div class="field">
+    <%= f.label :sir_number %><br />
+    <%= f.text_field :request_number %>
+  </div>
+  <div class="field">
+    <%= f.label :regional_sales_manager %><br />
+    <%= f.text_field :regional_sales_mgr %>
+  </div>
+  <div class="field">
+    <%= f.label :product_line %><br />
+    <%= f.select :product_line, Request::PRODUCT_LINES, prompt: ' ' %>
+  </div>
+  <div class="field">
+    <%= f.label :quote_number %><br />
+    <%= f.text_field :quote_number %>
+  </div>
+  <div class="input-medium">
+    <%= f.label :created_before %><br />
+    <%= f.date_select :created_before, {:start_year => 1950, :end_year => Time.now.year} %>
+  </div>
+  <div class="input-medium">
+    <%= f.label :created_after %><br />
+    <%= f.date_select :created_after, :default => {:year => 1950}, :start_year => 1950, :end_year => Time.now.year%>
+  </div>
+  <div class="actions">
+    <%= f.submit "Search" %>
+  </div>
+<% end %>
