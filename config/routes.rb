@@ -80,7 +80,7 @@ delete 'logout' => 'sessions#destroy'
  
  get '/users/sign_in', :to => "users#sign_in"
 
- 
+
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
