@@ -36,11 +36,11 @@
     	<% end %>
     	<% if user_in_engineering? %>
 			<%= link_to edit_drawing_path(drawing) do %>
-	    		<i class="icon-pencil glyphw"></i>
+	    		<i class="icon-pencil glyph"></i>
 	    	<% end %>
 	    <% end %>
 	    <% if user_in_admin? %>
-			<%= link_to '<i class="icon-trash glyphw"></i>'.html_safe, drawing, confirm: 'Are you sure?', method: :delete %>
+			<%= link_to '<i class="icon-trash"></i>'.html_safe, drawing, confirm: 'Are you sure?', method: :delete %>
 		<% end %>
 	</td>
   </tr>
