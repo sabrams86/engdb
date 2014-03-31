@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Wilfley Engineering</title>
+  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= stylesheet_link_tag "forem" %>
+  <%= javascript_include_tag "forem" %>
+
+  <%= csrf_meta_tags %>
+
+
+</head>
+<body class="<%= controller.controller_name %>">
+<div id="wrapper" >	
+<div class="color">	
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="navbar-header">
+	  <div id="banner">
+	    <%= image_tag("logo.png") %>
+	    <%= @page_title || "Wilfley Engineering Database" %>
+	  </div>
+    </div>
+  <div class="color">
+      <ul id="navbar" class="nav nav-justified">
+        <li><%= link_to 'Home', main_app.home_path, class: 'active' %></li>
+        <% if user_in_sales? %>
+            <li><%= link_to 'New SIR', main_app.new_request_path %></li>
+        <% end %>
+        <% if user_in_engineering? %>
+		    <li class="dropdown">
+		      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Engineering <b class="caret"></b></a>
+		      <ul class="dropdown-menu">
+		        <li><%= link_to 'New A Drawing', main_app.new_drawing_path %></li>
+		        <li><%= link_to 'New E Drawing', main_app.new_e_drawing_path %></li>
+		        <li><%= link_to 'New ECN', main_app.new_ecn_path %></li>
+		        <li><%= link_to 'Engineering Projects', main_app.engineering_projects_path %></li>
+		    	<li><%= link_to 'Engineering Procedures', main_app.engineering_procedures_path %></li>
+		    	<li><%= link_to 'Test Requests', main_app.treqs_path %></li>
+		      </ul>
+		    </li>
+		<% end %>
+		<li><%= link_to 'SIR Database', main_app.requests_path %></li>
+		<li><%= link_to 'Product Bulletins', main_app.product_bulletins_path %></li>
+        <li><%= link_to "Forum", forem.root_path %></li>
+		<% if user_in_admin? %>
+  			<li><%= link_to 'Edit email list', main_app.email_lists_path %></li>
+  			<li><%= link_to 'Edit Users', main_app.users_path %></li>
+  			<li><%= link_to "Forum Admin", forem.admin_root_url %></li>
+		<% end %>
+		<li><%= link_to 'Logout', main_app.logout_path %></li>
+      </ul>
+  </div>
+</div>
+</div>
+
+    <div id="main" class="container">
+      <%= yield %>
+    </div>
+
+</div> 
+</body>
+</html>
