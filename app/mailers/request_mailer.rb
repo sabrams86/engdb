@@ -26,7 +26,7 @@ class RequestMailer < ActionMailer::Base
     @request = request
     @message = message
     @subject = subject
-    @email = EmailList.where(department: "Manufacturing").all
+    @email = EmailList.where(department: "Manufacturing_SIR").all
     to = []
     @email.each do |e|
       to.push e.email
