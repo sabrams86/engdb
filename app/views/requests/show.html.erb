@@ -77,7 +77,7 @@
 
 <% if user_in_sales? || user_in_accounting? %>
 <p>
-  <b>Total Price:</b>
+  <b>Full Book Price (No Multipliers added):</b>
   <%= @request.total_price %>
 </p>
 <p>
@@ -91,8 +91,9 @@
   <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitengModal">
   Create Request and Submit to Engineering
   </button>
+  </br></br>
 <% end %>
-</br></br>
+
 <% if user_in_engineering? %>
   <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitmfgModal">
   Submit to Manufacturing
@@ -103,26 +104,30 @@
   <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#rejectModal">
   Reject SIR as Incomplete
   </button>
+  </br></br>
 <% end %>
-</br></br>
+
 <% if user_in_manufacturing? %>
   <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitacctModal">
   Submit to Accounting
   </button>
+  </br></br>
 <% end %>
-</br></br>
+
 <% if user_in_accounting? %>
   <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitsalesModal">
   Submit final report to Sales
   </button>
+  </br></br>
 <% end %>
-</br></br>
-<% if user_in_sales? and @request.status == "Complete" %>
+
+<% if user_in_sales? ##and @request.status == "Complete" %>
   <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitsorModal">
   Turn SIR into SOR
   </button>
+  </br>
 <% end %>
-</br>
+
 <b>
 <%= link_to 'Edit', edit_request_path(@request) %> |
 <%= link_to 'Back', :back %>
