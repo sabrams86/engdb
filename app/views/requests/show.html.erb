@@ -74,8 +74,21 @@
   <b>Comments:</b>
   <%= @request.comments %>
 </p>
-
+<% if user_in_engineering? || user_in_manufacturing? || user_in_accounting? %>
+<p>
+  <b>Engineering Comments:</b>
+  <%= @request.engineering_notes %>
+</p>
+<p>
+  <b>Manufacturing Comments:</b>
+  <%= @request.engineering_notes %>
+</p>
+<% end %>
 <% if user_in_sales? || user_in_accounting? %>
+<p>
+  <b>Accounting Comments:</b>
+  <%= @request.accounting_notes %>
+</p>
 <p>
   <b>Full Book Price (No Multipliers added):</b>
   <%= @request.total_price %>
