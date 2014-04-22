@@ -56,6 +56,23 @@ class Drawing < ActiveRecord::Base
     return drawing
   end
 
+  def incrament_rd(drawing)
+    items = Drawing.where( [ 'drawing_number LIKE ?' , 'RD%' ] )
+    max_value = 0
+    items.each do |item|
+      next if item.drawing_number =~ /\A[A-Za-z]{3,}/
+      drawing_number = item.drawing_number.gsub(/\ARD/, '').to_i
+      max_value = drawing_number if drawing_number > max_value
+    end
+    @max_num = max_value + 1
+    if @max_num < 1000
+      drawing[:drawing_number] = "RD0" + @max_num.to_s
+    else
+      drawing[:drawing_number] = "RD" + @max_num.to_s
+    end
+    return drawing
+  end
+
   def draw_path(drawing)
     folder = drawing[:file_location]
     file_name = drawing[:drawing_number]

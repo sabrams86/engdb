@@ -49,6 +49,7 @@ delete 'logout' => 'sessions#destroy'
   resources :revisions
   match '/drawings/new', to: 'drawings#new', as: 'new_drawing'
   match '/drawings/newe', to: 'drawings#new_e_drawing', as: 'new_e_drawing'
+  match '/drawings/newrd', to: 'drawings#new_rd_drawing', as: 'new_rd_drawing'
 
   resources :drawings do
     resources :revisions
