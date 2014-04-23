@@ -69,6 +69,16 @@ class DrawingsController < ApplicationController
       format.json { render json: @drawing }
     end
   end
+  
+  def new_wp_drawing
+    @drawing = Drawing.new
+    @drawing = @drawing.incrament_wp(@drawing)
+    
+    respond_to do |format|
+      format.html { render :template => "drawings/new" }
+      format.json { render json: @drawing }
+    end
+  end
 
   # GET /drawings/1/edit
   def edit
