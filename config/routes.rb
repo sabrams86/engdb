@@ -71,6 +71,7 @@ delete 'logout' => 'sessions#destroy'
  match 'ecns/close' => 'ecns#close'
  
  match 'requests/submit_eng' => 'requests#submit_eng'
+ match 'requests/index_open' => 'requests#index_open'
  match 'requests/submit_mfg' => 'requests#submit_mfg'
  match 'requests/submit_acct' => 'requests#submit_acct'
  match 'requests/submit_sales' => 'requests#submit_sales'
