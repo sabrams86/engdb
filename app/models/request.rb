@@ -8,7 +8,8 @@ class Request < ActiveRecord::Base
   validates :request_number, :description, :product_line, presence: true
   validates :request_number, uniqueness: true
   
-  scope :by_open_requests, lambda { where('not(status LIKE ?)', "Complete") || where('not(status LIKE ?)', "SOR Released") }
+  scope :by_open_requests, lambda { where('not(status LIKE ?)', "Complete") }
+  scope :by_non_released_requests, lambda { where('not(status LIKE ?)', "SOR Released") }
   scope :by_request_number, lambda { |request_number| where('request_number LIKE ?', "%#{request_number}%") unless request_number.nil? }
   scope :by_product_line, lambda { |product_line| where('product_line LIKE ?', "#{product_line}%") unless product_line.nil? }
   scope :by_regional_sales_mgr, lambda { |regional_sales_mgr| where('regional_sales_mgr LIKE ?', "#{regional_sales_mgr}%") unless regional_sales_mgr.nil? }
