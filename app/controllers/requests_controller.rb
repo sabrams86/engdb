@@ -14,6 +14,7 @@ class RequestsController < ApplicationController
       .by_regional_sales_mgr(params[:requests][:regional_sales_mgr])\
       .by_product_line(params[:requests][:product_line])\
       .by_quote_number(params[:requests][:quote_number])\
+      .by_customer(params[:requests][:customer])\
       .by_created_before(params[:requests]['created_before(1i)'], params[:requests]['created_before(2i)'], params[:requests]['created_before(3i)'])\
       .by_created_after(params[:requests]['created_after(1i)'], params[:requests]['created_after(2i)'], params[:requests]['created_after(3i)'])\
       .paginate page: params[:page], order: order, per_page: 100
@@ -224,10 +225,20 @@ class RequestsController < ApplicationController
       RequestMailer.notify_hd(@request, @message, @subject).deliver if @request.product_line == "HD"
       RequestMailer.notify_nm(@request, @message, @subject).deliver if @request.product_line == "Non-Metallic"
       RequestMailer.notify_mfg(@request, @message, @subject).deliver 
-      RequestMailer.notify_acct(@request, @message, @subject).deliver 
     
       @request.update_attributes(params[:request])
       format.html { redirect_to home_url, alert: "SOR has been created.  An email has been sent to the appropriate personnel." }
+      format.json { render json: @requests }
+    end
+  end
+  
+  def close_sir
+    @request = Request.find(params[:id])
+    @request = @request.complete_status(@request)
+    
+    respond_to do |format|
+      @request.update_attributes(params[:request])
+      format.html { redirect_to home_url, alert: "SIR has been marked as complete." }
       format.json { render json: @requests }
     end
   end
