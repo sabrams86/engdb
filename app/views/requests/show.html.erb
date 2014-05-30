@@ -118,6 +118,8 @@
   Reject SIR as Incomplete
   </button>
   </br></br>
+  <%= button_to "Close SIR", {action: "close_sir", :id => @request.id}, {class: "btn btn-primary btn-lg"}  %>
+  </br></br>
 <% end %>
 
 <% if user_in_manufacturing? %>

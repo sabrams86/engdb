@@ -76,6 +76,7 @@ delete 'logout' => 'sessions#destroy'
  match 'requests/submit_sales' => 'requests#submit_sales'
  match 'requests/submit_sor' => 'requests#submit_sor'
  match 'requests/reject' => 'requests#reject'
+ match 'requests/close_sir' => 'requests#close_sir'
  
  match 'drawings/view' => 'drawings#view'
  

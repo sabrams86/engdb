@@ -16,6 +16,10 @@
     <%= f.label :quote_number %><br />
     <%= f.text_field :quote_number %>
   </div>
+  <div class="field">
+    <%= f.label :customer %><br />
+    <%= f.text_field :customer %>
+  </div>
   <div class="input-medium">
     <%= f.label :created_before %><br />
     <%= f.date_select :created_before, {:start_year => 1950, :end_year => Time.now.year} %>
