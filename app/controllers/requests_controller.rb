@@ -27,6 +27,16 @@ class RequestsController < ApplicationController
       format.json { render json: @requests }
     end
   end
+  
+  def index_open
+    order = sortable_column_order, "request_number desc"
+    @requests = Request.by_open_requests.paginate page: params[:page], order: order, per_page: 100
+    
+    respond_to do |format|
+      format.html { render :template => "requests/index" }
+      format.json { render json: @requests }
+    end
+  end
 
   # GET /requests/1
   # GET /requests/1.json
