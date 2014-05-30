@@ -30,7 +30,7 @@ class RequestsController < ApplicationController
   
   def index_open
     order = sortable_column_order, "request_number desc"
-    @requests = Request.by_open_requests.paginate page: params[:page], order: order, per_page: 100
+    @requests = Request.by_open_requests.by_non_released_requests.paginate page: params[:page], order: order, per_page: 100
     
     respond_to do |format|
       format.html { render :template => "requests/index" }
