@@ -163,6 +163,7 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     @email = params[:email]
     @message = @email[:message]
+    @request = @request.reject_status(@request)
     @subject = @email[:subject]
     @additional_emails = @email[:recipient]
     

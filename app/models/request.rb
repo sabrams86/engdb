@@ -39,6 +39,11 @@ class Request < ActiveRecord::Base
     @request = request
     @request[:status] = "In Engineering"
     return request
+  end 
+  def reject_status(request)
+    @request = request
+    @request[:status] = "Rejected"
+    return request
   end  
   def mfg_status(request)
     @request = request
