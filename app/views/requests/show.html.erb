@@ -74,7 +74,7 @@
   <b>Comments:</b>
   <%= @request.comments %>
 </p>
-<% if user_in_engineering? || user_in_manufacturing? || user_in_accounting? %>
+<% if user_in_engineering? || user_in_manufacturing? || user_in_accounting? || user_in_sales? %>
 <p>
   <b>Engineering Comments:</b>
   <%= @request.engineering_notes %>
