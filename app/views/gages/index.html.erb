@@ -1,0 +1,52 @@
+<h1>Listing gages</h1>
+
+<%= link_to 'New Gage', new_gage_path if user_in_engineering? %>
+
+<table class="table table-striped">
+  <tr>
+    <th><%= sortable_column "Gage number" %></th>
+    <th><%= sortable_column "Gage type" %></th>
+    <th><%= sortable_column "Description" %></th>
+    <th><%= sortable_column "Location" %></th>
+    <th><%= sortable_column "Rating" %></th>
+    <th><%= sortable_column "Servicing company" %></th>
+    <th><%= sortable_column "Servicing phone" %></th>
+    <th><%= sortable_column "Calibration period" %></th>
+    <th><%= sortable_column "Calibration date" %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @gages.each do |gage| %>
+  <tr>
+    <td><%= gage.gage_number %></td>
+    <td><%= gage.gage_type %></td>
+    <td><%= gage.description %></td>
+    <td><%= gage.location %></td>
+    <td><%= gage.rating %></td>
+    <td><%= gage.servicing_company %></td>
+    <td><%= gage.servicing_phone %></td>
+    <td><%= gage.calibration_period %></td>
+    <td><%= gage.calibration_date %></td>
+    <td><%= link_to gage do %>
+    	<i class="icon-eye-open glyphw"></i>
+    	<% end %>
+    	<% if user_in_engineering? %>
+			<%= link_to edit_gage_path(gage) do %>
+	    	<i class="icon-pencil glyphw"></i>
+	    	<% end %>
+	    <% end %>
+	    <% if user_in_admin? %>
+			<%= link_to '<i class="icon-trash glyphw"></i>'.html_safe, gage, confirm: 'Are you sure?', method: :delete %>
+		<% end %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Gage', new_gage_path if user_in_engineering? %>
+<p><%= will_paginate @gages %></p>
+<%= link_to 'Back', :back %>
