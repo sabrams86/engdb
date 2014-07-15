@@ -1,0 +1,2 @@
+module GagesHelper
+end

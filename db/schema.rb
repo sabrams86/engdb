@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140421160548) do
+ActiveRecord::Schema.define(:version => 20140715201246) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0, :null => false
@@ -191,6 +191,20 @@ ActiveRecord::Schema.define(:version => 20140421160548) do
   add_index "forem_views", ["updated_at"], :name => "index_forem_views_on_updated_at"
   add_index "forem_views", ["user_id"], :name => "index_forem_views_on_user_id"
   add_index "forem_views", ["viewable_id"], :name => "index_forem_views_on_topic_id"
+
+  create_table "gages", :force => true do |t|
+    t.string   "gage_number"
+    t.string   "gage_type"
+    t.string   "description"
+    t.string   "location"
+    t.string   "rating"
+    t.string   "servicing_company"
+    t.string   "servicing_phone"
+    t.string   "calibration_period"
+    t.date     "calibration_date"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "product_bulletins", :force => true do |t|
     t.integer  "number"

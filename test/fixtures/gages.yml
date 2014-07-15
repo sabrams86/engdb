@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  gage_number: MyString
+  gage_type: MyString
+  description: MyString
+  location: MyString
+  rating: MyString
+  servicing_company: MyString
+  servicing_phone: MyString
+  calibration_period: MyString
+  calibration_date: 2014-07-15
+
+two:
+  gage_number: MyString
+  gage_type: MyString
+  description: MyString
+  location: MyString
+  rating: MyString
+  servicing_company: MyString
+  servicing_phone: MyString
+  calibration_period: MyString
+  calibration_date: 2014-07-15

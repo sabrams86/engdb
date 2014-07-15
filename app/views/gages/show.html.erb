@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Gage number:</b>
+  <%= @gage.gage_number %>
+</p>
+
+<p>
+  <b>Gage type:</b>
+  <%= @gage.gage_type %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @gage.description %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @gage.location %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%= @gage.rating %>
+</p>
+
+<p>
+  <b>Servicing company:</b>
+  <%= @gage.servicing_company %>
+</p>
+
+<p>
+  <b>Servicing phone:</b>
+  <%= @gage.servicing_phone %>
+</p>
+
+<p>
+  <b>Calibration period:</b>
+  <%= @gage.calibration_period %>
+</p>
+
+<p>
+  <b>Calibration date:</b>
+  <%= @gage.calibration_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_gage_path(@gage) %> |
+<%= link_to 'Back', gages_path %>
