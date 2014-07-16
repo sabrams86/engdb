@@ -320,14 +320,18 @@ class RequestMailer < ActionMailer::Base
     @request = request
     @message = message
     @subject = subject
-    @email = User.where(name: @request.requester).where(name: @request.regional_sales_mgr).all
+    @email1 = User.where(name: @request.requester).all
+    @email2 = User.where(name: @request.regional_sales_mgr).all
     @cc = User.where(department: "Accounting").all
     cc = []
     @cc.each do |e|
       cc.push e.email
     end
     to = []
-    @email.each do |e|
+    @email1.each do |e|
+      to.push e.email
+    end
+    @email2.each do |e|
       to.push e.email
     end
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' Final Report'+'  '+@subject, template_name: 'eng_notify'  
