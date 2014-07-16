@@ -254,8 +254,4 @@ class RequestsController < ApplicationController
     end
   end
   
-  def create
-    ApplicationRequestMailer.send_application_to_be_entered(params[:application].read(), params[:application].original_filename).deliver
-    redirect_to dashboards_path, :notice => "Request Sent."  
-  end
 end
