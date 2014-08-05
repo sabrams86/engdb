@@ -6,9 +6,9 @@
 
 <table class="table">
   <tr>
-    <th><%= sortable_column "SIR #", :direction => :desc %></th>
+    <th><%= sortable_column "SIR #", :column => "request_number", :direction => :desc %></th>
     <th><%= sortable_column "Requester" %></th>
-    <th><%= sortable_column "Regional" %></th>
+    <th><%= sortable_column "Regional", :column => "regional_sales_mgr" %></th>
     <th><%= sortable_column "Quote number" %></th>
     <th><%= sortable_column "Order number" %></th>
     <th><%= sortable_column "Customer" %></th>
