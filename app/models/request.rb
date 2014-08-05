@@ -12,7 +12,7 @@ class Request < ActiveRecord::Base
   scope :by_non_released_requests, lambda { where('not(status LIKE ?)', "SOR Released") }
   scope :by_request_number, lambda { |request_number| where('request_number LIKE ?', "%#{request_number}%") unless request_number.nil? }
   scope :by_product_line, lambda { |product_line| where('product_line LIKE ?', "#{product_line}%") unless product_line.nil? }
-  scope :by_regional_sales_mgr, lambda { |regional_sales_mgr| where('regional_sales_mgr LIKE ?', "#{regional_sales_mgr}%") unless regional_sales_mgr.nil? }
+  scope :by_regional_sales_mgr, lambda { |regional_sales_mgr| where('regional_sales_mgr LIKE ?', "%#{regional_sales_mgr}%") unless regional_sales_mgr.nil? }
   scope :by_quote_number, lambda { |quote_number| where('quote_number LIKE ?', "%#{quote_number}%") unless quote_number.nil? }
   scope :by_customer, lambda { |customer| where('customer LIKE ?', "%#{customer}%") unless customer.nil? }
   scope :by_created_before, lambda { |x,y,z| 
