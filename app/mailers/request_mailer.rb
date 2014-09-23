@@ -341,8 +341,8 @@ class RequestMailer < ActionMailer::Base
     @request = request
     @message = message
     @subject = subject
-    @email = User.where(name: @request.requester).where(name: @request.regional_sales_mgr).all
-    @email2 = User.where(name: @request.regional_sales_mgr)
+    @email = User.where(name: @request.requester).all
+    @email2 = User.where(name: @request.regional_sales_mgr).all
     @cc = EmailList.where(department: @request.product_line).all
     cc = []
     @cc.each do |e|
