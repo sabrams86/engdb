@@ -8,11 +8,46 @@ class Drawing < ActiveRecord::Base
   validates :drawing_number, :item_number, :description, :pump_model, :frame_size, :make_from, :file_format, :file_location, :part_type, presence: true
   validates :drawing_number, uniqueness: true
   
-  scope :by_description, lambda { |description| where('description LIKE ?', "%#{description}%") unless description.nil? }
-  scope :by_drawing_number, lambda { |drawing_number| where('drawing_number LIKE ?', "#{drawing_number}%") unless drawing_number.nil? }
-  scope :by_item_number, lambda { |item_number| where('item_number LIKE ?', "#{item_number}%") unless item_number.nil? }
-  scope :by_pump_model, lambda { |pump_model| where('pump_model LIKE ?', "%#{pump_model}%") unless pump_model.nil? }
-  scope :by_frame_size, lambda { |frame_size| where('frame_size LIKE ?', "%#{frame_size}%") unless frame_size.nil? }
+  scope :by_description, ->(desc=nil) {
+    if desc.blank?
+      
+    else
+      terms = desc.split(/\s*,\s*/).map { |t| t.strip }.map { |t| "%#{t}%" }
+      where( ( ["#{table_name}.description like ?"] * terms.count).join(' and '), *terms )
+    end
+  }
+  scope :by_drawing_number, ->(dnum=nil) {
+    if dnum.blank?
+      
+    else
+    match = dnum.tr('?*', '_%')
+    where('drawing_number LIKE ?', match)
+    end
+    }
+  scope :by_item_number, ->(inum=nil) {
+    if inum.blank?
+      
+    else
+    match = inum.tr('?*', '_%')
+    where('item_number LIKE ?', match)
+    end
+    }
+  scope :by_pump_model, ->(model=nil) {
+    if model.blank?
+      
+    else
+      terms = model.split(/\s*,\s*/).map { |t| t.strip }.map { |t| "%#{t}%" }
+      where( ( ["#{table_name}.pump_model like ?"] * terms.count).join(' or '), *terms )
+    end
+  }
+  scope :by_frame_size, ->(size=nil) {
+    if size.blank?
+      
+    else
+      terms = size.split(/\s*,\s*/).map { |t| t.strip }.map { |t| "%#{t}%" }
+      where( ( ["#{table_name}.frame_size like ?"] * terms.count).join(' or '), *terms )
+    end
+  }
   scope :by_part_type, lambda { |part_type| where('part_type LIKE ?', "%#{part_type}%") unless part_type.nil? }
   scope :by_created_before, lambda { |x,y,z| 
     d=Date.new(x.to_i, y.to_i, z.to_i)
@@ -97,4 +132,28 @@ class Drawing < ActiveRecord::Base
     return path
   end
 
+#this method is in progress, not yet working.  Goal is to sort description keywords by AND, then by OR
+  def self.sort_data(terms)
+    results_array = @drawings
+    result = []
+    results_array.each do |string|
+      every_word = true
+      one_word = false
+
+      terms.each do |search|
+        if string.downcase.include? search.downcase
+            one_word = true
+        else
+            every_word = false
+        end
+      end
+      if every_word
+        result.unshift(string)
+      elsif one_word
+        result << string
+      end
+    end
+    return result
+  end
+  
 end
