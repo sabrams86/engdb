@@ -11,6 +11,7 @@ class RequestsController < ApplicationController
     else
       @requests = Request\
       .by_request_number(params[:requests][:request_number])\
+      .by_keyword(params[:requests][:description])\
       .by_regional_sales_mgr(params[:requests][:regional_sales_mgr])\
       .by_product_line(params[:requests][:product_line])\
       .by_quote_number(params[:requests][:quote_number])\

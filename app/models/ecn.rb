@@ -11,13 +11,21 @@ class Ecn < ActiveRecord::Base
   validates :ecn_number, :ecn_type, :product_line, presence: true
   validates :ecn_number, uniqueness: true
   
+  scope :by_open_ecns, lambda { where('status LIKE ?', false) }
   scope :by_ecn_number, lambda { |ecn_number| where("ecn_number LIKE?", "#{ecn_number}%") unless ecn_number.nil? || ecn_number.blank? }
   scope :by_user_name, lambda { |user_name| where("user_name LIKE?", "%#{user_name}%") unless user_name.nil? }
   scope :by_drawing_number, lambda { |drawing_number| 
     joins(:revisions).
     where("revisions.drawing_number LIKE ?", "%#{drawing_number}%") unless drawing_number.nil? 
     }
-  scope :by_pump_model, lambda { |pump_model| where("product_line LIKE ?", "%#{pump_model}%") unless pump_model.nil? }
+  scope :by_pump_model, ->(model=nil) {
+    if model.blank?
+      
+    else
+      terms = model.split(/\s*,\s*/).map { |t| t.strip }.map { |t| "%#{t}%" }
+      where( ( ["#{table_name}.product_line like ?"] * terms.count).join(' and '), *terms )
+    end
+  }
   scope :by_ecn_type, lambda { |ecn_type| where("ecn_type LIKE ?", ecn_type) unless ecn_type.nil? or ecn_type == "" }
   scope :by_part_type, lambda { |part_type| 
     joins(:revisions).joins(:drawings).

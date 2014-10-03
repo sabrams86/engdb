@@ -9,6 +9,14 @@ class Request < ActiveRecord::Base
   validates :request_number, uniqueness: true
   
   scope :by_open_requests, lambda { where('not(status LIKE ?)', "Complete") }
+  scope :by_keyword, ->(keys=nil) {
+    if keys.blank?
+      
+    else
+      terms = keys.split(/\s*,\s*/).map { |t| t.strip }.map { |t| "%#{t}%" }
+      where( ( ["#{table_name}.description like ?"] * terms.count).join(' and '), *terms )
+    end
+  }
   scope :by_non_released_requests, lambda { where('not(status LIKE ?)', "SOR Released") }
   scope :by_request_number, lambda { |request_number| where('request_number LIKE ?', "%#{request_number}%") unless request_number.nil? }
   scope :by_product_line, lambda { |product_line| where('product_line LIKE ?', "#{product_line}%") unless product_line.nil? }

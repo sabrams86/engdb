@@ -28,6 +28,17 @@ class EcnsController < ApplicationController
     end
   end
 
+  def index_open
+    order = sortable_column_order, "ecn_number desc"
+    @ecns = Ecn.by_open_ecns.paginate page: params[:page], order: order, per_page: 100
+    
+    respond_to do |format|
+      format.html { render :template => "ecns/index" }
+      format.json { render json: @ecns }
+    end
+  end
+
+
   # GET /ecns/1
   # GET /ecns/1.json
   def show
