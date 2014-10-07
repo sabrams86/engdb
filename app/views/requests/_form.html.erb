@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+  
   <% if user_in_sales? %>
 	  <div class="span4">
 		  <div class="field">
@@ -207,7 +208,27 @@
 		  </div>
 	  </div>
 	<% end %>
-	  
+	
+	<div class="clear">
+	<b>Upload Files:</b>
+  <%= f.fields_for :request_files do |p| %>
+     <div class="field">
+       <%= p.file_field :file, :multiple => true, name: "request_files[file][]" %>
+     </div>
+   <% end %>
+	</div>
+   <% if params[:controller] == "requests" && params[:action] == "edit" %> 
+     <b>Uploaded Files:</b>
+		<table class="table">
+		<% @request.request_files.each do |p| %>
+		  <tr>
+		  	<td><%= p.file_url.split("/").last %></td>
+		    <td><%= button_to "Download File", {action: "download", controller: "requests", :file => p.file}  %></td>
+		    <!--<td><%= link_to "Delete File", p, method: :delete %></td>-->
+		  </tr>
+		<% end %>
+		</table>
+  <% end %>
 	  
   <fieldset class="left" style="width: 580px;">
     <legend><h3>Parts and Items</h3></legend>

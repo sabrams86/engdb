@@ -1,6 +1,8 @@
 class Request < ActiveRecord::Base
   has_many :request_items, :dependent => :destroy
   accepts_nested_attributes_for :request_items, :reject_if => lambda { |attrs| attrs.all? { |key, value| value.blank? }}, :allow_destroy => true
+  has_many :request_files
+  accepts_nested_attributes_for :request_files
   belongs_to :user
   
   PRODUCT_LINES = [ "A9", "A7", "AG", "AF", "S3", "Legacy", "K/Kpro", "EMW", "HD", "Non-Metallic" ]
@@ -73,6 +75,7 @@ class Request < ActiveRecord::Base
     @request[:status] = "Created"
     return request
   end  
+
 
 end
 

@@ -43,7 +43,7 @@ class RequestsController < ApplicationController
   # GET /requests/1.json
   def show
     @request = Request.find(params[:id])
-
+    @request_files = @request.request_files.all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @request }
@@ -55,6 +55,7 @@ class RequestsController < ApplicationController
   def new
     @request = Request.new
     @request = @request.incrament(@request)
+    @request_file = @request.request_files.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -65,6 +66,7 @@ class RequestsController < ApplicationController
   # GET /requests/1/edit
   def edit
     @request = Request.find(params[:id])
+    @request_files = @request.request_files.all
   end
 
   # POST /requests
@@ -75,6 +77,9 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.save
+        params[:request_files]['file'].each do |a|
+          @request_file = @request.request_files.create!(:file => a, :request_id => @request.id)
+        end
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
         format.json { render json: @request, status: :created, location: @request }
       else
@@ -91,6 +96,9 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.update_attributes(params[:request])
+        params[:request_files]['file'].each do |a|
+          @request_file = @request.request_files.create!(:file => a, :request_id => @request.id)
+        end
         format.html { redirect_to @request, notice: 'Request was successfully updated.' }
         format.json { head :no_content }
       else
@@ -254,5 +262,28 @@ class RequestsController < ApplicationController
       format.json { render json: @requests }
     end
   end
+  
+  def download
+    @request_file = RequestFile.where('id LIKE ?', params[:id])
+    @path = @request_file.each do |p|
+      return p.file_url
+    end
+    @name = params[:file]
+    # for windows testing
+    @file = "c://users/sabrams/engdb/public#{@name}"
+    # for linux live system
+    #@file = "/srv/engdb/public#{@name}"
+    send_file( @file,
+    :disposition => 'inline',
+    :x_sendfile => true )
+   
+  #rescue TypeError
+  #    redirect_to @request, :flash => { :alert => "File not found.  Please try again or contact support." }
+  end 
+  
+  private
+   def request_params
+      params.require(:request).permit(:request_number, request_files_attributes: [:id, :request_id, :file])
+   end
   
 end

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Request:</b>
+  <%= @request_file.request_id %>
+</p>
+
+<p>
+  <b>File:</b>
+  <%= @request_file.file %>
+</p>
+
+
+<%= link_to 'Edit', edit_request_file_path(@request_file) %> |
+<%= link_to 'Back', request_files_path %>
