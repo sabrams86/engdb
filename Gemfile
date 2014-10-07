@@ -46,3 +46,5 @@ gem 'will_paginate', '~> 3.0.5'
 gem 'forem', :github => "radar/forem", :branch => "rails3"
 
 gem 'forem-bootstrap', :github => "radar/forem-bootstrap"
+
+gem 'carrierwave'

@@ -1,5 +1,8 @@
 Engdb::Application.routes.draw do
 
+  resources :request_files
+
+
   resources :gages
 
 
@@ -82,13 +85,14 @@ delete 'logout' => 'sessions#destroy'
  match 'requests/submit_sor' => 'requests#submit_sor'
  match 'requests/reject' => 'requests#reject'
  match 'requests/close_sir' => 'requests#close_sir'
+ match 'requests/download' => 'requests#download'
  
  match 'drawings/view' => 'drawings#view'
  
- match '*path' => redirect('/home'), via: :get
+ #match '*path' => redirect('/home'), via: :get
  
  get '/users/sign_in', :to => "users#sign_in"
-
+ get 'request_items/download'
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
