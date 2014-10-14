@@ -67,6 +67,11 @@ class RequestsController < ApplicationController
   def edit
     @request = Request.find(params[:id])
     @request_files = @request.request_files.all
+    if @request_files.blank?
+      @request_file = @request.request_files.build
+    else
+      
+    end
   end
 
   # POST /requests
@@ -270,9 +275,9 @@ class RequestsController < ApplicationController
     end
     @name = params[:file]
     # for windows testing
-    #@file = "c://users/sabrams/engdb/public#{@name}"
+    @file = "c://users/sabrams/engdb/public#{@name}"
     # for linux live system
-    @file = "/srv/engdb/public#{@name}"
+    #@file = "/srv/engdb/public#{@name}"
     send_file( @file,
     :disposition => 'inline',
     :x_sendfile => true )

@@ -209,15 +209,16 @@
 	  </div>
 	<% end %>
 	
-	<div class="clear">
-	<b>Upload Files:</b>
+  <div class="clear">
+  <b>Upload Files:</b>
   <%= f.fields_for :request_files do |p| %>
      <div class="field">
        <%= p.file_field :file, :multiple => true, name: "request_files[file][]" %>
      </div>
-   <% end %>
-	</div>
-   <% if params[:controller] == "requests" && params[:action] == "edit" %> 
+  <% end %>
+  </div>
+	
+   <% if params[:controller] == "requests" && params[:action] == "show" %> 
      <b>Uploaded Files:</b>
 		<table class="table">
 		<% @request.request_files.each do |p| %>
@@ -228,7 +229,7 @@
 		  </tr>
 		<% end %>
 		</table>
-  <% end %>
+   <% end %>
 	  
   <fieldset class="left" style="width: 580px;">
     <legend><h3>Parts and Items</h3></legend>
