@@ -133,19 +133,19 @@ class RequestsController < ApplicationController
     @request = @request.eng_status(@request)
     @subject = @email[:subject]
     @additional_emails = @email[:recipient]
-    
+    attachment = params[:attachment]
     respond_to do |format|
-      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject).deliver if @additional_emails != ""
-      RequestMailer.notify_a9(@request, @message, @subject).deliver if @request.product_line == "A9"
-      RequestMailer.notify_a7(@request, @message, @subject).deliver if @request.product_line == "A7"
-      RequestMailer.notify_ag(@request, @message, @subject).deliver if @request.product_line == "AG"
-      RequestMailer.notify_af(@request, @message, @subject).deliver if @request.product_line == "AF"
-      RequestMailer.notify_S3(@request, @message, @subject).deliver if @request.product_line == "S3"
-      RequestMailer.notify_legacy(@request, @message, @subject).deliver if @request.product_line == "Legacy"
-      RequestMailer.notify_kkpro(@request, @message, @subject).deliver if @request.product_line == "K/Kpro"
-      RequestMailer.notify_emw(@request, @message, @subject).deliver if @request.product_line == "EMW"
-      RequestMailer.notify_hd(@request, @message, @subject).deliver if @request.product_line == "HD"
-      RequestMailer.notify_nm(@request, @message, @subject).deliver if @request.product_line == "Non-Metallic"
+      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject, attachment).deliver if @additional_emails != ""
+      RequestMailer.notify_a9(@request, @message, @subject, attachment).deliver if @request.product_line == "A9"
+      RequestMailer.notify_a7(@request, @message, @subject, attachment).deliver if @request.product_line == "A7"
+      RequestMailer.notify_ag(@request, @message, @subject, attachment).deliver if @request.product_line == "AG"
+      RequestMailer.notify_af(@request, @message, @subject, attachment).deliver if @request.product_line == "AF"
+      RequestMailer.notify_S3(@request, @message, @subject, attachment).deliver if @request.product_line == "S3"
+      RequestMailer.notify_legacy(@request, @message, @subject, attachment).deliver if @request.product_line == "Legacy"
+      RequestMailer.notify_kkpro(@request, @message, @subject, attachment).deliver if @request.product_line == "K/Kpro"
+      RequestMailer.notify_emw(@request, @message, @subject, attachment).deliver if @request.product_line == "EMW"
+      RequestMailer.notify_hd(@request, @message, @subject, attachment).deliver if @request.product_line == "HD"
+      RequestMailer.notify_nm(@request, @message, @subject, attachment).deliver if @request.product_line == "Non-Metallic"
       
       @request.update_attributes(params[:request])
       format.html { redirect_to home_url, alert: "SIR has been submitted to engineering.  Please push up the revision level and resubmit if you make any changes." }
@@ -161,10 +161,11 @@ class RequestsController < ApplicationController
     @request = @request.mfg_status(@request)
     @subject = @email[:subject]
     @additional_emails = @email[:recipient]
+    attachment = params[:attachment]
     
     respond_to do |format|
-      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject).deliver if @additional_emails != ""
-      RequestMailer.notify_mfg(@request, @message, @subject).deliver 
+      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject, attachment).deliver if @additional_emails != ""
+      RequestMailer.notify_mfg(@request, @message, @subject, attachment).deliver 
       
       @request.update_attributes(params[:request])
       format.html { redirect_to home_url, alert: "SIR has been submitted to manufacturing.  Please resubmit if you make any changes." }
@@ -180,10 +181,11 @@ class RequestsController < ApplicationController
     @request = @request.reject_status(@request)
     @subject = @email[:subject]
     @additional_emails = @email[:recipient]
+    attachment = params[:attachment]
     
     respond_to do |format|
-      RequestMailer.reject_additional(@request, @message, @additional_emails, @subject).deliver if @additional_emails != ""
-      RequestMailer.reject(@request, @message, @subject).deliver 
+      RequestMailer.reject_additional(@request, @message, @additional_emails, @subject, attachment).deliver if @additional_emails != ""
+      RequestMailer.reject(@request, @message, @subject, attachment).deliver 
       
       @request.update_attributes(params[:request])
       format.html { redirect_to home_url, alert: "SIR has been returned to sales marked as incomplete." }
@@ -199,10 +201,11 @@ class RequestsController < ApplicationController
     @request = @request.acct_status(@request)
     @subject = @email[:subject]
     @additional_emails = @email[:recipient]
+    attachment = params[:attachment]
     
     respond_to do |format|
-      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject).deliver if @additional_emails != ""
-      RequestMailer.notify_acct(@request, @message, @subject).deliver 
+      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject, attachment).deliver if @additional_emails != ""
+      RequestMailer.notify_acct(@request, @message, @subject, attachment).deliver 
       
       @request.update_attributes(params[:request])
       format.html { redirect_to home_url, alert: "SIR has been submitted to accounting.  Please resubmit if you make any changes." }
@@ -218,10 +221,11 @@ class RequestsController < ApplicationController
     @request = @request.complete_status(@request)
     @subject = @email[:subject]
     @additional_emails = @email[:recipient]
+    attachment = params[:attachment]
     
     respond_to do |format|
-      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject).deliver if @additional_emails != ""
-      RequestMailer.notify_sales(@request, @message, @subject).deliver 
+      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject, attachment).deliver if @additional_emails != ""
+      RequestMailer.notify_sales(@request, @message, @subject, attachment).deliver 
       
       @request.update_attributes(params[:request])
       format.html { redirect_to home_url, alert: "SIR has been submitted to Sales.  Please resubmit if you make any changes." }
@@ -236,20 +240,21 @@ class RequestsController < ApplicationController
     @request = @request.sor_status(@request)
     @subject = @email[:subject]
     @additional_emails = @email[:recipient]
+    attachment = params[:attachment]
     
     respond_to do |format|
-      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject).deliver if @additional_emails != ""
-      RequestMailer.notify_a9(@request, @message, @subject).deliver if @request.product_line == "A9"
-      RequestMailer.notify_a7(@request, @message, @subject).deliver if @request.product_line == "A7"
-      RequestMailer.notify_ag(@request, @message, @subject).deliver if @request.product_line == "AG"
-      RequestMailer.notify_af(@request, @message, @subject).deliver if @request.product_line == "AF"
-      RequestMailer.notify_S3(@request, @message, @subject).deliver if @request.product_line == "S3"
-      RequestMailer.notify_legacy(@request, @message, @subject).deliver if @request.product_line == "Legacy"
-      RequestMailer.notify_kkpro(@request, @message, @subject).deliver if @request.product_line == "K/Kpro"
-      RequestMailer.notify_emw(@request, @message, @subject).deliver if @request.product_line == "EMW"
-      RequestMailer.notify_hd(@request, @message, @subject).deliver if @request.product_line == "HD"
-      RequestMailer.notify_nm(@request, @message, @subject).deliver if @request.product_line == "Non-Metallic"
-      RequestMailer.notify_mfg(@request, @message, @subject).deliver 
+      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject, attachment).deliver if @additional_emails != ""
+      RequestMailer.notify_a9(@request, @message, @subject, attachment).deliver if @request.product_line == "A9"
+      RequestMailer.notify_a7(@request, @message, @subject, attachment).deliver if @request.product_line == "A7"
+      RequestMailer.notify_ag(@request, @message, @subject, attachment).deliver if @request.product_line == "AG"
+      RequestMailer.notify_af(@request, @message, @subject, attachment).deliver if @request.product_line == "AF"
+      RequestMailer.notify_S3(@request, @message, @subject, attachment).deliver if @request.product_line == "S3"
+      RequestMailer.notify_legacy(@request, @message, @subject, attachment).deliver if @request.product_line == "Legacy"
+      RequestMailer.notify_kkpro(@request, @message, @subject, attachment).deliver if @request.product_line == "K/Kpro"
+      RequestMailer.notify_emw(@request, @message, @subject, attachment).deliver if @request.product_line == "EMW"
+      RequestMailer.notify_hd(@request, @message, @subject, attachment).deliver if @request.product_line == "HD"
+      RequestMailer.notify_nm(@request, @message, @subject, attachment).deliver if @request.product_line == "Non-Metallic"
+      RequestMailer.notify_mfg(@request, @message, @subject, attachment).deliver 
     
       @request.update_attributes(params[:request])
       format.html { redirect_to home_url, alert: "SOR has been created.  An email has been sent to the appropriate personnel." }
@@ -277,7 +282,9 @@ class RequestsController < ApplicationController
     # for windows testing
     #@file = "c://users/sabrams/engdb/public#{@name}"
     # for linux live system
-    @file = "/srv/engdb/public#{@name}"
+    #@file = "/srv/engdb/public#{@name}"
+    # for home mac system
+    @file = "/users/fonmus/documents/aptana\ studio\ 3\ workspace/engdb/public#{@name}"
     send_file( @file,
     :disposition => 'inline',
     :x_sendfile => true )

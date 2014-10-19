@@ -103,7 +103,7 @@
 <table class="table">
 <% @request_files.each do |p| %>
   <tr>
-  	<td><%= p.file_url.split("/").last %></td>
+  	<td><%= p.file_url.split("/").last unless p.file_url.nil? %></td>
     <td><%= button_to "Download File", {action: "download", controller: "requests", :file => p.file}  %></td>
     <!--<td><%= link_to "Delete File", p, method: :delete %></td>-->
   </tr>
