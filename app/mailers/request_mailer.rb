@@ -1,17 +1,18 @@
 class RequestMailer < ActionMailer::Base
   default from: "notices@wilfley.com"
 
-  def submit_additional(request, message, additionalemails, subject)
+  def submit_additional(request, message, additionalemails, subject, file)
     @request = request
     @message = message
     @emails = additionalemails
     @subject = subject
     to = []
     to << @emails
+    attachments[file.original_filename] = file.read()
     mail to: to, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
-  def notify_eng(request, message, subject)
+  def notify_eng(request, message, subject, file)
     @request = request
     @message = message
     @subject = subject
@@ -29,10 +30,11 @@ class RequestMailer < ActionMailer::Base
     @email.each do |e|
       to.push e.email
     end
+    attachments[file.original_filename] = file.read()
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
-  def notify_mfg(request, message, subject)
+  def notify_mfg(request, message, subject, file)
     @request = request
     @message = message
     @subject = subject
@@ -46,10 +48,11 @@ class RequestMailer < ActionMailer::Base
     @email.each do |e|
       to.push e.email
     end
+    attachments[file.original_filename] = file.read()
     mail to: to, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
-  def notify_acct(request, message, subject)
+  def notify_acct(request, message, subject, file)
     @request = request
     @message = message
     @subject = subject
@@ -63,10 +66,11 @@ class RequestMailer < ActionMailer::Base
     @email.each do |e|
       to.push e.email
     end
+    attachments[file.original_filename] = file.read()
     mail to: to, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
 
-  def notify_a7(request, message, subject)
+  def notify_a7(request, message, subject, file)
     @request = request
     @message = message
     @subject = subject
@@ -88,10 +92,11 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
+    attachments[file.original_filename] = file.read()
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
-  def notify_a9(request, message, subject)
+  def notify_a9(request, message, subject, file)
     @request = request
     @message = message
     @subject = subject
@@ -113,10 +118,11 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
+    attachments[file.original_filename] = file.read()
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
-  def notify_ag(request, message, subject)
+  def notify_ag(request, message, subject, file)
     @request = request
     @message = message
     @subject = subject
@@ -138,10 +144,11 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
+    attachments[file.original_filename] = file.read()
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
-  def notify_af(request, message, subject)
+  def notify_af(request, message, subject, file)
     @request = request
     @message = message
     @subject = subject
@@ -163,10 +170,11 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
+    attachments[file.original_filename] = file.read()
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
-  def notify_s3(request, message, subject)
+  def notify_s3(request, message, subject, file)
     @request = request
     @message = message
     @subject = subject
@@ -188,10 +196,11 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
+    attachments[file.original_filename] = file.read()
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
-  def notify_legacy(request, message, subject)
+  def notify_legacy(request, message, subject, file)
     @request = request
     @message = message
     @subject = subject
@@ -213,10 +222,11 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
+    attachments[file.original_filename] = file.read()
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
-  def notify_kkpro(request, message, subject)
+  def notify_kkpro(request, message, subject, file)
     @request = request
     @message = message
     @subject = subject
@@ -238,10 +248,11 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
+    attachments[file.original_filename] = file.read()
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
-  def notify_emw(request, message, subject)
+  def notify_emw(request, message, subject, file)
     @request = request
     @message = message
     @subject = subject
@@ -263,10 +274,11 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
+    attachments[file.original_filename] = file.read()
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
-  def notify_hd(request, message, subject)
+  def notify_hd(request, message, subject, file)
     @request = request
     @message = message
     @subject = subject
@@ -288,10 +300,11 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
+    attachments[file.original_filename] = file.read()
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
-  def notify_nm(request, message, subject)
+  def notify_nm(request, message, subject, file)
     @request = request
     @message = message
     @subject = subject
@@ -313,10 +326,11 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
+    attachments[file.original_filename] = file.read()
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
-  def notify_sales(request, message, subject)
+  def notify_sales(request, message, subject, file)
     @request = request
     @message = message
     @subject = subject
@@ -334,10 +348,11 @@ class RequestMailer < ActionMailer::Base
     @email2.each do |e|
       to.push e.email
     end
+    attachments[file.original_filename] = file.read()
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' Final Report'+'  '+@subject, template_name: 'eng_notify'  
   end
   
-  def reject(request, message, subject)
+  def reject(request, message, subject, file)
     @request = request
     @message = message
     @subject = subject
@@ -355,16 +370,18 @@ class RequestMailer < ActionMailer::Base
     @email2.each do |e|
       to.push e.email
     end
+    attachments[file.original_filename] = file.read()
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' Incomplete'+'  '+@subject, template_name: 'eng_notify'  
   end
   
-  def reject_additional(request, message, additionalemails, subject)
+  def reject_additional(request, message, additionalemails, subject, file)
     @request = request
     @message = message
     @emails = additionalemails
     @subject = subject
     to = []
     to << @emails
+    attachments[file.original_filename] = file.read()
     mail to: to, subject: 'SIR '+@request.request_number.to_s+' Incomplete'+'  '+@subject, template_name: 'eng_notify'
   end
   
