@@ -16,6 +16,17 @@
 	    <%= f.label :reference_part %><br />
 	    <%= f.text_field :reference_part %>
 	  </div>
+	  <% if user_in_accounting? %>
+	      <br/><br/>
+		  <div class="field">
+		    <%= f.label :final_price %><br />
+		    <%= f.number_field :final_price %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :final_lead_time %><br />
+		    <%= f.text_field :final_lead %>
+		  </div>
+      <% end %>
   </div>
   <% if user_in_manufacturing? or user_in_accounting? %>
 	  <div class="span4">
@@ -48,20 +59,32 @@
 		    <%= f.number_field :eng_hours %>
 		  </div>
 		  <div class="field">
+		    <%= f.label :billing %><br />
+		    <%= f.select :billing, RequestItem::BILLING %>
+		  </div>
+		  <div class="field">
 		    <%= f.label :make_from %><br />
 		    <%= f.text_field :make_from %>
 		  </div>
 		  <div class="field">
-		    <%= f.label :engineering_status %><br />
-		    <%= f.text_field :eng_status %>
+		    <%= f.label :design_type %><br />
+		    <%= f.select :design_type, RequestItem::DESIGN_TYPE %>
 		  </div>
 		  <div class="field">
-		    <%= f.label :engineering_comments %><br />
-		    <%= f.text_area :eng_comments, rows: 4 %>
+		    <%= f.label :relative_size %><br />
+		    <%= f.select :relative_size, RequestItem::RELATIVE_SIZE, selected: 'Same Size' %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :substitution_type %><br />
+		    <%= f.select :substitution_type, RequestItem::SUBSTITUTION_TYPE %>
 		  </div>
 		  <div class="field">
 		   	 <%= f.label :purchasing_cost %><br />
 		  	 <%= f.number_field :purch_cost %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :engineering_comments %><br />
+		    <%= f.text_area :eng_comments, rows: 4 %>
 		  </div>
 	  </div>
   <% end %>
