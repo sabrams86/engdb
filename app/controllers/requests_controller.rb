@@ -282,9 +282,9 @@ class RequestsController < ApplicationController
     # for windows testing
     #@file = "c://users/sabrams/engdb/public#{@name}"
     # for linux live system
-    #@file = "/srv/engdb/public#{@name}"
+    @file = "/srv/engdb/public#{@name}"
     # for home mac system
-    @file = "/users/fonmus/documents/aptana\ studio\ 3\ workspace/engdb/public#{@name}"
+    #@file = "/users/fonmus/documents/aptana\ studio\ 3\ workspace/engdb/public#{@name}"
     send_file( @file,
     :disposition => 'inline',
     :x_sendfile => true )
