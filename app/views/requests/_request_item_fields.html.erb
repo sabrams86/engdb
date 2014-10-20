@@ -87,19 +87,6 @@
 		    <%= f.text_area :eng_comments, rows: 4 %>
 		  </div>
 	  </div>
-  <% end %>
-  <% if user_in_accounting? %>
-	  <div class="span4">
-		  <div class="field">
-		    <%= f.label :final_price %><br />
-		    <%= f.number_field :final_price %>
-		  </div>
-		  <div class="field">
-		    <%= f.label :final_lead_time %><br />
-		    <%= f.text_field :final_lead %>
-		  </div>
-	  </div>
-  <% end %>
   <div class="revfield">
       <%= link_to_remove_fields "Remove", f %>
   </div>
