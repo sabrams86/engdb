@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141007131533) do
+ActiveRecord::Schema.define(:version => 20141020142102) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0, :null => false
@@ -238,13 +238,17 @@ ActiveRecord::Schema.define(:version => 20141007131533) do
     t.string   "make_from"
     t.string   "eng_status"
     t.text     "eng_comments"
-    t.decimal  "purch_cost",     :precision => 9, :scale => 2
-    t.decimal  "acct_price",     :precision => 9, :scale => 2
-    t.decimal  "final_price",    :precision => 9, :scale => 2
+    t.decimal  "purch_cost",        :precision => 9, :scale => 2
+    t.decimal  "acct_price",        :precision => 9, :scale => 2
+    t.decimal  "final_price",       :precision => 9, :scale => 2
     t.string   "final_lead"
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
     t.integer  "request_id"
+    t.string   "design_type"
+    t.string   "relative_size"
+    t.string   "substitution_type"
+    t.string   "billing"
   end
 
   create_table "requests", :force => true do |t|
