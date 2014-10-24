@@ -8,7 +8,7 @@ class RequestMailer < ActionMailer::Base
     @subject = subject
     to = []
     to << @emails
-    attachments[file.original_filename] = file.read()
+      attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
@@ -30,7 +30,7 @@ class RequestMailer < ActionMailer::Base
     @email.each do |e|
       to.push e.email
     end
-    attachments[file.original_filename] = file.read()
+      attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
@@ -48,7 +48,7 @@ class RequestMailer < ActionMailer::Base
     @email.each do |e|
       to.push e.email
     end
-    attachments[file.original_filename] = file.read()
+    attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
@@ -66,7 +66,7 @@ class RequestMailer < ActionMailer::Base
     @email.each do |e|
       to.push e.email
     end
-    attachments[file.original_filename] = file.read()
+    attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
 
@@ -92,7 +92,7 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
-    attachments[file.original_filename] = file.read()
+    attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
@@ -118,7 +118,7 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
-    attachments[file.original_filename] = file.read()
+    attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
@@ -144,7 +144,7 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
-    attachments[file.original_filename] = file.read()
+    attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
@@ -170,7 +170,7 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
-    attachments[file.original_filename] = file.read()
+    attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
@@ -196,7 +196,7 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
-    attachments[file.original_filename] = file.read()
+    attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
@@ -222,7 +222,7 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
-    attachments[file.original_filename] = file.read()
+    attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
@@ -248,7 +248,7 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
-    attachments[file.original_filename] = file.read()
+    attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
@@ -274,7 +274,7 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
-    attachments[file.original_filename] = file.read()
+      attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
@@ -300,7 +300,7 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
-    attachments[file.original_filename] = file.read()
+    attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
@@ -326,7 +326,7 @@ class RequestMailer < ActionMailer::Base
     @backup.each do |e|
       to.push e.email
     end
-    attachments[file.original_filename] = file.read()
+    attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' notification'+'  '+@subject, template_name: 'eng_notify'
   end
   
@@ -348,7 +348,7 @@ class RequestMailer < ActionMailer::Base
     @email2.each do |e|
       to.push e.email
     end
-    attachments[file.original_filename] = file.read()
+    attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' Final Report'+'  '+@subject, template_name: 'eng_notify'  
   end
   
@@ -370,7 +370,7 @@ class RequestMailer < ActionMailer::Base
     @email2.each do |e|
       to.push e.email
     end
-    attachments[file.original_filename] = file.read()
+    attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' Incomplete'+'  '+@subject, template_name: 'eng_notify'  
   end
   
@@ -381,7 +381,7 @@ class RequestMailer < ActionMailer::Base
     @subject = subject
     to = []
     to << @emails
-    attachments[file.original_filename] = file.read()
+    attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, subject: 'SIR '+@request.request_number.to_s+' Incomplete'+'  '+@subject, template_name: 'eng_notify'
   end
   
