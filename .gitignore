@@ -1,3 +1,4 @@
 /db/*.sqlite3
 /log/*.log
-/public/uploads/request_file/file/
+/public/uploads/*
+tmp/**/*
