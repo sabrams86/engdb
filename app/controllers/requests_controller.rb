@@ -82,8 +82,10 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.save
-        params[:request_files]['file'].each do |a|
-          @request_file = @request.request_files.create!(:file => a, :request_id => @request.id)
+        unless params[:request_files].blank?
+          params[:request_files]['file'].each do |a|
+            @request_file = @request.request_files.create!(:file => a, :request_id => @request.id)
+          end
         end
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
         format.json { render json: @request, status: :created, location: @request }
@@ -101,9 +103,11 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.update_attributes(params[:request])
-        params[:request_files]['file'].each do |a|
-          @request_file = @request.request_files.create!(:file => a, :request_id => @request.id)
-        end
+          unless params[:request_files].blank?
+            params[:request_files]['file'].each do |a|
+              @request_file = @request.request_files.create!(:file => a, :request_id => @request.id) 
+            end
+          end
         format.html { redirect_to @request, notice: 'Request was successfully updated.' }
         format.json { head :no_content }
       else
