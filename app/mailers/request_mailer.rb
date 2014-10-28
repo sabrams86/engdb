@@ -16,7 +16,7 @@ class RequestMailer < ActionMailer::Base
     @request = request
     @message = message
     @subject = subject
-    @email = EmailList.where(department: "Engineering").all
+    @email = EmailList.where(department: "Engineering_SIR").all
     @cc = User.where(name: @request.requester)
     @cc2 = User.where(name: @request.regional_sales_mgr)
     cc = []

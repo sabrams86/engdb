@@ -210,6 +210,7 @@ class RequestsController < ApplicationController
     respond_to do |format|
       RequestMailer.submit_additional(@request, @message, @additional_emails, @subject, attachment).deliver if @additional_emails != ""
       RequestMailer.notify_acct(@request, @message, @subject, attachment).deliver 
+
       
       @request.update_attributes(params[:request])
       format.html { redirect_to home_url, alert: "SIR has been submitted to accounting.  Please resubmit if you make any changes." }
@@ -230,6 +231,7 @@ class RequestsController < ApplicationController
     respond_to do |format|
       RequestMailer.submit_additional(@request, @message, @additional_emails, @subject, attachment).deliver if @additional_emails != ""
       RequestMailer.notify_sales(@request, @message, @subject, attachment).deliver 
+      RequestMailer.notify_eng(@request, @message, @subject, attachment).deliver 
       
       @request.update_attributes(params[:request])
       format.html { redirect_to home_url, alert: "SIR has been submitted to Sales.  Please resubmit if you make any changes." }

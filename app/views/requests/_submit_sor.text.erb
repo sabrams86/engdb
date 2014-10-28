@@ -18,15 +18,5 @@ Special Request Details:
   Status: <%= @request.status %>
 
   General Description: <%= @request.description %>
+  
   Additional Comments: <%= @request.comments %>
-
-<% for request_item in @request.request_items %>
-  Item:
-     Part Number: <%= h request_item.part_number %>
-     Item Number: <%= h request_item.item_number %>
-     Description: <%= h request_item.part_desc %>
-     Reference Part: <%= h request_item.reference_part %>
-     Engineering Comments:  <%= h request_item.eng_comments %>
-     Manufacturing Comments: <%= h request_item.mfg_comments %>
-     
-<% end %>

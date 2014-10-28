@@ -78,6 +78,12 @@
 		    <%= f.text_area :comments, rows: 4, class: "span10" %>
 		  </div>
 	  </div>
+	  <div class="clear">
+		  <div class="span10">
+		    <%= f.label :deliverables %><br />
+		    <%= f.text_area :deliverable, rows: 4, class: "span4" %>
+		  </div>
+	  </div>
 	  
   <% else %>
   
@@ -155,6 +161,11 @@
 	  <b>Comments:</b>
 	  <%= @request.comments %>
 	</p>
+	
+	<p>
+	  <b>Deliverables:</b>
+	  <%= @request.deliverable %>
+	</p>
   <% end %>
   <% if user_in_engineering? %>
     <p>
@@ -225,12 +236,12 @@
 		  <tr>
 		  	<td><%= p.file_url.split("/").last %></td>
 		    <td><%= button_to "Download File", {action: "download", controller: "requests", :file => p.file}  %></td>
-		    <!--<td><%= link_to "Delete File", p, method: :delete %></td>-->
 		  </tr>
 		<% end %>
 		</table>
    <% end %>
 	  
+  <% if @request.request_number < 1055 %>
   <fieldset class="left" style="width: 580px;">
     <legend><h3>Parts and Items</h3></legend>
       <%= f.fields_for(:request_items, :html => {class: "form-inline"}) do |builder| %>
@@ -238,6 +249,8 @@
       <% end %>
   <p><%= link_to_add_fields("Add Item", f, :request_items ) %></p>
   </fieldset>
+  <% end %>
+  
   <div class="actions">
     <%= f.submit "Save Changes" %>
   </div>
