@@ -3,6 +3,8 @@ All,
 A new SIR has been created by <%= @request.requester %> with the following details:
 
 SIR #: <%= @request.request_number %>
+Deliverables: <%= @request.deliverable %>
+
 Requester: <%= @request.requester %>
 Regional Sales Manager: <%= @request.regional_sales_mgr %>
 Quote Number: <%= @request.quote_number %>
@@ -14,18 +16,12 @@ Inquiry Creation Date: <%= @request.inq_submitted_date %>
 Status: <%= @request.status %>
 
 General Description: <%= @request.description %>
+
 Additional Comments: <%= @request.comments %>
+
 Engineering Comments: <%= @request.engineering_notes %>
 
-<% for request_item in @request.request_items %>
-Item:
-     Part Number: <%= h request_item.part_number %>
-     Item Number: <%= h request_item.item_number %>
-     Description: <%= h request_item.part_desc %>
-     Reference Part: <%= h request_item.reference_part %>
-     
-<% end %>
 
-Please log onto the Engineering Database and add manufacturing lead time, hours, and any other relevant information, then submit the SIR to Accounting.
+Please log onto the Engineering Database and add manufacturing lead time, hours, and any other relevant information, then submit the SIR back to Engineering.
 
-Please contact <%= @request.requester %> with any questions or comments.
+Please contact <%= @request.requester %> or Engineering with any questions or comments.

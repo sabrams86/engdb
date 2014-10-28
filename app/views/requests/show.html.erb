@@ -74,6 +74,12 @@
   <b>Comments:</b>
   <%= @request.comments %>
 </p>
+
+<p>
+  <b>Deliverables:</b>
+  <%= @request.deliverable %>
+</p>
+
 <% if user_in_engineering? || user_in_manufacturing? || user_in_accounting? || user_in_sales? %>
 <p>
   <b>Engineering Comments:</b>
@@ -105,7 +111,9 @@
   <tr>
   	<td><%= p.file_url.split("/").last unless p.file_url.nil? %></td>
     <td><%= button_to "Download File", {action: "download", controller: "requests", :file => p.file}  %></td>
-    <!--<td><%= link_to "Delete File", p, method: :delete %></td>-->
+    <% if user_in_admin? %>
+	  <td><%= link_to "Delete File", p, method: :delete %></td>
+	<% end %>
   </tr>
 <% end %>
 </table>
@@ -133,9 +141,12 @@
 <% end %>
 
 <% if user_in_manufacturing? %>
-  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitacctModal">
-  Submit to Accounting
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitengModal">
+  Return to Engineering
   </button>
+  <!--<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submitacctModal">
+  Submit to Accounting
+  </button>-->
   </br></br>
 <% end %>
 

@@ -3,6 +3,8 @@ All,
 A new SIR has been created by <%= @request.requester %> with the following details:
 
 SIR #: <%= @request.request_number %>
+Deliverables: <%= @request.deliverable %>
+
 Requester: <%= @request.requester %>
 Regional Sales Manager: <%= @request.regional_sales_mgr %>
 Quote Number: <%= @request.quote_number %>
@@ -11,22 +13,16 @@ Customer: <%= @request.customer %>
 Customer Location: <%= @request.cusomter_location %>
 Product Line: <%= @request.product_line %>
 Inquiry Creation Date: <%= @request.inq_submitted_date %>
-Status: <%= @request.status %>
 
 General Description: <%= @request.description %>
+
 Additional Comments: <%= @request.comments %>
+
 Engineering Comments: <%= @request.engineering_notes %>
+
 Manufacturing Comments: <%= @request.manufacturing_notes %>
 
-<% for request_item in @request.request_items %>
-Item:
-     Part Number: <%= h request_item.part_number %>
-     Item Number: <%= h request_item.item_number %>
-     Description: <%= h request_item.part_desc %>
-     Reference Part: <%= h request_item.reference_part %>
-     
-<% end %>
 
-Please log onto the Engineering Database and review the information given by engineering, manufacturing, and purchasing and add values for Final Price and Final Lead Time.
+Please log onto the Engineering Database and review the information given by engineering, manufacturing, and purchasing and add values for Final Pricing.
 
-Please contact <%= @request.requester %> with any questions or comments.
+Please contact <%= @request.requester %> or Engineering with any questions or comments.
