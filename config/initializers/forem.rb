@@ -14,4 +14,4 @@ Forem.layout = 'forem'
 # end
 #
 # By default, these lines will use the layout located at app/views/layouts/forem.html.erb in your application.
-Rails.application.config.action_mailer.default_url_options = { :host => "gmail.com" }
+
