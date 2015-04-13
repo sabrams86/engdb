@@ -35,6 +35,28 @@
     <%= f.label :revision %><br />
     <%= f.text_field :revision %>
   </div>
+  
+  <div class="clear">
+  <b>Upload Files:</b>
+  <%= f.fields_for :bulletin_files do |p| %>
+     <div class="field">
+       <%= p.file_field :file, :multiple => true, name: "bulletin_files[file][]" %>
+     </div>
+  <% end %>
+  </div>
+	
+   <% if params[:controller] == "product_bulletins" && params[:action] == "show" %> 
+     <b>Uploaded Files:</b>
+		<table class="table">
+		<% @product_bulletin.bulletin_files.each do |p| %>
+		  <tr>
+		  	<td><%= p.file_url.split("/").last %></td>
+		    <td><%= button_to "Download File", {action: "download", controller: "product_bulletins", :file => p.file}  %></td>
+		  </tr>
+		<% end %>
+		</table>
+   <% end %>
+   
   <div class="actions">
     <%= f.submit %>
   </div>

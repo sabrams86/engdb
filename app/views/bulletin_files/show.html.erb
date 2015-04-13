@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Bulletin:</b>
+  <%= @bulletin_file.bulletin_id %>
+</p>
+
+<p>
+  <b>File:</b>
+  <%= @bulletin_file.file %>
+</p>
+
+
+<%= link_to 'Edit', edit_bulletin_file_path(@bulletin_file) %> |
+<%= link_to 'Back', bulletin_files_path %>

@@ -1,0 +1,11 @@
+<%= form_for :treqs, :url => { :controller => "treqs", :action => "index" }, :html => {method: :get, class: "form-inline"} do |f| %>
+  <div class="field">
+    <%= f.label :keywords %>
+    <%= text_field_tag 'description' %>
+
+    <%= f.label :pump_model %>
+    <%= text_field_tag 'pump_model' %>
+
+    <%= f.submit "Search" %>
+  </div>
+<% end %>

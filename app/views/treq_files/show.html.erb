@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Treq:</b>
+  <%= @treq_file.treq_id %>
+</p>
+
+<p>
+  <b>File:</b>
+  <%= @treq_file.file %>
+</p>
+
+
+<%= link_to 'Edit', edit_treq_file_path(@treq_file) %> |
+<%= link_to 'Back', treq_files_path %>

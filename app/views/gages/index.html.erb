@@ -13,6 +13,7 @@
     <th><%= sortable_column "Servicing phone" %></th>
     <th><%= sortable_column "Calibration period" %></th>
     <th><%= sortable_column "Calibration date" %></th>
+    <th><%= sortable_column "Status" %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -29,6 +30,7 @@
     <td><%= gage.servicing_phone %></td>
     <td><%= gage.calibration_period %></td>
     <td><%= gage.calibration_date %></td>
+    <td><%= gage.status %></td>
     <td><%= link_to gage do %>
     	<i class="icon-eye-open glyphw"></i>
     	<% end %>

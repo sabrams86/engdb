@@ -1,5 +1,11 @@
 Engdb::Application.routes.draw do
 
+  resources :bulletin_files
+
+
+  resources :treq_files
+
+
   resources :request_files
 
 
@@ -84,8 +90,12 @@ delete 'logout' => 'sessions#destroy'
  match 'requests/submit_sales' => 'requests#submit_sales'
  match 'requests/submit_sor' => 'requests#submit_sor'
  match 'requests/reject' => 'requests#reject'
+ match 'requests/close' => 'requests#close'
  match 'requests/close_sir' => 'requests#close_sir'
  match 'requests/download' => 'requests#download'
+ 
+ match 'product_bulletins/download' => 'product_bulletins#download'
+ match 'treqs/download' => 'treqs#download'
  
  match 'drawings/view' => 'drawings#view'
  

@@ -385,4 +385,25 @@ class RequestMailer < ActionMailer::Base
     mail to: to, subject: 'SIR '+@request.request_number.to_s+' Incomplete'+'  '+@subject, template_name: 'eng_notify'
   end
   
+  def close(request, message, subject, file)
+    @request = request
+    @message = message
+    @subject = subject
+    @email = User.where(name: @request.requester).all
+    @email2 = User.where(name: @request.regional_sales_mgr).all
+    @cc = EmailList.where(department: @request.product_line).all
+    cc = []
+    @cc.each do |e|
+      cc.push e.email
+    end    
+    to = []
+    @email.each do |e|
+      to.push e.email
+    end
+    @email2.each do |e|
+      to.push e.email
+    end
+    attachments[file.original_filename] = file.read() unless file.blank?
+    mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' Complete'+'  '+@subject, template_name: 'eng_notify'  
+  end
 end

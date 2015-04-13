@@ -136,7 +136,9 @@
   Reject SIR as Incomplete
   </button>
   </br></br>
-  <%= button_to "Close SIR", {action: "close_sir", :id => @request.id}, {class: "btn btn-primary btn-lg"}  %>
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#closeModal">
+  Close SIR
+  </button>
   </br></br>
 <% end %>
 
@@ -284,6 +286,25 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></br>
         <%= button_to "Send Email", {action: "reject", :id => @request.id}, {class: "btn btn-primary"}  %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Close SIR Modal -->
+<div class="modal fade" style="display:none" id="closeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h4 class="modal-title" id="myModalLabel">Edit Email</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'close_email_fields' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></br>
+        <%= button_to "Send Email", {action: "close", :id => @request.id}, {class: "btn btn-primary"}  %>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

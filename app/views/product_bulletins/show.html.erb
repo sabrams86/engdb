@@ -28,6 +28,16 @@
   <b>Revision:</b>
   <%= @product_bulletin.revision %>
 </p>
-
+<b>Uploaded Files:</b>
+<table class="table">
+<% @bulletin_files.each do |p| %>
+  <tr>
+  	<td><%= p.file_url.split("/").last unless p.file_url.nil? %></td>
+    <td><%= button_to "Download File", {action: "download", controller: "product_bulletins", :file => p.file}  %></td>
+    <% if user_in_admin? %>
+	  <td><%= link_to "Delete File", p, method: :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
 <%= link_to 'Edit', edit_product_bulletin_path(@product_bulletin) %> |
 <%= link_to 'Back', product_bulletins_path %>
