@@ -39,6 +39,28 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
+  
+  <div class="clear">
+  <b>Upload Files:</b>
+  <%= f.fields_for :treq_files do |p| %>
+     <div class="field">
+       <%= p.file_field :file, :multiple => true, name: "treq_files[file][]" %>
+     </div>
+  <% end %>
+  </div>
+	
+   <% if params[:controller] == "treqs" && params[:action] == "show" %> 
+     <b>Uploaded Files:</b>
+		<table class="table">
+		<% @treq.treq_files.each do |p| %>
+		  <tr>
+		  	<td><%= p.file_url.split("/").last %></td>
+		    <td><%= button_to "Download File", {action: "download", controller: "treqs", :file => p.file}  %></td>
+		  </tr>
+		<% end %>
+		</table>
+   <% end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

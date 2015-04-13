@@ -197,6 +197,26 @@ class RequestsController < ApplicationController
     end
   end
   
+  def close
+      
+    @request = Request.find(params[:id])
+    @email = params[:email]
+    @message = @email[:message]
+    @request = @request.complete_status(@request)
+    @subject = @email[:subject]
+    @additional_emails = @email[:recipient]
+    attachment = params[:attachment]
+    
+    respond_to do |format|
+      RequestMailer.reject_additional(@request, @message, @additional_emails, @subject, attachment).deliver if @additional_emails != ""
+      RequestMailer.reject(@request, @message, @subject, attachment).deliver 
+      
+      @request.update_attributes(params[:request])
+      format.html { redirect_to home_url, alert: "SIR has been returned to sales marked as incomplete." }
+      format.json { render json: @requests }
+    end
+  end
+  
   def submit_acct
       
     @request = Request.find(params[:id])

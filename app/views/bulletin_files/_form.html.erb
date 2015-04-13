@@ -1,0 +1,25 @@
+<%= form_for(@bulletin_file) do |f| %>
+  <% if @bulletin_file.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bulletin_file.errors.count, "error") %> prohibited this bulletin_file from being saved:</h2>
+
+      <ul>
+      <% @bulletin_file.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :bulletin_id %><br />
+    <%= f.number_field :bulletin_id %>
+  </div>
+  <div class="field">
+    <%= f.label :file %><br />
+    <%= f.text_field :file %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

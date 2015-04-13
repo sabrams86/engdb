@@ -35,6 +35,19 @@
   <%= @treq.description %>
 </p>
 
+<b>Uploaded Files:</b>
+<table class="table">
+<% @treq_files.each do |p| %>
+  <tr>
+  	<td><%= p.file_url.split("/").last unless p.file_url.nil? %></td>
+    <td><%= button_to "Download File", {action: "download", controller: "treqs", :file => p.file}  %></td>
+    <% if user_in_admin? %>
+	  <td><%= link_to "Delete File", p, method: :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+
+<br>
 
 <%= link_to 'Edit', edit_treq_path(@treq) %> |
 <%= link_to 'Back', treqs_path %>

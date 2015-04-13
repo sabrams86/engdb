@@ -1,0 +1,25 @@
+<%= form_for(@treq_file) do |f| %>
+  <% if @treq_file.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@treq_file.errors.count, "error") %> prohibited this treq_file from being saved:</h2>
+
+      <ul>
+      <% @treq_file.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :treq_id %><br />
+    <%= f.number_field :treq_id %>
+  </div>
+  <div class="field">
+    <%= f.label :file %><br />
+    <%= f.text_field :file %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

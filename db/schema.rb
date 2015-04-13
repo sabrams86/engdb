@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141028144624) do
+ActiveRecord::Schema.define(:version => 20150413153014) do
+
+  create_table "bulletin_files", :force => true do |t|
+    t.integer  "product_bulletin_id"
+    t.string   "file"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0, :null => false
@@ -204,6 +211,7 @@ ActiveRecord::Schema.define(:version => 20141028144624) do
     t.date     "calibration_date"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.string   "status"
   end
 
   create_table "product_bulletins", :force => true do |t|
@@ -289,6 +297,13 @@ ActiveRecord::Schema.define(:version => 20141028144624) do
     t.integer  "ecn_id"
     t.integer  "drawing_id"
     t.string   "drawing_number"
+  end
+
+  create_table "treq_files", :force => true do |t|
+    t.integer  "treq_id"
+    t.string   "file"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "treqs", :force => true do |t|

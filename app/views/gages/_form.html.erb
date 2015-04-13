@@ -47,6 +47,10 @@
     <%= f.label :calibration_date %><br />
     <%= f.date_select :calibration_date %>
   </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.select :status, Gage::STATUS, prompt: 'Choose a Status' %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

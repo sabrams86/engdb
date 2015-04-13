@@ -1,0 +1,11 @@
+<%= form_for :product_bulletins, :url => { :controller => "product_bulletins", :action => "index" }, :html => {method: :get, class: "form-inline"} do |f| %>
+  <div class="field">
+    <%= f.label :keywords %>
+    <%= text_field_tag 'subject' %>
+
+    <%= f.label :pump_model %>
+    <%= text_field_tag 'model' %>
+
+    <%= f.submit "Search" %>
+  </div>
+<% end %>

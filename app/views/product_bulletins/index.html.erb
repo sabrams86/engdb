@@ -1,6 +1,8 @@
-<h1>Listing Product Bulletins</h1>
+<h1>Engineering Bulletins</h1>
 
-<%= link_to 'New Product bulletin', new_product_bulletin_path if user_in_engineering? %>
+<%= render 'bulletin_search'%>
+
+<%= link_to 'New Engineering bulletin', new_product_bulletin_path if user_in_engineering? %>
 <table class="table table-striped">
   <tr>
     <th><%= sortable_column "Number" %></th>
@@ -39,6 +41,6 @@
 
 <br />
 
-<%= link_to 'New Product bulletin', new_product_bulletin_path if user_in_engineering? %>
+<%= link_to 'New Engineering bulletin', new_product_bulletin_path if user_in_engineering? %>
 <p><%= will_paginate @product_bulletins %></p>
 <%= link_to 'Back', :back %>
