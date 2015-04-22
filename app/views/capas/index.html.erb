@@ -1,0 +1,49 @@
+<h1>Listing CAPAs</h1>
+<%= link_to 'New Capa', new_capa_path %>
+<table class="table table-hover">
+  <tr>
+    <th><%= sortable_column "Capa number", :column => "capa_number", :direction => :desc %></th>
+    <th><%= sortable_column "Pump model" %></th>
+    <th><%= sortable_column "Item number" %></th>
+    <th><%= sortable_column "Name" %></th>
+    <th><%= sortable_column "Date" %></th>
+    <th><%= sortable_column "Department" %></th>
+    <th><%= sortable_column "Engineer" %></th>
+    <th><%= sortable_column "Date Resolved" %></th>
+    <th><%= sortable_column "Status" %></th>
+
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @capas.each do |capa| %>
+  <tr>
+    <td><%= capa.capa_number %></td>
+    <td><%= capa.pump_model %></td>
+    <td><%= capa.item_number %></td>
+    <td><%= capa.name %></td>
+    <td><%= capa.date %></td>
+    <td><%= capa.department %></td>
+    <td><%= capa.engineer %></td>
+    <td><%= capa.date_resolved %></td>
+    <td><%= capa.status %></td>
+    <td><%= link_to capa do %>
+    		<i class="icon-eye-open glyphw"></i>
+    	<% end %>
+		<%= link_to edit_capa_path(capa) do %>
+	    	<i class="icon-pencil glyphw"></i>
+	    <% end %>
+	    <% if user_in_admin? %>
+			<%= link_to '<i class="icon-trash glyphw"></i>'.html_safe, capa, confirm: 'Are you sure?', method: :delete %>
+		<% end %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Capa', new_capa_path %>
+<p><%= will_paginate @capas %></p>
+<%= link_to 'Back', :back %>

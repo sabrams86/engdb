@@ -11,13 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150413153014) do
+ActiveRecord::Schema.define(:version => 20150420170328) do
 
   create_table "bulletin_files", :force => true do |t|
     t.integer  "product_bulletin_id"
     t.string   "file"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+  end
+
+  create_table "capas", :force => true do |t|
+    t.string   "capa_number"
+    t.string   "pump_model"
+    t.string   "item_number"
+    t.string   "name"
+    t.date     "date"
+    t.string   "department"
+    t.text     "description"
+    t.string   "engineer"
+    t.text     "quality_comments"
+    t.string   "ncr"
+    t.text     "engr_comments"
+    t.string   "root"
+    t.string   "cause"
+    t.string   "suggested"
+    t.text     "solution"
+    t.date     "date_assigned"
+    t.date     "date_resolved"
+    t.date     "date_closed"
+    t.string   "status"
+    t.text     "follow_up_actions"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "delayed_jobs", :force => true do |t|

@@ -20,6 +20,11 @@ module ApplicationHelper
     user.present? && (user[:department] == "Sales" or user[:department] == "Admin")
   end
   
+  def user_in_quality?
+    user = User.find_by_id(session[:user_id])
+    user.present? && (user[:department] == "Quality" or user[:department] == "Admin")
+  end
+  
   def user_in_engineering?
     user = User.find_by_id(session[:user_id])
     user.present? && (user[:department] == "Engineering" or user[:department] == "Admin")
@@ -48,6 +53,15 @@ module ApplicationHelper
   def user_in_admin?
     user = User.find_by_id(session[:user_id])
     user.present? && user[:department] == "Admin"
+  end
+  
+  def user_in_shop?
+      user=User.find_by_id(session[:user_id])
+      user.present? && user[:department] == "shop"
+  end
+  
+  def user_is_logged_in?
+    session[:user_id]
   end
   
 end

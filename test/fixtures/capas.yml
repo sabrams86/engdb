@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  capa_number: MyString
+  pump_model: MyString
+  item_number: MyString
+  name: MyString
+  date: 2015-04-20
+  department: MyString
+  description: MyText
+  engineer: MyString
+  quality_comments: MyText
+  ncr: MyString
+  engr_comments: MyText
+  root: MyString
+  cause: MyString
+  suggested: MyString
+  solution: MyText
+  date_assigned: 2015-04-20
+  date_resolved: 2015-04-20
+  date_closed: 2015-04-20
+  status: MyString
+  follow_up_actions: MyText
+
+two:
+  capa_number: MyString
+  pump_model: MyString
+  item_number: MyString
+  name: MyString
+  date: 2015-04-20
+  department: MyString
+  description: MyText
+  engineer: MyString
+  quality_comments: MyText
+  ncr: MyString
+  engr_comments: MyText
+  root: MyString
+  cause: MyString
+  suggested: MyString
+  solution: MyText
+  date_assigned: 2015-04-20
+  date_resolved: 2015-04-20
+  date_closed: 2015-04-20
+  status: MyString
+  follow_up_actions: MyText

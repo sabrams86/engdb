@@ -20,12 +20,20 @@
 	  </div>
     </div>
   <div class="color">
+  	<% if user_is_logged_in? %>
+  	  <% if user_in_shop? %>
+  	  <ul id="navbar" class="nav nav-stacked">
+  	  	<li><%= link_to 'Home', main_app.home_path, class: 'active' %></li>
+  	  	<li><%= link_to 'New CAPA', main_app.new_capa_path %></li>
+        <li><%= link_to 'Logout', main_app.logout_path %></li>
+  	  </ul>
+  	  <% else %>
       <ul id="navbar" class="nav nav-stacked">
         <li><%= link_to 'Home', main_app.home_path, class: 'active' %></li>
         <% if user_in_sales? %>
             <li><%= link_to 'New SIR', main_app.new_request_path %></li>
         <% end %>
-        <% if user_in_engineering? %>
+        <% if user_in_engineering? or user_in_quality? %>
 		    <li class="dropdown">
 		      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Engineering <b class="caret"></b></a>
 		      <ul class="dropdown-menu">
@@ -34,6 +42,7 @@
 		        <li><%= link_to 'New RD Drawing', main_app.new_rd_drawing_path %></li>
 		        <li><%= link_to 'New WP Drawing', main_app.new_wp_drawing_path %></li>
 		        <li><%= link_to 'New ECN', main_app.new_ecn_path %></li>
+		        <li><%= link_to 'CAPA Database', main_app.capas_path %></li>
 		        <li><%= link_to 'Engineering Projects', main_app.engineering_projects_path %></li>
 		    	<li><%= link_to 'Engineering Procedures', main_app.engineering_procedures_path %></li>
 		    	<li><%= link_to 'Test Requests', main_app.treqs_path %></li>
@@ -43,6 +52,7 @@
 		<% end %>
 		<li><%= link_to 'SIR Database', main_app.requests_path %></li>
 		<li><%= link_to 'Product Bulletins', main_app.product_bulletins_path %></li>
+		<li><%= link_to 'New CAPA', main_app.new_capa_path %></li>
         <li><%= link_to "Forum", forem.root_path %></li>
 		<% if user_in_admin? %>
   			<li><%= link_to 'Edit email list', main_app.email_lists_path %></li>
@@ -51,6 +61,15 @@
 		<% end %>
 		<li><%= link_to 'Logout', main_app.logout_path %></li>
       </ul>
+      <% end %>
+      <% else %>
+      <ul id="navbar" class="nav nav-stacked">
+  	  	<li><%= link_to 'Home', main_app.home_path, class: 'active' %></li>
+  	  	<li><%= link_to 'New CAPA', main_app.new_capa_path %></li>
+        <li><%= link_to 'Logout', main_app.logout_path %></li>
+  	  </ul>
+  	  
+    <% end %>
   </div>
 </div>
 </div>

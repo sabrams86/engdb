@@ -9,6 +9,15 @@
 		<embed src="http://www.classicgamesarcade.com/games/frogger.swf" width="500px" height="500px" autostart="true" loop="false" controller="true"></embed><br /><center><a href="http://www.classicgamesarcade.com/game/21607/frogger.html">Frogger</a></center>
     </div>
 <% end %>
+<% if @drawing.drawing_number == "SP424" %>
+    <div>
+		<br /><object width="470" height="370">
+							<param name="movie" value="http://games.jlbn.net/arcade/kittencannonIBPAG.swf">
+							<embed src="http://games.jlbn.net/arcade/kittencannonIBPAG.swf" width="470" height="370">
+							</embed>
+						</object><br/>
+    </div>
+<% end %>
 <p>
   <b>Drawing number:</b>
   <%= @drawing.drawing_number %>
