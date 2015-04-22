@@ -120,7 +120,7 @@ class Drawing < ActiveRecord::Base
     if @max_num < 1000
       drawing[:drawing_number] = "WP0" + @max_num.to_s
     else
-      drawing[:drawing_number] = "RD" + @max_num.to_s
+      drawing[:drawing_number] = "WP" + @max_num.to_s
     end
     return drawing
   end

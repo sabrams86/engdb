@@ -6,10 +6,11 @@
 	<% if alert %>
 	  <p id="notice"><%= alert%></p>
 	<% end %>
+
+	<% if user_in_sales? || user_in_accounting? %>
 	<p>Please use the options below to search, or use the menu above to choose other options.  Use a '?' as a single character wildcard 
 		and '*' as a multiple character wildcard. Drawing description does not use wildcards but may be searched for multiple words by
 		seperating with commas (i.e. case, 3x2-8).  The search will find all drawings that contain both words.</p>
-	<% if user_in_sales? || user_in_accounting? %>
 	<div class="row">
 		<div id="search" class="col-lg-6">
 		  <%= render 'sir_search' %>
@@ -18,10 +19,17 @@
 		  <%= render 'drawing_search' %>
 		</div>
 	</div>
-
-	<% else %>
 	
+    <% elsif user_in_shop? %>
+		<button class="btn btn-primary btn-lg btn-block" >
+ 		 New CAPA
+  		</button>
+	<% else %>
+	<p>Please use the options below to search, or use the menu above to choose other options.  Use a '?' as a single character wildcard 
+		and '*' as a multiple character wildcard. Drawing description does not use wildcards but may be searched for multiple words by
+		seperating with commas (i.e. case, 3x2-8).  The search will find all drawings that contain both words.</p>
 	<div class="row">
+		
 		<div id="search" class="span2">
 		  <%= render 'drawing_search' %>
 		</div>

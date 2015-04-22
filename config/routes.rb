@@ -1,5 +1,8 @@
 Engdb::Application.routes.draw do
 
+  resources :capas
+
+
   resources :bulletin_files
 
 

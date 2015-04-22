@@ -44,6 +44,7 @@ class TreqFilesController < ApplicationController
 
     respond_to do |format|
       if @treq_file.save
+        
         format.html { redirect_to @treq_file, notice: 'Treq file was successfully created.' }
         format.json { render json: @treq_file, status: :created, location: @treq_file }
       else
