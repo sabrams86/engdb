@@ -1,11 +1,15 @@
 <h1>Editing CAPA</h1>
 
 <% if @capa.status == "New" %>
-<%= render 'form' %>
+<%= render 'assignform' %>
+
+<% elsif @capa.status == "In Process" %>
+
+<%= render 'inprocessform' %>
 
 <% else %>
 
-<p>asdpfoih</p>
+<%= render 'form' %>
 
 <% end %>
 <%= link_to 'Show', @capa %> |

@@ -100,6 +100,71 @@
   <%= @capa.follow_up_actions %>
 </p>
 
+<b>Uploaded Files:</b>
+<table class="table">
+<% @capa_files.each do |p| %>
+  <tr>
+  	<td><%= p.file_url.split("/").last unless p.file_url.nil? %></td>
+    <td><%= button_to "Download File", {action: "download", controller: "capas", :file => p.file}  %></td>
+    <% if user_in_admin? %>
+	  <td><%= link_to "Delete File", p, method: :delete %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+
+<% if user_in_quality? %>
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#assignModal">
+  Assign CAPA
+  </button>
+  </br></br>
+<% end %>
+<% if @capa.status == "In Process" %>
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#resolveModal">
+  Resolve CAPA
+  </button>
+  </br></br>
+<% end %>
 
 <%= link_to 'Edit', edit_capa_path(@capa) %> |
 <%= link_to 'Back', capas_path %>
+
+
+
+<!-- Assign Capa Modal -->
+<div class="modal fade" style="display:none" id="assignModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h4 class="modal-title" id="myModalLabel">Edit Email</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'assign_email_fields' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></br>
+        <%= button_to "Send", {action: "assign", :id => @capa.id}, {class: "btn btn-primary"}  %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Resolve Capa Modal -->
+<div class="modal fade" style="display:none" id="resolveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h4 class="modal-title" id="myModalLabel">Edit Email</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'resolve_email_fields' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></br>
+        <%= button_to "Send", {action: "resolve", :id => @capa.id}, {class: "btn btn-primary"}  %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

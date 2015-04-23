@@ -18,7 +18,7 @@ class CapasController < ApplicationController
   # GET /capas/1.json
   def show
     @capa = Capa.find(params[:id])
-
+    @capa_files = @capa.capa_files.all
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @capa }
@@ -49,7 +49,9 @@ class CapasController < ApplicationController
 
     respond_to do |format|
       if @capa.save
-        format.html { redirect_to @capa, notice: 'Capa was successfully created.' }
+        
+        CapaMailer.submit_capa(@capa).deliver
+        format.html { redirect_to new_capa_path, notice: 'Capa was successfully notice.' }
         format.json { render json: @capa, status: :created, location: @capa }
       else
         format.html { render action: "new" }
@@ -85,4 +87,76 @@ class CapasController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def assign
+      
+    @capa = Capa.find(params[:id])
+    @email = params[:email]
+    @message = @email[:message]
+    @capa = @capa.assign_status(@capa)
+    @subject = @email[:subject]
+    @additional_emails = @email[:recipient]
+    attachment = params[:attachment]
+    
+    respond_to do |format|
+      CapaMailer.submit_additional(@capa, @message, @additional_emails, @subject, attachment).deliver if @additional_emails != ""
+      CapaMailer.assign_capa(@capa, @message, @subject, attachment).deliver 
+      
+      @capa.update_attributes(params[:capa])
+      format.html { redirect_to capas_url, alert: "CAPA has been assigned." }
+      format.json { render json: @capas }
+    end
+  end
+  
+  def resolve
+      
+    @capa = Capa.find(params[:id])
+    @email = params[:email]
+    @message = @email[:message]
+    @capa = @capa.assign_status(@capa)
+    @subject = @email[:subject]
+    @additional_emails = @email[:recipient]
+    attachment = params[:attachment]
+    
+    respond_to do |format|
+      CapaMailer.submit_additional(@capa, @message, @additional_emails, @subject, attachment).deliver if @additional_emails != ""
+      CapaMailer.resolve_capa(@capa, @message, @subject, attachment).deliver 
+      
+      @capa.update_attributes(params[:capa])
+      format.html { redirect_to capas_url, alert: "CAPA has been assigned." }
+      format.json { render json: @capas }
+    end
+  end
+  
+  def close
+    @capa = Capa.find(params[:id])
+    @capa = @capa.complete_status(@capa)
+    
+    respond_to do |format|
+      @request.update_attributes(params[:request])
+      format.html { redirect_to home_url, alert: "SIR has been marked as complete." }
+      format.json { render json: @requests }
+    end
+  end
+  
+  def download
+    @capa_file = CapaFile.where('id LIKE ?', params[:id])
+    @path = @capa_file.each do |p|
+      return p.file_url
+    end
+    @name = params[:file]
+    # for windows testing
+    #@file = "c://users/sabrams/engdb/public#{@name}"
+    # for linux live system
+    @file = "/srv/engdb/public#{@name}"
+    # for home mac system
+    #@file = "/users/fonmus/documents/aptana\ studio\ 3\ workspace/engdb/public#{@name}"
+    send_file( @file,
+    :disposition => 'inline',
+    :x_sendfile => true )
+   
+  #rescue TypeError
+  #    redirect_to @request, :flash => { :alert => "File not found.  Please try again or contact support." }
+  end 
+  
 end

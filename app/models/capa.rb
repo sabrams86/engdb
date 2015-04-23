@@ -1,5 +1,7 @@
 class Capa < ActiveRecord::Base
   attr_accessible :capa_number, :cause, :date, :date_assigned, :date_closed, :date_resolved, :department, :description, :engineer, :engr_comments, :follow_up_actions, :item_number, :name, :ncr, :pump_model, :quality_comments, :root, :solution, :status, :suggested
+  has_many :capa_files
+  accepts_nested_attributes_for :capa_files
 
 PUMP_MODELS = [ "A9", "A7", "AG", "AF", "S3", "Legacy", "K/Kpro", "EMW", "HD", "Non-Metallic" ]
 
@@ -25,7 +27,7 @@ PUMP_MODELS = [ "A9", "A7", "AG", "AF", "S3", "Legacy", "K/Kpro", "EMW", "HD", "
     @capa[:status] = "Closed"
     return capa
   end  
-  def process_status(capa)
+  def assign_status(capa)
     @capa = capa
     @capa[:status] = "In Process"
     return capa

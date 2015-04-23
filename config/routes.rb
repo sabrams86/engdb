@@ -1,5 +1,8 @@
 Engdb::Application.routes.draw do
 
+  resources :capa_files
+
+
   resources :capas
 
 
@@ -102,6 +105,10 @@ delete 'logout' => 'sessions#destroy'
  
  match 'drawings/view' => 'drawings#view'
  
+ match 'capas/download' => 'capas#download'
+ match 'capas/assign' => 'capas#assign'
+ match 'capas/resolve' => 'capas#resolve'
+ match 'capas/close' => 'capas#close'
  #match '*path' => redirect('/home'), via: :get
  
  get '/users/sign_in', :to => "users#sign_in"
