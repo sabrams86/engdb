@@ -1,0 +1,25 @@
+<%= form_for(@capa_file) do |f| %>
+  <% if @capa_file.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@capa_file.errors.count, "error") %> prohibited this capa_file from being saved:</h2>
+
+      <ul>
+      <% @capa_file.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :capa_id %><br />
+    <%= f.number_field :capa_id %>
+  </div>
+  <div class="field">
+    <%= f.label :file %><br />
+    <%= f.text_field :file %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

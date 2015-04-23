@@ -17,6 +17,6 @@ class TreqNotifier < ActionMailer::Base
     @email2.each do |e|
       to.push e.email
     end
-    mail to: to, subject: 'TREQ '+@treq.test_number.to_s+' submitted', template_name: 'new_treq'
+    mail to: to, subject: 'TREQ '+@capa.capa_number.to_s+' submitted', template_name: 'new_capa'
   end
 end
