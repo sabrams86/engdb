@@ -13,8 +13,10 @@
 
   <div class="span3">
     <%= f.label :capa_number %>
+    <%= f.text_field :capa_number, {:type => :hidden} %>
     <h4><%= @capa.capa_number %></h4>
     <%= f.label :date %>
+    <%= f.date_select :date, { :discard_day => true, :discard_month => true, :discard_year => true }%>
     <h4><%= @capa.date=Date.today.strftime("%d/%m/%Y") %></h4>
     </div>
   <div class="span3">
@@ -40,7 +42,7 @@
   <% if user_in_quality? %>
   <div class="clear"></div>
   <div class="span5">
-    <%= f.label :engineer_assigned %>
+    <%= f.label :lead_assigned %>
     <%= f.text_field :engineer, class: "span3", :placeholder => "Type Full Name" %>
   </div>
   <div class="span5">

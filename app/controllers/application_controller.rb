@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
-
+  
+  def user_in_shop?
+      user=User.find_by_id(session[:user_id])
+      user.present? && user[:department] == "shop"
+  end
+  
   def current_user
       @current_user ||= User.find_by_id(session[:user_id])
       return @current_user
@@ -45,6 +50,13 @@ class ApplicationController < ActionController::Base
   def sales_check
     user = User.find_by_id(session[:user_id])
     unless user.present? && (user[:department] == "Sales" or user[:department] == "Admin")
+      redirect_to home_url, alert: "You have attempted to access features that you do not have access to.  Please contact your site administrator for more information."
+    end
+  end
+  
+  def quality_check
+    user = User.find_by_id(session[:user_id])
+    unless user.present? && (user[:department] == "Quality" or user[:department] == "Admin")
       redirect_to home_url, alert: "You have attempted to access features that you do not have access to.  Please contact your site administrator for more information."
     end
   end

@@ -1,4 +1,9 @@
-CAPA <%= @capa.capa_number %> has been resolved with the following details:
+Please follow up on CAPA# <%= @capa.capa_number %>
+
+Followup actions:
+
+<%= @capa.follow_up_actions %>
+
 
 CAPA :  <%= @capa.capa_number %>
 Pump Model:  <%= @capa.pump_model %>
@@ -27,4 +32,5 @@ Additional Comments:
 
 <%= @capa.engr_comments %>
 
-Please contact <%= @capa.engineer %> with any questions or comments.
+
+Please contact Quality or <%= @capa.engineer %> with any questions or comments.

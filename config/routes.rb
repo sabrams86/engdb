@@ -109,6 +109,7 @@ delete 'logout' => 'sessions#destroy'
  match 'capas/assign' => 'capas#assign'
  match 'capas/resolve' => 'capas#resolve'
  match 'capas/close' => 'capas#close'
+ match 'capas/followup' => 'capas#followup'
  #match '*path' => redirect('/home'), via: :get
  
  get '/users/sign_in', :to => "users#sign_in"

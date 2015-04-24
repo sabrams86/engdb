@@ -1,105 +1,80 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>CAPA number:</b>
-  <%= @capa.capa_number %>
-</p>
+  <div class="span1">
+    <b>CAPA #:</b><br/>
+    <p><%= @capa.capa_number %></p>
+  </div>
+    <div class="span1">
+    <b>Date:</b><br/>
+    <p><%= @capa.date.strftime("%d/%m/%y") %></p>
+  </div>
+  <div class="span2">
+    <b>Name:</b><br/>
+    <%= @capa.name %>
+  </div>
+  <div class="span2">
+    <b>Department:</b><br/>
+    <%= @capa.department %>
+  </div>
+  <div class="span2">
+    <b>Pump model:</b><br/>
+    <%= @capa.pump_model  %>
+  </div>
+  <div class="span2">
+    <b>Item number:</b><br/>
+    <%= @capa.item_number %>
+  </div>
+    <div class="span10">
+    <b>Description of Problem:</b><br/>
+    <%= @capa.description %>
+  </div>
+  <br/><br/>
+  <div class="clear"></div><br/>
+  <div class="span5">
+  <b>Lead:</b><br/>
+    <%= @capa.engineer %>
+  </div>
+  <div class="span5">
+    <b>NCR:</b><br/>
+    <%= @capa.ncr %>
+  </div>
+  <br/><br/>
+  <div class="span9">
+    <b>Quality Comments:</b><br/>
+    <%= @capa.quality_comments %>
+  </div>
+<br /><br /><br />
+    <div class="clear"></div><br/>
+  <div class="span4">
+    <b>Root Cause:</b><br/>
+    <%= @capa.root %>
+  </div>
+  <div class="span6">
+    <b>Comments:</b><br/>
+    <%= @capa.engr_comments %>
+  </div><br/><br/>
+  <div class="span10">
+    <b>Solution:</b><br/>
+    <%= @capa.solution  %>
+  </div><br/><br/>
+ <div class="span6">
+    <b>Date Resolved:</b><br/>
+    <%= @capa.date_resolved %>
+  </div>
+  <br/><br/><div class="clear"></div><br/>
+    <div class="span6">
+    <b>Date Closed:</b><br/>
+    <%= @capa.date_closed %>
+  </div>
+  
+<br/><br/>
+  <div class="span10"><br/><br/>
+    <b>Follow up actions:</b><br/>
+    <%= @capa.follow_up_actions   %>
+  </div>
 
-<p>
-  <b>Pump model:</b>
-  <%= @capa.pump_model %>
-</p>
-
-<p>
-  <b>Item number:</b>
-  <%= @capa.item_number %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @capa.name %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%= @capa.date %>
-</p>
-
-<p>
-  <b>Department:</b>
-  <%= @capa.department %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @capa.description %>
-</p>
-
-<p>
-  <b>Engineer:</b>
-  <%= @capa.engineer %>
-</p>
-
-<p>
-  <b>Quality comments:</b>
-  <%= @capa.quality_comments %>
-</p>
-
-<p>
-  <b>Ncr:</b>
-  <%= @capa.ncr %>
-</p>
-
-<p>
-  <b>Engr comments:</b>
-  <%= @capa.engr_comments %>
-</p>
-
-<p>
-  <b>Root:</b>
-  <%= @capa.root %>
-</p>
-
-<p>
-  <b>Cause:</b>
-  <%= @capa.cause %>
-</p>
-
-<p>
-  <b>Suggested:</b>
-  <%= @capa.suggested %>
-</p>
-
-<p>
-  <b>Solution:</b>
-  <%= @capa.solution %>
-</p>
-
-<p>
-  <b>Date assigned:</b>
-  <%= @capa.date_assigned %>
-</p>
-
-<p>
-  <b>Date resolved:</b>
-  <%= @capa.date_resolved %>
-</p>
-
-<p>
-  <b>Date closed:</b>
-  <%= @capa.date_closed %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @capa.status %>
-</p>
-
-<p>
-  <b>Follow up actions:</b>
-  <%= @capa.follow_up_actions %>
-</p>
-
+  <br/>
+<div class="clear"></div>
 <b>Uploaded Files:</b>
 <table class="table">
 <% @capa_files.each do |p| %>
@@ -113,7 +88,7 @@
 <% end %>
 </table>
 
-<% if user_in_quality? %>
+<% if user_in_quality? && @capa.status == "New" %>
   <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#assignModal">
   Assign CAPA
   </button>
@@ -125,7 +100,18 @@
   </button>
   </br></br>
 <% end %>
+<% if @capa.status == "Resolved" && user_in_quality? %>
 
+  <%= button_to "Close CAPA", {action: "close", :id => @capa.id}, {class: "btn btn-primary"}  %>
+
+  </br></br>
+<% end %>
+<% if (@capa.status == "Resolved" || "Closed") && user_in_quality? %>
+  <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#followupModal">
+  Follow Up
+  </button>
+  </br></br>
+<% end %>
 <%= link_to 'Edit', edit_capa_path(@capa) %> |
 <%= link_to 'Back', capas_path %>
 
@@ -164,6 +150,25 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></br>
         <%= button_to "Send", {action: "resolve", :id => @capa.id}, {class: "btn btn-primary"}  %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Follow Up Capa Modal -->
+<div class="modal fade" style="display:none" id="followupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <h4 class="modal-title" id="myModalLabel">Edit Email</h4>
+      </div>
+      <div class="modal-body">
+        <%= render 'followup_email_fields' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button></br>
+        <%= button_to "Send", {action: "followup", :id => @capa.id}, {class: "btn btn-primary"}  %>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

@@ -1,5 +1,7 @@
 class CapasController < ApplicationController
+  helper :application
   handles_sortable_columns
+  before_filter :quality_check, only: [:assign, :close]
   before_filter :admin_check, only: [:destroy]
   # GET /capas
   # GET /capas.json
@@ -30,6 +32,7 @@ class CapasController < ApplicationController
   def new
     @capa = Capa.new
     @capa = @capa.incrament(@capa)
+    @capa_file = @capa.capa_files.build
     
     respond_to do |format|
       format.html # new.html.erb
@@ -40,18 +43,27 @@ class CapasController < ApplicationController
   # GET /capas/1/edit
   def edit
     @capa = Capa.find(params[:id])
+    @capa_files = @capa.capa_files.all
   end
 
   # POST /capas
   # POST /capas.json
   def create
     @capa = Capa.new(params[:capa])
-
+    @capa = @capa.new_status(@capa)
     respond_to do |format|
       if @capa.save
-        
+        unless params[:capa_files].blank?
+          params[:capa_files]['file'].each do |a|
+            @capa_file = @capa.capa_files.create!(:file => a, :capa_id => @capa.id)
+          end
+        end
         CapaMailer.submit_capa(@capa).deliver
-        format.html { redirect_to new_capa_path, notice: 'Capa was successfully notice.' }
+        format.html { if user_in_shop? 
+          redirect_to new_capa_path, notice: 'Capa was successfully notice.' 
+          else
+            redirect_to @capa, notice: 'Capa was successfully notice.'
+          end}
         format.json { render json: @capa, status: :created, location: @capa }
       else
         format.html { render action: "new" }
@@ -67,6 +79,11 @@ class CapasController < ApplicationController
 
     respond_to do |format|
       if @capa.update_attributes(params[:capa])
+          unless params[:capa_files].blank?
+          params[:capa_files]['file'].each do |a|
+            @capa_file = @capa.capa_files.create!(:file => a, :capa_id => @capa.id)
+          end
+          end
         format.html { redirect_to @capa, notice: 'Capa was successfully updated.' }
         format.json { head :no_content }
       else
@@ -113,7 +130,7 @@ class CapasController < ApplicationController
     @capa = Capa.find(params[:id])
     @email = params[:email]
     @message = @email[:message]
-    @capa = @capa.assign_status(@capa)
+    @capa = @capa.resolved_status(@capa)
     @subject = @email[:subject]
     @additional_emails = @email[:recipient]
     attachment = params[:attachment]
@@ -123,18 +140,36 @@ class CapasController < ApplicationController
       CapaMailer.resolve_capa(@capa, @message, @subject, attachment).deliver 
       
       @capa.update_attributes(params[:capa])
-      format.html { redirect_to capas_url, alert: "CAPA has been assigned." }
+      format.html { redirect_to capas_url, alert: "CAPA has been resolved." }
+      format.json { render json: @capas }
+    end
+  end
+  
+  def followup
+      
+    @capa = Capa.find(params[:id])
+    @email = params[:email]
+    @message = @email[:message]
+    @subject = @email[:subject]
+    @additional_emails = @email[:recipient]
+    attachment = params[:attachment]
+    
+    respond_to do |format|
+      CapaMailer.followup_capa(@capa, @message, @additional_emails, @subject, attachment).deliver if @additional_emails != ""
+
+      @capa.update_attributes(params[:capa])
+      format.html { redirect_to capas_url, alert: "Message Sent." }
       format.json { render json: @capas }
     end
   end
   
   def close
     @capa = Capa.find(params[:id])
-    @capa = @capa.complete_status(@capa)
+    @capa = @capa.closed_status(@capa)
     
     respond_to do |format|
-      @request.update_attributes(params[:request])
-      format.html { redirect_to home_url, alert: "SIR has been marked as complete." }
+      @capa.update_attributes(params[:capa])
+      format.html { redirect_to capas_url, alert: "CAPA has been closed." }
       format.json { render json: @requests }
     end
   end

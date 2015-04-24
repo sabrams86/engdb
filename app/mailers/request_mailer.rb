@@ -384,6 +384,16 @@ class RequestMailer < ActionMailer::Base
     attachments[file.original_filename] = file.read() unless file.blank?
     mail to: to, subject: 'SIR '+@request.request_number.to_s+' Incomplete'+'  '+@subject, template_name: 'eng_notify'
   end
+  def close_additional(request, message, additionalemails, subject, file)
+    @request = request
+    @message = message
+    @emails = additionalemails
+    @subject = subject
+    to = []
+    to << @emails
+    attachments[file.original_filename] = file.read() unless file.blank?
+    mail to: to, cc: cc, subject: 'SIR '+@request.request_number.to_s+' Complete'+'  '+@subject, template_name: 'eng_notify'  
+  end
   
   def close(request, message, subject, file)
     @request = request
