@@ -208,11 +208,11 @@ class RequestsController < ApplicationController
     attachment = params[:attachment]
     
     respond_to do |format|
-      RequestMailer.reject_additional(@request, @message, @additional_emails, @subject, attachment).deliver if @additional_emails != ""
-      RequestMailer.reject(@request, @message, @subject, attachment).deliver 
+      RequestMailer.submit_additional(@request, @message, @additional_emails, @subject, attachment).deliver if @additional_emails != ""
+      RequestMailer.close(@request, @message, @subject, attachment).deliver 
       
       @request.update_attributes(params[:request])
-      format.html { redirect_to home_url, alert: "SIR has been returned to sales marked as incomplete." }
+      format.html { redirect_to home_url, alert: "SIR has been closed." }
       format.json { render json: @requests }
     end
   end

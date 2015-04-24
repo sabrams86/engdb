@@ -74,8 +74,8 @@
   </div>
   <br/><br/><div class="clear"></div><br/>
     <div class="span6">
-    <b>Date Closed:</b><br/>
-    <%= @capa.date_closed.strftime("%d/%m/%y") %>
+    <%= f.label :date_closed %><br />
+    <%= f.date_select :date_closed, {:include_blank => true, :default => nil}, class: "span2" %>
   </div>
   
 <br/><br/>
@@ -83,9 +83,8 @@
     <%= f.label :follow_up_actions %><br />
     <%= f.text_area :follow_up_actions, rows: 6, class: "span10"  %>
   </div>
+  <div class="clear"></div>
   <div class="span 10">
-  	
-  	<div class="clear"></div>
   <b>Upload Files:</b>
   <%= f.fields_for :capa_files do |p| %>
      <div class="field">
@@ -95,8 +94,6 @@
   </div>
 	
    <% if params[:controller] == "capas" && params[:action] == "show" %> 
-   
-   
      <b>Uploaded Files:</b>
 		<table class="table">
 		<% @capa.capa_files.each do |p| %>

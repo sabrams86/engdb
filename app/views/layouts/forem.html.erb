@@ -45,6 +45,9 @@
 		      </ul>
 		    </li>
 		<% end %>
+		<% unless user_in_engineering? or user_in_quality? %>
+		  <li><%= link_to 'CAPA Database', main_app.capas_path %></li>
+		<% end %>
 		<li><%= link_to 'SIR Database', main_app.requests_path %></li>
 		<li><%= link_to 'Product Bulletins', main_app.product_bulletins_path %></li>
 		<li><%= link_to 'New CAPA', main_app.new_capa_path %></li>

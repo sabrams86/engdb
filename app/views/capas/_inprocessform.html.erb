@@ -17,48 +17,83 @@
   </div>
     <div class="span1">
     <%= f.label :date %><br />
-    <p><b><%= @capa.date=Date.today.strftime("%d/%m/%y") %></b></p>
+    <p><b><%= @capa.date %></b></p>
   </div>
   <div class="span2">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, class:"span2", placeholder: "Your Name Here" %>
+    <%= f.label :name %><br />s
+    <%= @capa.name %>
   </div>
   <div class="span2">
     <%= f.label :department %><br />
-    <%= f.text_field :department, class:"span2" %>
+    <%= @capa.department %>
   </div>
   <div class="span2">
     <%= f.label :pump_model %><br />
-    <%= f.select :pump_model, Capa::PUMP_MODELS, {:include_blank => true, :default => nil}, class:"span2" %>
+    <%= @capa.pump_model  %>
   </div>
   <div class="span2">
     <%= f.label :item_number %><br />
-    <%= f.text_field :item_number, class:"span2" %>
+    <%= @capa.item_number %>
   </div>
     <div class="span10">
     <%= f.label :description_of_problem %><br />
-    <%= f.text_area :description, rows: 15, class: "span10" %>
+    <%= @capa.description %>
   </div>
-
-  
-  <% if user_in_quality? %>
   <div class="clear"></div>
   <div class="span5">
-    <%= f.label :engineer_assigned %>
-    <%= f.text_field :engineer, class: "span3", :placeholder => "Type Full Name" %>
+    <%= f.label :lead_assigned %>
+    <%= @capa.engineer %>
   </div>
   <div class="span5">
     <%= f.label :ncr %>
-    <%= f.text_field :ncr, class: "span2" %>
+    <%= @capa.ncr %>
   </div>
   <div class="span9">
     <%= f.label :quality_comments %><br />
-    <%= f.text_area :quality_comments, rows: 6, class: "span9" %>
+    <%= @capa.quality_comments %>
   </div>
-  
-  <% end %>
-    
+<br /><br /><br />
+    <div class="clear"></div>
+  <div class="span4">
+    <%= f.label :root_cause %><br />
+    <%= f.text_area :root, rows: 6, class: "span4" %>
+  </div>
+  <div class="span6">
+    <%= f.label :comments %><br />
+    <%= f.text_area :engr_comments, rows: 6, class: "span6" %>
+  </div>
+  <div class="span10">
+    <%= f.label :solution %><br />
+    <%= f.text_area :solution, rows: 6, class: "span10"  %>
+  </div>
+ <div class="span6">
+    <%= f.label :date_resolved %><br />
+    <%= f.date_select :date_resolved, {:include_blank => true, :default => nil}, class: "span2" %>
+  </div>
   <br/>
+  
+    <div class="clear"></div>
+  <div class="span 10">
+  <b>Upload Files:</b>
+  <%= f.fields_for :capa_files do |p| %>
+     <div class="field">
+       <%= p.file_field :file, :multiple => true, name: "capa_files[file][]" %>
+     </div>
+  <% end %>
+  </div>
+	
+   <% if params[:controller] == "capas" && params[:action] == "show" %> 
+     <b>Uploaded Files:</b>
+		<table class="table">
+		<% @capa.capa_files.each do |p| %>
+		  <tr>
+		  	<td><%= p.file_url.split("/").last %></td>
+		    <td><%= button_to "Download File", {action: "download", controller: "capas", :file => p.file}  %></td>
+		  </tr>
+		<% end %>
+		</table>
+   <% end %>
+   <br/>
   <div class="actions, clear">
     <div class="center"><%= f.submit %></div>
   </div>

@@ -1,9 +1,18 @@
-All,
-
 A new CAPA has been created by <%= @capa.name %> from <%= @capa.department %> with the following details:
 
-CAPA no:  <%= @capa.capa_number %>
+CAPA :  <%= @capa.capa_number %>
 Pump Model:  <%= @capa.pump_model %>
-Description:  <%= @capa.description %>
+Serial No:   <%= @capa.serial_no %>
+Item No:  <%= @capa.item_number %>
+Lead assigned:  <%= @capa.engineer %>
+NCR:  <%= @capa.ncr %>
 
-Please contact <%= @capa.name %> with any questions or comments.
+Description:  
+
+<%= @capa.description %>
+
+Quality Comments:  
+
+<%= @capa.quality_comments %>
+
+Please contact Quality with any questions or comments.

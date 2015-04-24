@@ -7,6 +7,10 @@
 
 <%= render 'inprocessform' %>
 
+<% elsif @capa.status == "Resolved" %>
+
+<%= render 'resolvedform'%>
+
 <% else %>
 
 <%= render 'form' %>
