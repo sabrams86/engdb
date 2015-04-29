@@ -57,7 +57,7 @@ class RequestMailer < ActionMailer::Base
     @message = message
     @subject = subject
     @email = EmailList.where(department: "Accounting").all
-    @cc = Emaillist.where(department: "Manufacturing_SIR").all
+    @cc = EmailList.where(department: "Manufacturing_SIR").all
     cc = []
     @cc.each do |e|
       cc.push e.email
