@@ -4,9 +4,30 @@ class Capa < ActiveRecord::Base
   accepts_nested_attributes_for :capa_files
 
 PUMP_MODELS = [ "A9", "A7", "AG", "AF", "S3", "Legacy", "K/Kpro", "EMW", "HD", "Non-Metallic" ]
-
+STATUS = ["New", "In Process", "Resolved", "Closed"]
   validates :capa_number, :date, :description, :name, :department, presence: true
   validates :capa_number, uniqueness: true
+  
+  scope :by_keyword, ->(keys=nil) {
+    if keys.blank?
+      
+    else
+      terms = keys.split(/\s*,\s*/).map { |t| t.strip }.map { |t| "%#{t}%" }
+      where( ( ["#{table_name}.description like ?"] * terms.count).join(' and '), *terms )
+    end
+  }
+  scope :by_pump_model, lambda { |pump_model| where('pump_model LIKE ?', "#{pump_model}%") unless pump_model.nil? }
+  scope :by_status, lambda { |status| where('status LIKE ?', "#{status}%") unless status.nil? }
+
+  def incrament(product_bulletin)
+    product_bulletin[:number] = ProductBulletin.maximum(:number) + 1
+    return product_bulletin
+  end
+  
+  
+  
+  
+  
   
   
   def incrament(capa)

@@ -1,4 +1,7 @@
 <h1>Listing CAPAs</h1>
+
+<%= render 'capa_search'%>
+
 <%= link_to 'New Capa', new_capa_path %>
 <table class="table table-hover">
   <tr>
@@ -19,7 +22,7 @@
 
 <% @capas.each do |capa| %>
   <tr>
-    <td><%= capa.capa_number %></td>
+    <td><%= link_to capa.capa_number, capa%></td>
     <td><%= capa.pump_model %></td>
     <td><%= capa.item_number %></td>
     <td><%= capa.name %></td>

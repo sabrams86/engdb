@@ -10,6 +10,21 @@ class CapasController < ApplicationController
     @capas = Capa.all
     @capas = Capa.paginate page: params[:page], order: order, per_page: 50
 
+
+
+    order = sortable_column_order, "capa_number desc"
+    if params[:description].nil? or params[:pump_model].nil? or params[:status].nil?
+      @capas = Capa.paginate page: params[:page], order: order, per_page: 50
+    else
+      @capas = Capa\
+      .by_keyword(params[:description])\
+      .by_pump_model(params[:pump_model])\
+      .by_status(params[:status])\
+      .paginate page: params[:page], order: order, per_page: 50
+      
+    end
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @capas }

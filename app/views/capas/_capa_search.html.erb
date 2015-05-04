@@ -1,0 +1,14 @@
+<%= form_for :capas, :url => { :controller => "capas", :action => "index" }, :html => {method: :get, class: "form-inline"} do |f| %>
+  <div class="field">
+    <%= f.label :keywords %>
+    <%= text_field_tag 'description' %>
+
+    <%= f.label :pump_model %>
+    <%= text_field_tag 'pump_model' %>
+    
+    <%= f.label :status %>
+    <%= select_tag 'status', options_for_select(Capa::STATUS), prompt: "" %>
+
+    <%= f.submit "Search" %>
+  </div>
+<% end %>
