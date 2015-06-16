@@ -34,7 +34,7 @@ class EcnsController < ApplicationController
     
     respond_to do |format|
       format.html { render :template => "ecns/index" }
-      format.json { render json: @ecns }
+      format.json { render json: @ecn }
     end
   end
 
@@ -42,7 +42,7 @@ class EcnsController < ApplicationController
   # GET /ecns/1
   # GET /ecns/1.json
   def show
-    @ecn = Ecn.find(params[:id])
+    @ecns = Ecn.find(params[:id])
     
     respond_to do |format|
       format.html # show.html.erb
