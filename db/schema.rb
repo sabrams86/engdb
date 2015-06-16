@@ -237,11 +237,13 @@ ActiveRecord::Schema.define(:version => 20150423170637) do
     t.string   "gage_type"
     t.string   "description"
     t.string   "location"
-    t.string   "rating"
+    t.string   "manufacturer"
+    t.string   "manufacturer_part_number"
     t.string   "servicing_company"
     t.string   "servicing_phone"
     t.string   "calibration_period"
-    t.date     "calibration_date"
+    t.date     "calibration_last_done"
+    t.date     "calibration_due"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "status"
