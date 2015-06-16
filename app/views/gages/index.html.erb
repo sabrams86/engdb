@@ -8,11 +8,13 @@
     <th><%= sortable_column "Gage type" %></th>
     <th><%= sortable_column "Description" %></th>
     <th><%= sortable_column "Location" %></th>
-    <th><%= sortable_column "Rating" %></th>
+    <th><%= sortable_column "Manufacturer" %></th>
+    <th><%= sortable_column "Manufacturer Part Number" %></th>
     <th><%= sortable_column "Servicing company" %></th>
     <th><%= sortable_column "Servicing phone" %></th>
     <th><%= sortable_column "Calibration period" %></th>
-    <th><%= sortable_column "Calibration date" %></th>
+    <th><%= sortable_column "Calibration last done" %></th>
+    <th><%= sortable_column "Calibration due" %></th>
     <th><%= sortable_column "Status" %></th>
     <th></th>
     <th></th>
@@ -25,11 +27,13 @@
     <td><%= gage.gage_type %></td>
     <td><%= gage.description %></td>
     <td><%= gage.location %></td>
-    <td><%= gage.rating %></td>
+    <td><%= gage.manufacturer %></td>
+    <td><%= gage.manufacturer_part_number %></td>
     <td><%= gage.servicing_company %></td>
     <td><%= gage.servicing_phone %></td>
     <td><%= gage.calibration_period %></td>
-    <td><%= gage.calibration_date %></td>
+    <td><%= gage.calibration_last_done %></td>
+    <td><%= gage.calibration_due %></td>
     <td><%= gage.status %></td>
     <td><%= link_to gage do %>
     	<i class="icon-eye-open glyphw"></i>

@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :gage_type %><br />
-    <%= f.select :gage_type, Gage::GAGE_TYPES, prompt: 'Choose a Gage type' %>
+    <%= f.text_field :gage_type %>
   </div>
   <div class="field">
     <%= f.label :description %><br />
@@ -28,8 +28,12 @@
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.label :rating %><br />
-    <%= f.text_field :rating %>
+    <%= f.label :manufacturer %><br />
+    <%= f.text_field :manufacturer %>
+  </div>
+  <div class="field">
+    <%= f.label :manufacturer_part_number %><br />
+    <%= f.text_field :manufacturer_part_number %>
   </div>
   <div class="field">
     <%= f.label :servicing_company %><br />
@@ -44,8 +48,12 @@
     <%= f.select :calibration_period, Gage::PERIOD, prompt: 'Choose a calibration period' %>
   </div>
   <div class="field">
-    <%= f.label :calibration_date %><br />
-    <%= f.date_select :calibration_date %>
+    <%= f.label :calibration_last_done %><br />
+    <%= f.date_select :calibration_last_done %>
+  </div>
+   <div class="field">
+    <%= f.label :calibration_due %><br />
+    <%= f.date_select :calibration_due %>
   </div>
   <div class="field">
     <%= f.label :status %><br />
