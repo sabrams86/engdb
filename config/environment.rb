@@ -12,8 +12,6 @@ Engdb::Application.configure do
         port: 587,
         domain: "gmail.com",
         authentication: "plain",
-        user_name: "engineeringwilfley",
-        password: "@WS3ed4rf",
         enable_starttls_auto: true
         }
 
